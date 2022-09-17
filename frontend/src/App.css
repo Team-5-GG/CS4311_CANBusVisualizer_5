@@ -1,27 +1,110 @@
 .App {
-  text-align: center;
+  background-color: white;
+  min-height: 100vh;
+  min-width: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Blue-rectangle{
+  background-color: #4682B4;
+  height: 2vh;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Import-project-content-holder{
+  width: 80%;
+  height: fit-content;
+  padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  
 }
+.configInputBoxes{
+  width: 448px;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: gray;
+  text-align: left;
+  background-color: white;
+  background-image: url('./images/fileLogo.svg');
+  background-position: right;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #4682B4;
+  border-width: 2px;
+  align-self: center;
+  cursor: pointer;
+}.configInputBoxes:hover{
+  background-color: #4682B4;
+  color: white;
+}.configInputBoxes:hover::placeholder{
+  color: white;
+}
+
+#openProjectButton{
+  background-image: url("./images/Open\ Parcel.svg");
+}
+#userInitialTextBox{
+  background-image: none;
+  width: 442px;
+  height: 45px;
+  cursor: text;
+}
+#eventNameTxtBox{
+  background-image: none;
+  width: 442px;
+  height: 45px;
+  cursor: text;
+}
+#setBaudTxtBox{
+  background-image: none;
+  width: 442px;
+  height: 45px;
+  cursor: text;
+}
+.doneButton{
+  width: 170px;
+  height: 50px;
+  margin-top: 1%;
+  align-self: center;
+  background-color: #4682B4;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  border-style: none;
+  border-radius: 10px;
+  cursor: pointer;
+}.doneButton:hover{
+  background-color: #396991;
+}
+
+.Gray-seperator{
+  height: 5px;
+  width: 100%;
+  background-color: #E3E3E3;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  margin-top: 3%;
+  height: fit-content;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 96px;
+  color: black;
 }
 
 .App-link {
