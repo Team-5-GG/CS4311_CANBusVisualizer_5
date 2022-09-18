@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './buttonsAndTxtBxs.css';
+import './index.css';
 import App from './introConfigPage.js';
 import reportWebVitals from './reportWebVitals';
 
