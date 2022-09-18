@@ -1,4 +1,4 @@
-import './App.css';
+import './buttonsAndTxtBxs.css';
 
 const avoidSubmit = event => {
   event.preventDefault()
