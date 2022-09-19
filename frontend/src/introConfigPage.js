@@ -1,11 +1,15 @@
 import './buttonsAndTxtBxs.css';
 
+
 const avoidSubmit = event => {
   event.preventDefault()
   console.log('You clicked the button')
 }
 
-function App() {
+
+
+
+function introConfigPage() {
   return (
     <div className="App">
       <header className='Blue-rectangle'></header>
@@ -22,11 +26,11 @@ function App() {
         <button onClick={avoidSubmit} className="configInputBoxes" id="importDBCButton" type="text"> Import DBC File</button>
         <input className="configInputBoxes" id="eventNameTxtBox" type="text" placeholder='Event Name'/>
         <input className="configInputBoxes" id="setBaudTxtBox"type="text" placeholder="Set Baud Rate" />
-        <button className='doneButton'>Done</button>
+        
 
-      </form>
+      </form>      
     </div>
   );
 }
 
-export default App;
+export default introConfigPage;
