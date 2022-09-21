@@ -51,6 +51,9 @@ margin:0;
 }.configInputBoxes:hover::placeholder{
   color: white;
 }
+.configInputBoxes input[type=file]{
+  display: none;
+}
 
 #openProjectButton{
   background-image: url("./images/Open\ Parcel.svg");
