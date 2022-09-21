@@ -2,6 +2,7 @@ import connectDB from './config/db.js'
 import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
+import projectConfigRoutes from './routes/projectConfigRoute.js'
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ connectDB()
 app.use(express.json())
 
 app.use('/api/analysts', analystRoutes)
+app.use('/api/projectConfig', projectConfigRoutes)
 
 //Creating API for user
 app.get('/', (req, res)=>{
