@@ -1,15 +1,14 @@
 import './buttonsAndTxtBxs.css';
 
 
-const avoidSubmit = event => {
-  event.preventDefault()
-  console.log('You clicked the button')
-}
+function reroute() {
+  window.location.href = './edit'
+};
 
 
 
 
-function introConfigPage() {
+function IntroConfigPage() {
   return (
     <div className="App">
       <header className='Blue-rectangle'></header>
@@ -17,15 +16,16 @@ function introConfigPage() {
         Welcome!
       </header>
       <form className='Import-project-content-holder'>
-        <button onClick={avoidSubmit} className="configInputBoxes" id="importProjectButton"type="text"> Import Project</button>
+        <button type="button" className="configInputBoxes" id="importProjectButton"> Import Project</button>
         <div className='Gray-seperator'></div>
-        <button onClick={avoidSubmit} className="configInputBoxes" id="openProjectButton" type="text"> Open Project</button>
+        <button type="button" className="configInputBoxes" id="openProjectButton"> Open Project</button>
         <div className='Gray-seperator'></div>
         <input className="configInputBoxes" id="userInitialTextBox" type="text" placeholder='User Initials'/> 
-        <button onClick={avoidSubmit} className="configInputBoxes" id="importBlacklistButton" type="text"> Import Blacklist(s)</button>
-        <button onClick={avoidSubmit} className="configInputBoxes" id="importDBCButton" type="text"> Import DBC File</button>
+        <button type="button" className="configInputBoxes" id="importBlacklistButton"> Import Blacklist(s)</button>
+        <button type="button" className="configInputBoxes" id="importDBCButton"> Import DBC File</button>
         <input className="configInputBoxes" id="eventNameTxtBox" type="text" placeholder='Event Name'/>
         <input className="configInputBoxes" id="setBaudTxtBox"type="text" placeholder="Set Baud Rate" />
+        <button type="button" onClick={reroute} className='doneButton'>Done</button>
         
 
       </form>      
@@ -33,4 +33,4 @@ function introConfigPage() {
   );
 }
 
-export default introConfigPage;
+export default IntroConfigPage;

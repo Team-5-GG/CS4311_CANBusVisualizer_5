@@ -1,16 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import introConfigPage from './introConfigPage';
-import editPacket from './editPacketData';
+import IntroConfigPage from './introConfigPage';
+import EditPacket from './editPacketData';
 
 
 function App(){
     return(
         <Router>
             <Routes>
-                <Route exact path="/">
-                    <introConfigPage />
-                </Route>
+                <Route exact path="/" element={<IntroConfigPage />}></Route>
+                <Route exact path="/edit" element={<EditPacket />}></Route>
             </Routes>
         </Router>
     );

@@ -1,12 +1,16 @@
 import './editPacket.css';
 
-function editPacket() {
+const goHome = event => {
+    window.location.href='./'
+};
+
+function EditPacket() {
   return (
     <body class="">
     <div>
         <nav>
-                <div class="divide-x">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
+                <div className="divide-x">
+                    <button onClick={goHome} className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
                         Home
                     </button>
                     <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
@@ -63,4 +67,4 @@ function editPacket() {
   );
 }
 
-export default editPacket;
+export default EditPacket;
