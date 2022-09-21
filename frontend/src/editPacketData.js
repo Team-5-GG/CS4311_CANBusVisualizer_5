@@ -6,22 +6,6 @@ function EditPacket() {
   return (
     <body class="">
     <div>
-        <nav>
-                <div className="divide-x">
-                    <button onClick={goHome} className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
-                        Home
-                    </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
-                        File
-                    </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
-                        Edit
-                    </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-0 px-4 squared">
-                        View
-                    </button>
-                </div>   
-        </nav>
 
         <main class ="text-center">            
             <div class="flex justify-center pt-7">

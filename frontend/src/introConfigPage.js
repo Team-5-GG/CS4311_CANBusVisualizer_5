@@ -2,7 +2,7 @@ import './buttonsAndTxtBxs.css';
 
 
 function reroute() {
-  window.location.href = './edit'
+  window.location.href = './main'
 };
 
 function saveData(){
