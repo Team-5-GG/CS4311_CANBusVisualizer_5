@@ -12,12 +12,11 @@ const projectConfigSchema = mongoose.Schema({
     baudRate: {
         type: String,
         required: true,
-        unique:true
     },
 }, {
     timestamps: true
 })
 
-const projectConfig = mongoose.model('projectconfig', projectConfigSchema)
+const ProjectConfig = mongoose.model('projectconfig', projectConfigSchema)
 
-export default projectConfig
+export default ProjectConfig
