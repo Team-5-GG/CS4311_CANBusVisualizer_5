@@ -24,7 +24,7 @@ const analystSchema = mongoose.Schema({
     isAdmin: {
         type: Boolean,
         required: true,
-        defualt: false
+        default: false
     },
 }, {
     timestamps: true

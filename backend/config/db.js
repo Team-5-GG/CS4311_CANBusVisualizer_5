@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import Analyst from '../models/analystModel.js';
 
 const connectDB = async () => {
     try {
