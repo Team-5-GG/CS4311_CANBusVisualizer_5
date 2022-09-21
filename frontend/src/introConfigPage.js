@@ -50,7 +50,7 @@ function IntroConfigPage() {
         <button type="button" className="configInputBoxes" id="importDBCButton"> Import DBC File</button>
         <input className="configInputBoxes" id="eventNameTxtBox" type="text" placeholder='Event Name'/>
         <input className="configInputBoxes" id="setBaudTxtBox"type="text" placeholder="Set Baud Rate" />
-        <button type="button" onClick={saveData} className='doneButton'>Done</button>
+        <button type="button" onClick={reroute} className='doneButton'>Done</button>
         
 
       </form>      

@@ -1,5 +1,3 @@
-import './editPacket.css';
-
 const goHome = event => {
     window.location.href='./'
 };
