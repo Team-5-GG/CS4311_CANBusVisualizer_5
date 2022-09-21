@@ -1,4 +1,4 @@
-import { getProjectConfig, getProjectConfigById, createProjectConfig, deleteProjectConfigById , updateProjectConfigById} from '../controllers/projectConfigController'
+import { getProjectConfig, getProjectConfigById, createProjectConfig, deleteProjectConfigById , updateProjectConfigById} from '../controllers/projectConfigController.js'
 import express from 'express'
 const router = express.Router()
 
