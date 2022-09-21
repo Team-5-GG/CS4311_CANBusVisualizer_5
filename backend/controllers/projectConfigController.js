@@ -1,10 +1,10 @@
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
-import projectConfig from '../models/projectConfigModel.js'
+import ProjectConfig from '../models/projectConfigModel.js'
 
 //getprojectConfigs function to get all projectConfigs
 export const getProjectConfig = asyncHandler(async(req, res) => {
-    const projectConfig = await projectConfig.find({})
+    const projectConfigs = await ProjectConfig.find({})
     res.json(projectConfigs)
 })
 
@@ -17,7 +17,7 @@ export const getProjectConfigById  = asyncHandler(async(req, res) => {
         return res.status(404).json({error: 'Project config not found'})
     }
 
-    const projectConfig = await projectConfig.findById(id)
+    const projectConfig = await ProjectConfig.findById(id)
     
     //if projectConfig id match param id send projectConfig else throw error
     if(!projectConfig){
@@ -37,7 +37,7 @@ export const updateProjectConfigById = asyncHandler(async(req, res)=>{
         return res.status(404).json({error: 'projectConfig not found'})
     }
 
-    const projectConfig = await projectConfig.findOneAndUpdate({_id: id},{
+    const projectConfig = await ProjectConfig.findOneAndUpdate({_id: id},{
         ...req.body
     })
     
@@ -56,7 +56,7 @@ export const createProjectConfig = asyncHandler(async(req, res)=> {
     const {userInitials, eventName, baudRate} = req.body
 
     try{
-        const projectConfig = await projectConfig.create({userInitials, eventName, baudRate})
+        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate})
         res.status(200).json(projectConfig)
     } catch(error){
         res.status(400).json({error: error.message})
@@ -71,7 +71,7 @@ export const deleteProjectConfigById = asyncHandler(async(req, res)=>{
         return res.status(404).json({error: 'project Config not found'})
     }
 
-    const projectConfig = await projectConfig.findOneAndDelete({_id: id})
+    const projectConfig = await ProjectConfig.findOneAndDelete({_id: id})
 
     if(!projectConfig){
         res.status(404).json({message: 'projectConfig not found'})
