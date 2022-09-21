@@ -8,4 +8,5 @@ npm i nodemon --save-dev (creates a daemon that watches for files changes and re
 
 # running frontent
 npm install react-router-dom --save (install react inside /frontend subfolder)
+
 npm start
