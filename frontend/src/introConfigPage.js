@@ -10,21 +10,29 @@ async function saveData(){
   let baudRate = document.getElementById("setBaudTxtBox").value;
 
   let newProjectData = new configDataHolder(userinitials, eventName, baudRate);
-  let newProjectDataString = JSON.stringify(newProjectData);
+  let newProjectDataString = JSON.stringify(newProjectData); // parse this data string for raw json
+  console.log(newProjectDataString)
 
-  const response = await fetch('/api/projectConfig' , {
+  const response = await fetch('http://localhost:5000/api/projectConfig', {
     method: 'POST',
-    body: JSON.stringify(newProjectData),
+    body: JSON.stringify(newProjectData), 
+    url: 'http://localhost:5000',
+    mode: 'cors', 
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+
   })
   localStorage.setItem("data", newProjectDataString);
   
 }
 
 class configDataHolder{
-  constructor(userinitials, eventName, setBaudRate){
-    this.userinitials = userinitials;
+  constructor(userInitials, eventName, baudRate){
+    this.userInitials = userInitials;
     this.eventName = eventName;
-    this.setBaudRate = setBaudRate;
+    this.baudRate = baudRate;
   }
 };
 
