@@ -118,6 +118,10 @@ margin:0;
   color: #61dafb;
 }
 
+.map {
+  background-image: url('./images/canbusmap.png');
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
