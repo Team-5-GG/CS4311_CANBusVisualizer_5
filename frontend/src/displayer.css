@@ -1,0 +1,70 @@
+
+.displayer{
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+}
+.CANBusMapContainer{
+    background-image: url("./images/canbusmap.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+    /* resize: vertical; */
+}
+
+.dtHorizontalVerticalExampleWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #dtHorizontalVerticalExample th, td {
+    white-space: nowrap;
+  }
+  table.dataTable thead .sorting:after,
+  table.dataTable thead .sorting:before,
+  table.dataTable thead .sorting_asc:after,
+  table.dataTable thead .sorting_asc:before,
+  table.dataTable thead .sorting_asc_disabled:after,
+  table.dataTable thead .sorting_asc_disabled:before,
+  table.dataTable thead .sorting_desc:after,
+  table.dataTable thead .sorting_desc:before,
+  table.dataTable thead .sorting_desc_disabled:after,
+  table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+  }
+
+  #context-menu {
+    position: fixed;
+    z-index: 10000;
+    width: 150px;
+    background: #1b1a1a;
+    border-radius: 5px;
+  }
+  
+  #context-menu .item {
+    padding: 8px 10px;
+    font-size: 15px;
+    color: #eee;
+    cursor: pointer;
+    border-radius: inherit;
+  }
+  
+  #context-menu .item:hover {
+    background: #343434;
+  }
+
+  #context-menu {
+    position: fixed;
+    z-index: 10000;
+    width: 150px;
+    background: #1b1a1a;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  #context-menu.visible {
+    display: flex;
+    flex-direction: column;
+  }
