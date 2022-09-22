@@ -3,6 +3,7 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT
 connectDB()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
