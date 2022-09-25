@@ -1,10 +1,6 @@
 import './buttonsAndTxtBxs.css';
 
 
-function reroute() {
-  window.location.href = './main'
-};
-
 function saveData(){
   let userinitials = document.getElementById("userInitialTextBox").value;
   let eventName = document.getElementById("eventNameTxtBox").value;
@@ -50,7 +46,7 @@ function IntroConfigPage() {
         <button type="button" className="configInputBoxes" id="importDBCButton"> Import DBC File</button>
         <input className="configInputBoxes" id="eventNameTxtBox" type="text" placeholder='Event Name'/>
         <input className="configInputBoxes" id="setBaudTxtBox"type="text" placeholder="Set Baud Rate" />
-        <button type="button" onClick={reroute} className='doneButton'>Done</button>
+        <button type="button" onClick={() => {window.location.href='./main'}} className='doneButton'>Done</button>
         
 
       </form>      

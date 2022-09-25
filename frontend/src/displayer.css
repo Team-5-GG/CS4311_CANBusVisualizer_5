@@ -36,32 +36,29 @@
   }
 
   #context-menu {
-    position: fixed;
+    position: absolute;
     z-index: 10000;
     width: 150px;
     background: #1b1a1a;
     border-radius: 5px;
+    transition: opacity 0.5s linear;
+    display: flex;
+    flex-direction: column;
   }
   
   #context-menu .item {
+    width: 100%;
     padding: 8px 10px;
     font-size: 15px;
     color: #eee;
     cursor: pointer;
     border-radius: inherit;
+    display: inherit;
+    justify-content: center;
   }
   
   #context-menu .item:hover {
     background: #343434;
-  }
-
-  #context-menu {
-    position: fixed;
-    z-index: 10000;
-    width: 150px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
   }
   
   #context-menu.visible {
