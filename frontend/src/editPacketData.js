@@ -1,52 +1,72 @@
+import React, { useState } from 'react';
+import {Card, Container, Col, Row, Form, Button} from "react-bootstrap";
+
 const goHome = event => {
     window.location.href='./'
 };
 
-function EditPacket() {
-  return (
-    <body class="">
-    <div>
+let EditPacket = () => {
 
-        <main class ="text-center">            
-            <div class="flex justify-center pt-7">
-                <form class="bg-gray-300 shadow-2xl rounded px-8 pt-4 pb-8" action="#">
-                    <header>
-                <h2 class="text-gray-900 text-2xl  font-semibold">Edit Packet Data</h2>
-                </header>
-                <br></br>
-                    <div class="mb-8">
-                        <label class="text-black text-sm font-bold flex justify-start" for="neededInput">
-                            Source:
-                        </label>
-                        <input class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="source" placeholder="Source"></input>
-                    </div>
+    let [state, setState] = useState({
+        packet : {
+            source : '',
+            dest : '',
+            dPAddress : ''
+        }
+    });
 
-                    <div class="mb-8">
-                        <label class="text-black text-sm font-bold flex justify-start" for="neededInput">
-                            Destination:
-                        </label>
-                        <input class="border rounded w-full py-2 px-3 text-gray-700 mb-0 leading-tight focus:outline-none focus:shadow-outline" type="text" id="destination" placeholder="Destination"></input>
-                    </div>
+    let updateInput = (e) => {
+        setState( { 
+            ...state,
+            packet : {
+                ...state.packet,
+                [e.target.name] : e.target.value
+            }
+        })
+    };
+    let submit = (e) => {
+        e.preventDefault();
+        console.log(state.packet);
+    };
 
-                    <div class="mb-8">
-                        <label class="text-black text-sm font-bold flex justify-start" for="neededInput">
-                            Decoded Physical Address:
-                        </label>
-                        <input class="border rounded w-full py-2 px-3 text-gray-700 mb-0 leading-tight focus:outline-none focus:shadow-outline" type="text" id="decodedPA" placeholder="Decoded Physical Address"></input>
-                    </div>
-
-                <div class="flex space-x-2">
-                <input class="bg-white hover:bg-blue-700 text-black font-semibold py-0 px-4 rounded" type="submit" value="Something"></input>
-                <input class="bg-white hover:bg-blue-700 text-black font-semibold py-0 px-4 rounded" type="submit" value="Exit"></input>
-                <input class="bg-white hover:bg-blue-700 text-black font-semibold py-0 px-4 rounded" type="submit" value="Save and Exit"></input>
-                <input class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-0 px-4 rounded" type="submit" value="Send to Bus"></input>
-                </div>
-                </form>
-            </div>
-        </main>
-    </div>
-    </body>
-  );
+    return (
+        <>
+        <pre>Confirming update in RT--> {JSON.stringify(state)}</pre>
+            <Container className="mt-3">
+                <Row>
+                    <Col>
+                        <Card className="shadow-lg" style={{backgroundColor: 'lightgray'}}>
+                            <Card.Header className="text-center p-4">
+                                <h3>Edit Packet Data</h3>
+                            </Card.Header>
+                            <Card.Body>
+                                <Form>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="mb-0"><b>Source:</b></Form.Label>
+                                        <Form.Control className="" name="source" onChange={updateInput} type="text" placeholder="Source"></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="mb-0"><b>Destination:</b></Form.Label>
+                                        <Form.Control name="dest" onChange={updateInput} type="text" placeholder="Destination"></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="mb-0"><b>Decoded Physical Address:</b></Form.Label>
+                                        <Form.Control name="dPAddress" onChange={updateInput} type="text" placeholder="Decoded Physical Address"></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group className="mb-1">
+                                        <Button onClick={submit} variant="light" type="submit"><b>Something</b></Button>{' '}
+                                        <Button onClick={submit} variant="light" type="submit"><b>Exit</b></Button>{' '}
+                                        <Button onClick={submit} variant="light" type="submit"><b>Save and Exit</b></Button>{' '}
+                                        <Button onClick={submit} variant="primary" type="submit"><b>Send to Bus</b></Button>
+                                    </Form.Group>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 }
 
 export default EditPacket;
