@@ -1,16 +1,21 @@
 import UseContextMenu from "./UseContextMenu";
+import EditPacket from "./editPacketData";
 import './displayer.css'
+import {useState} from 'react'
 
 export function ContextMenu(){
+
     const { anchorPoint, show } = UseContextMenu();
     if (show){
         console.log("ged")
         return(
-            <div id="context-menu" style={{ top: anchorPoint.y, left: anchorPoint.x }}>
-                <a className="item" href="/editPacket">Edit</a>
-                <a className="item" href="/editPacket">Replay</a>
-                <a className="item" href="/editPacket">Delete</a>
-            </div>
+            <>
+                <div id="context-menu" style={{ top: anchorPoint.y, left: anchorPoint.x }}>
+                    <button type="button" className="item">Edit</button>
+                    <button className="item" href="/editPacket">Replay</button>
+                    <button className="item" href="/editPacket">Delete</button>
+                </div>
+            </>
         );
     }
     return <></>;

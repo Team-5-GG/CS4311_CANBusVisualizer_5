@@ -51,7 +51,7 @@ export function PacketDisplayer(){
     return(
         
         <div>
-        <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm " cellSpacing="0" width="100%">
+        <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
   <thead>
     <tr>
       <th>ID #</th>
@@ -63,36 +63,7 @@ export function PacketDisplayer(){
   </thead>
   <tbody>
     <tr className="packetRow">
-      <td>1</td>
-      <td>Lights</td>
-      <td>Seat Heater</td>
-      <td>RAW DATA HERE</td>
-      <td>DESCRIPTION HERE</td>
-      
-    </tr>
-    <tr className="packetRow">
-    <td>2</td>
-      <td>Lights</td>
-      <td>Seat Heater</td>
-      <td>RAW DATA HERE</td>
-      <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td>3</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td>4</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td>5</td>
+        <td className="packetId">1</td>
         <td>Lights</td>
         <td>Seat Heater</td>
         <td>RAW DATA HERE</td>
@@ -100,7 +71,36 @@ export function PacketDisplayer(){
       
     </tr>
     <tr className="packetRow">
-        <td>6</td>
+        <td className="packetId">2</td>
+        <td>Lights</td>
+        <td>Seat Heater</td>
+        <td>RAW DATA HERE</td>
+        <td>DESCRIPTION HERE</td>
+    </tr>
+    <tr className="packetRow">
+        <td className="packetId">3</td>
+        <td>Lights</td>
+        <td>Seat Heater</td>
+        <td>RAW DATA HERE</td>
+        <td>DESCRIPTION HERE</td>
+    </tr>
+    <tr className="packetRow">
+        <td className="packetId">4</td>
+        <td>Lights</td>
+        <td>Seat Heater</td>
+        <td>RAW DATA HERE</td>
+        <td>DESCRIPTION HERE</td>
+    </tr>
+    <tr className="packetRow">
+        <td className="packetId">5</td>
+        <td>Lights</td>
+        <td>Seat Heater</td>
+        <td>RAW DATA HERE</td>
+        <td>DESCRIPTION HERE</td>
+      
+    </tr>
+    <tr className="packetRow">
+        <td className="packetId">6</td>
         <td>Lights</td>
         <td>Seat Heater</td>
         <td>RAW DATA HERE</td>

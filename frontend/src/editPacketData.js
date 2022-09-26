@@ -31,7 +31,7 @@ let EditPacket = () => {
 
     return (
         <>
-        <pre>Confirming update in RT--> {JSON.stringify(state)}</pre>
+        <pre>Confirming update in RT {JSON.stringify(state)}</pre>
             <Container className="mt-3">
                 <Row>
                     <Col>

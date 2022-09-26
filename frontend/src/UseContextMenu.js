@@ -1,62 +1,12 @@
-// console.log("got here");
-// document.onclick = hideMenu;
-// document.oncontextmenu = rightClick;
-
-// function hideMenu(){
-//     document.getElementById("context-menu").style.display = "none";
-// }
-// function rightClick(e){
-//     e.preventDefault();
-
-//     if (document.getElementById("context-menu").style.display == "block"){
-        
-//         hideMenu();
-//     }
-//     else{
-//         var menu = document.getElementById("context-menu")      
-//         menu.classList.add("visible");
-//         menu.style.left = e.pageX + "px"; 
-//         menu.style.top = e.pageY + "px"; 
-//     }
-// }
-
-
-// const UseContextMenu = () => {
-//     const contextMenu = document.getElementById("context-menu");
-//     const scope = document.querySelector("body");
-//     console.log("loaded")
-    
-//     if(contextMenu && scope){
-//         scope.addEventListener("contextmenu", (event) => {
-//             event.preventDefault();
-        
-//             const { clientX: mouseX, clientY: mouseY } = event;
-        
-//             contextMenu.style.top = `${mouseY}px`;
-//             contextMenu.style.left = `${mouseX}px`;
-        
-//             contextMenu.classList.add("visible");
-//         });
-        
-//         scope.addEventListener("click", (e) => {
-//             if (e.target.offsetParent !== contextMenu) {
-//                 contextMenu.classList.remove("visible");
-//             }
-//             });
-//     }
-//   };
-
-//   export default UseContextMenu;
-
 import { useEffect, useCallback, useState } from "react";
 
 const UseContextMenu = () => {
-  console.log("here")
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
 
   const handleContextMenu = useCallback(
-    (event) => {
+    (item) => (event) => {
+      console.log(item.querySelector(".packetId"));
       event.preventDefault();
       console.log("prevented default")
       setAnchorPoint({ x: event.pageX, y: event.pageY });
@@ -68,11 +18,14 @@ const UseContextMenu = () => {
   const handleClick = useCallback(() => (show ? setShow(false) : null), [show]);
 
   useEffect(() => {
-    const scope = document.querySelector("body table");
+    // scope is an array of tr.packetRow elements.
+    const scope = document.querySelectorAll("tr.packetRow"); 
+    
     document.addEventListener("click", handleClick);
 
     if(scope){
-      scope.addEventListener("contextmenu", handleContextMenu);
+      // forEach below adds an event listener to all items of the table
+      scope.forEach((item) => {item.addEventListener("contextmenu", handleContextMenu(item))});
     }
     
     return () => {
