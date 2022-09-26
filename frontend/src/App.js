@@ -1,25 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+// import React from 'react';
+import React , { Component}  from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import IntroConfigPage from './introConfigPage';
+import EditPacket from './editPacketData';
 
-//pages & components
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <div className="pages">
-          <Routes>
-            <Route 
-            path='/'
-            element={<Home />}
-            />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
-  );
+function App(){
+    return(
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<IntroConfigPage />}></Route>
+                <Route exact path="/edit" element={<EditPacket />}></Route>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
+
