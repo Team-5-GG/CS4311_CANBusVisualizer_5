@@ -6,7 +6,7 @@ const UseContextMenu = () => {
 
   const handleContextMenu = useCallback(
     (item) => (event) => {
-      console.log(item.querySelector(".packetId"));
+      console.log(item);
       event.preventDefault();
       console.log("prevented default")
       setAnchorPoint({ x: event.pageX, y: event.pageY });

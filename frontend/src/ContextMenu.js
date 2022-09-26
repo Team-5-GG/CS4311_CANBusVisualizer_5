@@ -11,9 +11,9 @@ export function ContextMenu(){
         return(
             <>
                 <div id="context-menu" style={{ top: anchorPoint.y, left: anchorPoint.x }}>
-                    <button type="button" className="item">Edit</button>
-                    <button className="item" href="/editPacket">Replay</button>
-                    <button className="item" href="/editPacket">Delete</button>
+                    <button type="button" className="item" onClick={()=>window.location.href = "./editPacket"}>Edit</button>
+                    <button className="item">Replay</button>
+                    <button className="item">Delete</button>
                 </div>
             </>
         );

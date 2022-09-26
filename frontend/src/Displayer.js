@@ -28,7 +28,7 @@ export function MainPage() {
                 <NavDropdown.Item href="./">Delete</NavDropdown.Item>
                 <NavDropdown.Item href="./">Archive</NavDropdown.Item>
                 <NavDropdown.Item href="./">Export</NavDropdown.Item>
-                <NavDropdown.Item class="dropdown-item disabled" href="./">Sync</NavDropdown.Item>
+                <NavDropdown.Item href="./">Sync</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Edit" id="basic-nav-dropdown">
                 <NavDropdown.Item href="./">Rename Project</NavDropdown.Item>
