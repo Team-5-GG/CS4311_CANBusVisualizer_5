@@ -25,6 +25,7 @@ async function saveData(){
 
   })
   localStorage.setItem("data", newProjectDataString);
+  window.location.href='./main';
   
 }
 
