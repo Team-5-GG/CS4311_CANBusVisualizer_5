@@ -1,9 +1,10 @@
 html,body{
 margin:0;
 }
-
 .App {
-  background-color: white;
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
   min-height:100vh;
   min-width: 100vh;
   align-items: center;
@@ -12,7 +13,7 @@ margin:0;
 }
 
 .Blue-rectangle{
-  background-color: #4682B4;
+  background-color: yellow;
   height: 2vh;
   width: 100%;
 }
@@ -41,7 +42,7 @@ margin:0;
   font-size: 20px;
   border-style: solid;
   border-radius: 10px;
-  border-color: #4682B4;
+  border-color: yellow;
   border-width: 2px;
   align-self: center;
   cursor: pointer;
@@ -81,7 +82,7 @@ margin:0;
   height: 50px;
   margin-top: 1%;
   align-self: center;
-  background-color: #4682B4;
+  background-color: yellow;
   color: white;
   font-family: 'Inter', sans-serif;
   font-size: 20px;
@@ -89,7 +90,7 @@ margin:0;
   border-radius: 10px;
   cursor: pointer;
 }.doneButton:hover{
-  background-color: #396991;
+  background-color: yellow;
 }
 
 .Gray-seperator{
@@ -111,11 +112,11 @@ margin:0;
   justify-content: center;
   font-family: 'Inter', sans-serif;
   font-size: 96px;
-  color: black;
+  color: white;
 }
 
 .App-link {
-  color: #61dafb;
+  color: yellow;
 }
 
 .map {

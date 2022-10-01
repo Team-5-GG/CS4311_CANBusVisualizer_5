@@ -8,7 +8,6 @@ async function saveData(){
   let userinitials = document.getElementById("userInitialTextBox").value;
   let eventName = document.getElementById("eventNameTxtBox").value;
   let baudRate = document.getElementById("setBaudTxtBox").value;
-
   let newProjectData = new configDataHolder(userinitials, eventName, baudRate);
   let newProjectDataString = JSON.stringify(newProjectData); // parse this data string for raw json
   console.log(newProjectDataString)
@@ -37,11 +36,6 @@ class configDataHolder{
   }
 };
 
-
-
-
-
-
 function IntroConfigPage() {
   return (
     <div className="App">
@@ -65,7 +59,7 @@ function IntroConfigPage() {
         <button type="button" onClick={saveData} className='doneButton'>Done</button>
         
 
-      </form>      
+      </form>
     </div>
   );
 }
