@@ -17,48 +17,60 @@ margin:0;
   height: 2vh;
   width: 100%;
 }
-
-.Import-project-content-holder{
-  width: 80%;
-  height: fit-content;
-  padding-top: 1%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  
-}
 .configInputBoxes{
   width: 448px;
   height: 50px;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: gray;
-  text-align: left;
-  background-color: white;
-  background-image: url('./images/fileLogo.svg');
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  /* background-image: url('./images/fileLogo.svg'); */
   background-position: right;
   background-repeat: no-repeat;
   font-family: 'Inter', sans-serif;
   font-size: 20px;
   border-style: solid;
   border-radius: 10px;
-  border-color: yellow;
+  border-color: rgb(119, 119, 119);
   border-width: 2px;
   align-self: center;
   cursor: pointer;
 }.configInputBoxes:hover{
-  background-color: #4682B4;
-  color: white;
+  background-color: #7b7b7b;
+  color: rgb(0, 0, 0);
 }.configInputBoxes:hover::placeholder{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .configInputBoxes input[type=file]{
   display: none;
 }
-
+#createProjectButton{
+  background-color: #ffffff;
+}
+#importProjectButton{
+  background-color: #ffffff;
+}
 #openProjectButton{
   background-image: url("./images/Open\ Parcel.svg");
+  background-color: white;
 }
+#syncProjectButton{
+  background-color: #ffffff;
+}
+#archiveProjectButton{
+  background-color: #ffffff;
+}
+#archiveProjectButton:hover{
+  background-color: yellow;
+}
+#gotoCANBusButton{
+  background-color: #ffffff;
+}
+#gotoCANBusButton:hover{
+  background-color: yellow;
+}
+/* Review below */
+
 #userInitialTextBox{
   background-image: none;
   width: 442px;
@@ -77,6 +89,7 @@ margin:0;
   height: 45px;
   cursor: text;
 }
+
 .doneButton{
   width: 170px;
   height: 50px;
@@ -95,10 +108,11 @@ margin:0;
 
 .Gray-seperator{
   height: 5px;
-  width: 100%;
-  background-color: #E3E3E3;
+  width: 40%;
+  background-color: #ffffff;
   margin-top: 2%;
   margin-bottom: 2%;
+  opacity: 30%;
 }
 
 
