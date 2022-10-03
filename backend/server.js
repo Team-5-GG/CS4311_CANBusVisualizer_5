@@ -4,6 +4,8 @@ import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
 import cors from 'cors'
+import listener from './config/listener.js'
+import channel from './config/listener.js'
 
 dotenv.config()
 
@@ -16,6 +18,7 @@ connectDB()
 app.use(express.json())
 app.use(cors())
 
+
 app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
 
@@ -26,3 +29,5 @@ app.get('/', (req, res)=>{
 
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+
+channel.start()
