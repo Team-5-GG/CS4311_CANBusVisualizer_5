@@ -1,6 +1,8 @@
 html,body{
 margin:0;
 }
+
+/* introConfigPage css */
 .App {
   background-image: url(images/background.jpg);
   background-size: cover;
@@ -91,22 +93,6 @@ margin:0;
   background-color: yellow;
 }
 
-.doneButton{
-  width: 170px;
-  height: 50px;
-  margin-top: 1%;
-  align-self: center;
-  background-color: yellow;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  border-style: none;
-  border-radius: 10px;
-  cursor: pointer;
-}.doneButton:hover{
-  background-color: yellow;
-}
-
 .Gray-seperator{
   height: 5px;
   width: 40%;
@@ -115,7 +101,6 @@ margin:0;
   margin-bottom: 2%;
   opacity: 30%;
 }
-
 
 .App-header {
   margin-top: 50px;
@@ -130,6 +115,28 @@ margin:0;
   color: white;
 }
 
+.modal-background{
+  background-color: #ffffff;
+}
+.modal-container{
+  align-items: center;
+  display: flex;
+  flex-direction:column;
+}
+.modal-background{
+  width: 50%;
+}
+
+.modal-body{
+  width: 50%;
+}
+
+#closeCreateWindow{
+  font-size: medium;
+  color: aqua;
+}
+
+/* END of introConfigPage css */
 .map {
   background-image: url('./images/canbusmap.png');
 }

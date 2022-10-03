@@ -1,7 +1,7 @@
 import React , { Component}  from 'react';
 import './buttonsAndTxtBxs.css';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from './components/createPopup';
+import {useState } from "react";
 
 async function saveData(){
   let userinitials = document.getElementById("userInitialTextBox").value;
@@ -36,6 +36,7 @@ class configDataHolder{
 };
 
 function IntroConfigPage() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="App">
       {/* Tab buttons */}
@@ -60,25 +61,28 @@ function IntroConfigPage() {
       </header>
       {/* Page body */}
       <header className="App-body">
-        <button type="button" className="configInputBoxes" id="createProjectButton">Create Project</button> 
+        {/* Create Project button */}
+        <button
+        type="button" className="configInputBoxes"
+        id="createProjectButton"
+        onClick={()=>{
+          setOpenModal(true);
+        }}
+        >Create Project</button>
+        {openModal && <Modal closeModal={setOpenModal}/>}
+        {/* END of Create Project button */}
         <div className='Gray-seperator'></div>
+
         <button type="button" className="configInputBoxes" id="importProjectButton">Import Project</button> 
+        
         <div className='Gray-seperator'></div>
+        
         <button type="button" className="configInputBoxes" id="openProjectButton"> Open Project</button>
         <div className='Gray-seperator'></div>
         <button type="button" className="configInputBoxes" id="syncProjectButton"> Sync Project</button>
         <button type="button" className="configInputBoxes" id="archiveProjectButton"> Archive Project</button>
         <button type="button" className="configInputBoxes" id="gotoCANBusButton"> CAN Bus Manager</button>
       </header>
-
-      {/* <form className='Import-project-content-holder'>
-        <input className="configInputBoxes" id="userInitialTextBox" type="text" placeholder='User Initials'/> 
-        <button type="button" className="configInputBoxes" id="importBlacklistButton"> Import Blacklist(s)</button>
-        <button type="button" className="configInputBoxes" id="importDBCButton"> Import DBC File</button>
-        <input className="configInputBoxes" id="eventNameTxtBox" type="text" placeholder='Event Name'/>
-        <input className="configInputBoxes" id="setBaudTxtBox"type="text" placeholder="Set Baud Rate" />
-        <button type="button" onClick={saveData} className='doneButton'>Done</button>
-      </form> */}
     </div>
   );
 };
