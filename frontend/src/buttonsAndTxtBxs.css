@@ -24,7 +24,6 @@ margin:0;
   margin-bottom: 5px;
   color: rgb(0, 0, 0);
   background-color: #ffffff;
-  /* background-image: url('./images/fileLogo.svg'); */
   background-position: right;
   background-repeat: no-repeat;
   font-family: 'Inter', sans-serif;
@@ -45,49 +44,51 @@ margin:0;
   display: none;
 }
 #createProjectButton{
+  background-image: url("./images/main-menu/new-file.svg");
   background-color: #ffffff;
 }
+#createProjectButton:hover{
+  background-color: yellow;
+}
+
+
 #importProjectButton{
+  background-image: url("./images/main-menu/openBox.svg");
   background-color: #ffffff;
 }
+#importProjectButton:hover{
+  background-color: yellow;
+}
+
 #openProjectButton{
-  background-image: url("./images/Open\ Parcel.svg");
+  background-image: url("./images/main-menu/openBox.svg");
   background-color: white;
 }
+#openProjectButton:hover{
+  background-color: yellow;
+}
+
 #syncProjectButton{
+  background-image: url("./images/main-menu/sync.svg");
   background-color: #ffffff;
 }
+#syncProjectButton:hover{
+  background-color: yellow;
+}
+
 #archiveProjectButton{
+  background-image: url("./images/main-menu/archive.svg");
   background-color: #ffffff;
 }
 #archiveProjectButton:hover{
   background-color: yellow;
 }
 #gotoCANBusButton{
-  background-color: #ffffff;
+  background-image: url("./images/main-menu/car-front-fill.svg");
+  background-color: rgb(37, 112, 187);
 }
 #gotoCANBusButton:hover{
   background-color: yellow;
-}
-/* Review below */
-
-#userInitialTextBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
-}
-#eventNameTxtBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
-}
-#setBaudTxtBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
 }
 
 .doneButton{
@@ -117,7 +118,7 @@ margin:0;
 
 
 .App-header {
-  margin-top: 3%;
+  margin-top: 50px;
   height: fit-content;
   width: fit-content;
   display: flex;
@@ -127,10 +128,6 @@ margin:0;
   font-family: 'Inter', sans-serif;
   font-size: 96px;
   color: white;
-}
-
-.App-link {
-  color: yellow;
 }
 
 .map {
