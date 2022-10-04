@@ -2,6 +2,7 @@ import React , { Component}  from 'react';
 import './buttonsAndTxtBxs.css';
 import Modal from './components/createPopup';
 import {useState } from "react";
+import {Link} from 'react-router-dom';
 
 async function saveData(){
   let userinitials = document.getElementById("userInitialTextBox").value;
@@ -65,7 +66,11 @@ function IntroConfigPage() {
         <div className='Gray-seperator'></div>
         <button type="button" className="configInputBoxes" id="syncProjectButton"> Sync Project</button>
         <button type="button" className="configInputBoxes" id="archiveProjectButton"> Archive Project</button>
-        <button type="button" className="configInputBoxes" id="gotoCANBusButton"> CAN Bus Manager</button>
+        
+        {/*Goto CAN bus button - will redirect to the main page*/}
+        <Link to="/main">
+          <button type="button" className="configInputBoxes" id="gotoCANBusButton"> CAN Bus Manager</button>
+        </Link>
       </header>
     </div>
   );

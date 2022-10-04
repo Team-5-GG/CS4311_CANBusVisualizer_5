@@ -5,14 +5,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CANBusDisplayer from './CANBusDisplayer';
 import PacketDisplayer from './PacketDisplayer'
-
-
-
-
+import {Link} from 'react-router-dom';
 export function MainPage() {
 
   return (
     <div className="displayer">
+      {/* Close button */}
+      <Link to="/">
+        <button type="button" className="close-button"></button>
+      </Link>
+      {/* End of close button */}
       <div>
       <Navbar bg="dark" variant="dark">
         <Container>
@@ -54,7 +56,6 @@ export function MainPage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
       <CANBusDisplayer></CANBusDisplayer>
       <PacketDisplayer></PacketDisplayer>
     

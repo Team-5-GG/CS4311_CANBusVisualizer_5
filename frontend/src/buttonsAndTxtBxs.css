@@ -137,8 +137,12 @@ margin:0;
   border-radius: 10px;
 }
 #closeCreateWindow{
-  font-size: medium;
-  color: aqua;
+  background-image: url("./images/main-menu/close-icon-black.svg");
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
 #createProjectTextBox{
   display: flex;
@@ -146,12 +150,16 @@ margin:0;
   font-size: 20px;
   align-items: center;
   font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 50px;
 }
 .createProject-footer{
   font-size: 20px;
+  background-color: red;
+  color: white;
 }
 .createProject-title{
-  font-size: 30px;
+  font-size: 25px;
 }
 /* END of introConfigPage css */
 .map {

@@ -4,7 +4,7 @@ function Modal({closeModal}){
     return(
         <div className="modal-background">
             <div className="modal-container">
-                <button id = "closeCreateWindow" onClick={() => closeModal(false)}> X </button>
+                <button id = "closeCreateWindow" onClick={() => closeModal(false)}></button>
                 <div className="createProject-title">
                     <h1> Create Project</h1>
                 </div>
