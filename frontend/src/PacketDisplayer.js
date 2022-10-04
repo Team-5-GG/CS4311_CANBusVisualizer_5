@@ -41,74 +41,80 @@
 // }
 import "./displayer.css"
 import ContextMenu from "./ContextMenu";
+import { useState } from "react";
+import data from "./fakeTraffic-data.json";
 
 
 export function PacketDisplayer(){
 
     //window.addEventListener('popstate', rightClick())
     // document.getElementsByTagName("div").onpageshow = rightClick();
-    
+    const [packets, setPackets] = useState(data);
+
     return(
-        
         <div>
         <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
-  <thead>
-    <tr>
-      <th>ID #</th>
-      <th>Source</th>
-      <th>Destination</th>
-      <th>Raw Data</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr className="packetRow">
-        <td className="packetId">1</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-      
-    </tr>
-    <tr className="packetRow">
-        <td className="packetId">2</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td className="packetId">3</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td className="packetId">4</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-    </tr>
-    <tr className="packetRow">
-        <td className="packetId">5</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-      
-    </tr>
-    <tr className="packetRow">
-        <td className="packetId">6</td>
-        <td>Lights</td>
-        <td>Seat Heater</td>
-        <td>RAW DATA HERE</td>
-        <td>DESCRIPTION HERE</td>
-      
-    </tr>
-  </tbody>
-  
+        <thead>
+            <tr>
+            <th>ID #</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Raw Data</th>
+            <th>Description</th>
+            </tr>
+        </thead>
+
+        <tbody> 
+            {packets.map((packet) => ( 
+                <tr className="packetRow">
+                    <td className="packetId">{packet.id}</td>
+                    <td>{packet.source}</td>
+                    <td>{packet.destination}</td>
+                    <td>{packet.rawData}</td>
+                    <td>{packet.Description}</td>
+                </tr>
+             ))}
+            
+            {/*
+            <tr className="packetRow">
+                <td className="packetId">2</td>
+                <td>Lights</td>
+                <td>Seat Heater</td>
+                <td>RAW DATA HERE</td>
+                <td>DESCRIPTION HERE</td>
+            </tr> 
+            <tr className="packetRow">
+                <td className="packetId">3</td>
+                <td>Lights</td>
+                <td>Seat Heater</td>
+                <td>RAW DATA HERE</td>
+                <td>DESCRIPTION HERE</td>
+            </tr>
+            <tr className="packetRow">
+                <td className="packetId">4</td>
+                <td>Lights</td>
+                <td>Seat Heater</td>
+                <td>RAW DATA HERE</td>
+                <td>DESCRIPTION HERE</td>
+            </tr>
+            <tr className="packetRow">
+                <td className="packetId">5</td>
+                <td>Lights</td>
+                <td>Seat Heater</td>
+                <td>RAW DATA HERE</td>
+                <td>DESCRIPTION HERE</td>
+            
+            </tr>
+            <tr className="packetRow">
+                <td className="packetId">6</td>
+                <td>Lights</td>
+                <td>Seat Heater</td>
+                <td>RAW DATA HERE</td>
+                <td>DESCRIPTION HERE</td>
+            
+            </tr> */}
+        </tbody>
+        
 </table>
 
 <ContextMenu></ContextMenu>
