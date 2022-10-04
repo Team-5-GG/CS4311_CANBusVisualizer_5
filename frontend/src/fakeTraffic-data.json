@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "source": "Lights",
+      "destination": "Seat Heater",
+      "rawData": "RAW DATA HERE",
+      "Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+    },
+    {
+      "id": 2,
+      "source": "Tail Lights",
+      "destination": "Battery",
+      "rawData": "9078333-962-7516",
+      "Description": "molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum"
+    },
+    {
+      "id": 3,
+      "source": "Brakes",
+      "destination": "Tail Lights",
+      "rawData": "121333-962-7516",
+      "Description": "Ipsa laudantium molestias eos sapiente officiis modi at sunt excepturi expedita"
+    },
+    {
+      "id": 4,
+      "source": "Speedometer",
+      "destination": "Gas pedal",
+      "rawData": "37686733-962-7516",
+      "Description": "temporibus enim commodi iusto libero magni deleniti quod quam"
+    },
+    {
+      "id": 5,
+      "source": "A/C",
+      "destination": "Radiator",
+      "rawData": "33345433-962-7516",
+      "Description": "dolorum eligendi quam cupiditate excepturi mollitia maiores labore"
+    }
+  ]
