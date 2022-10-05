@@ -19,8 +19,7 @@ const read = dbc.load('./bmw-e90.dbc')
             let boundSignals = boundMsg?.signals;
 
             console.log(boundSignals)
-            // JSON.parse('{"id": 188, "data": 01000000}')
-            // channel.send(18802000000);
+            channel.send({"id":"392", "data":Buffer.from([0x01, 0x00, 0x00, 0x00])});
         } catch (error) {
             // console.log(error)
         }
