@@ -5,7 +5,7 @@ const connectDB = async () => {
     try {
         //database Name
         const databaseName='CAN_Bus_Visualizer';
-        const con = await mongoose.connect('mongodb+srv://mjones:1234@canbusproject.wfexvro.mongodb.net/?retryWrites=true&w=majority', { 
+        const con = await mongoose.connect('mongodb+srv://janavarro8:02javy23@cluster0.hnjiwli.mongodb.net/test', { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
         // useCreateIndex: true
