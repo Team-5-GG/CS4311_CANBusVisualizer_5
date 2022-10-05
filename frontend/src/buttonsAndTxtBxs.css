@@ -122,13 +122,16 @@ margin:0;
   position: absolute;
   background-color: rgb(255, 255, 255);
   font-size: 10px;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   /* z-index: 2; */
 }
 .modal-background{
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 300px;
+  position: absolute; 
+  left: 50vh; 
+  top: 50%; 
   background-color: white;
 }
 .modal-container{

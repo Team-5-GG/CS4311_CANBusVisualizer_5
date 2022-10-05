@@ -6,7 +6,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import CANBusDisplayer from './CANBusDisplayer';
 import PacketDisplayer from './PacketDisplayer'
 import {Link} from 'react-router-dom';
+import Modal from './components/createPopup';
+import {useState } from "react";
+
+
 export function MainPage() {
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="displayer">
@@ -15,14 +20,23 @@ export function MainPage() {
         <button type="button" className="close-button"></button>
       </Link>
       {/* End of close button */}
-      <div>
+    <div>
+
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Project" id="basic-nav-dropdown">
-                <NavDropdown.Item href="./">Create</NavDropdown.Item>
+
+                <NavDropdown.Item onClick={()=>{
+                    setOpenModal(true);
+                  }}>Create
+
+                  {openModal && <Modal closeModal={setOpenModal}/>}
+                </NavDropdown.Item>
+              
+                
                 <NavDropdown.Item href="./">Import</NavDropdown.Item>
                 <NavDropdown.Item href="./">Open</NavDropdown.Item>
                 <NavDropdown.Divider />
