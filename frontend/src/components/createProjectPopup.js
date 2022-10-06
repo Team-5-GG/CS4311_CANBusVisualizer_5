@@ -4,13 +4,13 @@ import { Form } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 function MyModal(props) {
-    return(
+    return (
         <Modal
             {...props}
-            size = "lg"
+            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            backdrop="static "        
+            backdrop="static "
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -19,18 +19,31 @@ function MyModal(props) {
             </Modal.Header>
 
             <Modal.Body>
-              <div>
-                here
-              </div>
+                <div className="form-group">
+                    <label htmlFor="name">User Initials</label>
+                    <input className="form-control" id="name" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="name">Import DBC File</label>
+                    <input className="form-control" id="name" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="name">Event Name</label>
+                    <input className="form-control" id="name" />
+                </div>
             </Modal.Body>
+
+            <Modal.Footer>
+                <Button variant="secondary">Done</Button>
+            </Modal.Footer>
         </Modal>
     );
 }
 
 function CreatePopup() {
-    const [modalShow, setModalShow] = React.useState(false); 
+    const [modalShow, setModalShow] = React.useState(false);
 
-    return(
+    return (
         <>
             <div onClick={() => setModalShow(true)}>
                 Create
@@ -40,7 +53,7 @@ function CreatePopup() {
                 onHide={() => setModalShow(false)}
             />
         </>
-        
+
     );
 }
 
