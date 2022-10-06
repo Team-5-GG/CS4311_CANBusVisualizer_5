@@ -114,7 +114,6 @@ margin:0;
   font-size: 96px;
   color: white;
 }
-
 .modal-container{
   align-items: center;
   display: flex;
@@ -122,16 +121,13 @@ margin:0;
   position: absolute;
   background-color: rgb(255, 255, 255);
   font-size: 10px;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   /* z-index: 2; */
 }
 .modal-background{
-  width: 600px;
-  height: 300px;
-  position: absolute; 
-  left: 50vh; 
-  top: 50%; 
+  width: 100%;
+  height: 100%;
   background-color: white;
 }
 .modal-container{
@@ -139,7 +135,6 @@ margin:0;
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
   border-radius: 10px;
 }
-
 #closeCreateWindow{
   background-image: url("./images/main-menu/close-icon-black.svg");
   height: 25px;
