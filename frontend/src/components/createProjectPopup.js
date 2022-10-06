@@ -32,9 +32,9 @@ function CreatePopup() {
 
     return(
         <>
-            <a onClick={() => setModalShow(true)}>
+            <div onClick={() => setModalShow(true)}>
                 Create
-            </a>
+            </div>
 
             <MyModal show={modalShow}
                 onHide={() => setModalShow(false)}
