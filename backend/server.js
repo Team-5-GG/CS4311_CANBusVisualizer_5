@@ -3,7 +3,6 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
-import cors from 'cors'
 import read from './listener.js'
 
 dotenv.config()
@@ -12,7 +11,7 @@ const app = express()
 
 const PORT = process.env.PORT
 
-connectDB()
+//connectDB()
 
 app.use(express.json())
 
