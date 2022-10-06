@@ -5,14 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CANBusDisplayer from './CANBusDisplayer';
 import PacketDisplayer from './PacketDisplayer'
-import {Link} from 'react-router-dom';
-import Modal from './components/createPopup';
-import {useState } from "react";
+import { Link } from 'react-router-dom';
+import CreatePopup from './components/createProjectPopup';
 
 
 export function MainPage() {
-  const [openModal, setOpenModal] = useState(false);
-
   return (
     <div className="displayer">
       {/* Close button */}
@@ -20,23 +17,16 @@ export function MainPage() {
         <button type="button" className="close-button"></button>
       </Link>
       {/* End of close button */}
-    <div>
-
-      <Navbar bg="dark" variant="dark">
+      <div>
+        <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Project" id="basic-nav-dropdown">
-
-                <NavDropdown.Item onClick={()=>{
-                    setOpenModal(true);
-                  }}>Create
-
-                  {openModal && <Modal closeModal={setOpenModal}/>}
+                <NavDropdown.Item>
+                  <CreatePopup/>
                 </NavDropdown.Item>
-              
-                
                 <NavDropdown.Item href="./">Import</NavDropdown.Item>
                 <NavDropdown.Item href="./">Open</NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -70,12 +60,12 @@ export function MainPage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <CANBusDisplayer></CANBusDisplayer>
-      <PacketDisplayer></PacketDisplayer>
-    
+        <CANBusDisplayer></CANBusDisplayer>
+        <PacketDisplayer></PacketDisplayer>
+
       </div>
     </div>
   );
-  
+
 }
 export default MainPage;
