@@ -7,6 +7,7 @@ import CANBusDisplayer from './CANBusDisplayer';
 import PacketDisplayer from './PacketDisplayer'
 import { Link } from 'react-router-dom';
 import CreatePopup from './components/createProjectPopup';
+import SavePopUp from './components/savePopUp';
 
 
 export function MainPage() {
@@ -30,7 +31,9 @@ export function MainPage() {
                 <NavDropdown.Item href="./">Import</NavDropdown.Item>
                 <NavDropdown.Item href="./">Open</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="./">Save</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <SavePopUp></SavePopUp>
+                </NavDropdown.Item>
                 <NavDropdown.Item href="./">Delete</NavDropdown.Item>
                 <NavDropdown.Item href="./">Archive</NavDropdown.Item>
                 <NavDropdown.Item href="./">Export</NavDropdown.Item>
