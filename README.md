@@ -14,12 +14,7 @@ npm start (starts the frontend)
 # installations
 
 Starting the database in Linux:
-1) Download mongo db.
-
-2) Download mongo compass.
-
-both can be found at: 
-https://www.mongodb.com/try/download/atlascli2
+1) Download mongo db shell
 
 3) Start mongo service (terminal):
 
@@ -28,5 +23,3 @@ https://www.mongodb.com/try/download/atlascli2
 4) Start the local server (terminal):
 
 	mongosh
-  
-5) Open compass and connect to the local server (default settings).
