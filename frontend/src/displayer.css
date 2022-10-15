@@ -18,6 +18,10 @@
   height: 3000px;
   width: 3000px;
 }
+.diagram-component {
+  width: 100%;
+  height: calc(100vh - 40vh);
+}
 
 .box{
   height: 20px;

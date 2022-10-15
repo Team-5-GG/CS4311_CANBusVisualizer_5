@@ -1,0 +1,12 @@
+{ "class": "go.GraphLinksModel",
+  "linkLabelKeysProperty": "labelKeys",
+  "nodeDataArray": [
+{"key":"Alpha", "color":"lightblue", "loc":"29 14"},
+{"key":"Beta", "color":"orange", "loc":"129 14"},
+{"key":"Gamma", "color":"lightgreen", "loc":"29 106"},
+{"key":"Delta", "color":"pink", "loc":"129 106"}],
+
+"linkDataArray": [
+    {"from":"Alpha", "to":"Beta", "labelKeys":[ "A-B" ]},
+    {"from":"Gamma", "to":"Delta", "labelKeys":[ "G-D" ]},
+    {"from":"Alpha", "to":"Gamma", "labelKeys":[ "A-G" ]}]}
