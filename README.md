@@ -10,3 +10,20 @@ npm i nodemon --save-dev (creates a daemon that watches for files changes and re
 npm install react-router-dom --save (install react inside /frontend subfolder)
 
 npm start (starts the frontend)
+
+# installations
+
+Starting the database in Linux:
+1) Download mongo db.
+
+2) Download mongo compass.
+
+3) Start mongo service (terminal):
+
+	sudo service mongod start
+  
+4) Start the local server (terminal):
+
+	mongosh
+  
+5) Open compass and connect to the local server (default settings).
