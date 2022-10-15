@@ -18,6 +18,9 @@ Starting the database in Linux:
 
 2) Download mongo compass.
 
+both can be found at: 
+https://www.mongodb.com/try/download/atlascli2
+
 3) Start mongo service (terminal):
 
 	sudo service mongod start
