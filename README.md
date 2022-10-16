@@ -23,3 +23,9 @@ Starting the database in Linux:
 4) Start the local server (terminal):
 
 	mongosh
+
+Gojs:
+
+1) install gojs
+
+npm install gojs
