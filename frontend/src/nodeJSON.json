@@ -4,7 +4,9 @@
 {"key":"Alpha", "color":"lightblue", "loc":"29 14"},
 {"key":"Beta", "color":"orange", "loc":"129 14"},
 {"key":"Gamma", "color":"lightgreen", "loc":"29 106"},
-{"key":"Delta", "color":"pink", "loc":"129 106"}],
+{"key":"Delta", "color":"pink", "loc":"129 106"},
+{"key":"baseLine", "color":"red", "loc":"0 0", "figure": "LineH", "selec": false, "pick": true, "width":10000, "height":3, "to":false}],
+
 
 "linkDataArray": [
     {"from":"Alpha", "to":"Beta", "labelKeys":[ "A-B" ]},
