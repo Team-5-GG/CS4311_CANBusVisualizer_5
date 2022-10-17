@@ -8,6 +8,8 @@
     {"key":"baseLine", "color":"red", "loc":"0 0", "figure": "LineH", "selec": false, "pick": true, "width":650, "height":3, "to":false}],
 
 "linkDataArray": [
-    {"from":"Alpha", "to":"Beta", "labelKeys":[ "A-B" ]},
-    {"from":"Gamma", "to":"Delta", "labelKeys":[ "G-D" ]},
-    {"from":"Alpha", "to":"Gamma", "labelKeys":[ "A-G" ]}]}
+    {"from":"baseLine", "to":"Alpha", "labelKeys":[ "A-B" ]},
+    {"from":"baseLine", "to":"Beta", "labelKeys":[ "A-B" ]},
+    {"from":"baseLine", "to":"Delta", "labelKeys":[ "G-D" ]},
+    {"from":"baseLine", "to":"Gamma", "labelKeys":[ "A-G" ]}]}
+    
