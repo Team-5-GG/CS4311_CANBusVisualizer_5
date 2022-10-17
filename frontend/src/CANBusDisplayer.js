@@ -38,6 +38,7 @@ function initDiagram() {
     // define a simple Node template
     diagram.nodeTemplate =      //So the arrows will go around the text block?
       $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
+      
       $(go.Panel, "Auto",
       //$(go.Shape, "Rectangle",
        // { fill: "gray" }),
@@ -65,13 +66,13 @@ function initDiagram() {
       ),
       
       //used for the line at the centre
-      $(go.Shape,                               // Why would you want it both ways?
+      $(go.Shape,
         { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
         // Shape.fill is bound to Node.data.color
         new go.Binding("toLinkable", "to"),
         new go.Binding('fill', 'color'),
         new go.Binding("figure", 'figure'),
-        new go.Binding('width', 'width')  // allows baseline to remain connect
+        new go.Binding('width', 'width')  // allows baseline to remain connected
         )
       );
 
@@ -80,7 +81,8 @@ function initDiagram() {
                 $(go.Shape),
                 $(go.Shape, {toArrow: "Standard"})
             );
-    diagram.layout = $(go.TreeLayout, { angle: 90 });
+    diagram.layout = $(go.TreeLayout, { angle: 270 });
+
 
     return diagram;
   }
