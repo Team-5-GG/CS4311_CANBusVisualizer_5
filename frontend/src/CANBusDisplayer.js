@@ -19,7 +19,7 @@ import test from './nodeJSON.json'
 // }
 
 function initDiagram() {
-    const $ = go.GraphObject.make;
+     const $ = go.GraphObject.make;
     // set your license key here before creating the diagram: go.Diagram.licenseKey = "...";
     const diagram =
       $(go.Diagram,
@@ -36,29 +36,39 @@ function initDiagram() {
         });
   
     // define a simple Node template
-    diagram.nodeTemplate =
+    diagram.nodeTemplate =      //So the arrows will go around the text block?
       $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
+      $(go.Panel, "Auto",
+      $(go.Shape, "Rectangle",
+        { fill: "gray" }),
+      $(go.TextBlock, "Click small button\nto collapse/expand subtree",
+        { margin: 5 }),
+      $("TreeExpanderButton",
+      { alignment: go.Spot.Bottom, alignmentFocus: go.Spot.Top },
+      { visible: true })),
       new go.Binding("selectable",'selec'),
       new go.Binding("pickable", "pick"),
       new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
-      $(go.Picture,
-        {maxSize: new go.Size(50,50)},
-        new go.Binding("source", "img")
-      ),
       $(go.TextBlock,
         { margin: new go.Margin(3, 0, 0, 0),
           maxSize: new go.Size(100, 30),
           isMultiline: false },  // some room around the text
-        new go.Binding("text","text")//permettre de lire le texte
+          new go.Binding("text","text")//permettre de lire le texte
       ),
+      
+      $(go.Picture,
+        {maxSize: new go.Size(50,50)},
+        new go.Binding("source", "img")
+      ),
+      
       //used for the line at the centre
-      $(go.Shape,
+      $(go.Shape,                               // Why would you want it both ways?
         { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
         // Shape.fill is bound to Node.data.color
         new go.Binding("toLinkable", "to"),
         new go.Binding('fill', 'color'),
         new go.Binding("figure", 'figure'),
-        new go.Binding('width', 'width')
+        new go.Binding('width', 'width')  // allows baseline to remain connect
         )
       );
 
@@ -67,6 +77,8 @@ function initDiagram() {
                 $(go.Shape),
                 $(go.Shape, {toArrow: "Standard"})
             );
+    diagram.layout = $(go.TreeLayout, { angle: 90 });
+
     return diagram;
   }
 
