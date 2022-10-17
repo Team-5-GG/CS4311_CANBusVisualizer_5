@@ -37,18 +37,22 @@ function initDiagram() {
   
     // define a simple Node template
     diagram.nodeTemplate =
-      $(go.Node, 'Auto',  // the Shape will go around the TextBlock
-        new go.Binding("selectable",'selec'),
-        new go.Binding("pickable", "pick"),
-        new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
-        $(go.Shape,
-          { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
-          // Shape.fill is bound to Node.data.color
-          new go.Binding("toLinkable", "to"),
-          new go.Binding('fill', 'color'),
-          new go.Binding("figure", 'figure'),
-          new go.Binding('width', 'width')
-          ), 
+      $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
+      new go.Binding("selectable",'selec'),
+      new go.Binding("pickable", "pick"),
+      new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
+      $(go.Picture,
+        {maxSize: new go.Size(50,50)},
+        new go.Binding("source", "img")
+      ),
+      $(go.Shape,
+        { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
+        // Shape.fill is bound to Node.data.color
+        new go.Binding("toLinkable", "to"),
+        new go.Binding('fill', 'color'),
+        new go.Binding("figure", 'figure'),
+        new go.Binding('width', 'width')
+        ), 
         //   {selectable:(go.Shape.figure == "LineH" ? true : false)}, // permettre de lire la color et fill
         $(go.TextBlock,
           { margin: 8, editable: true },  // some room around the text
