@@ -45,6 +45,13 @@ function initDiagram() {
         {maxSize: new go.Size(50,50)},
         new go.Binding("source", "img")
       ),
+      $(go.TextBlock,
+        { margin: new go.Margin(3, 0, 0, 0),
+          maxSize: new go.Size(100, 30),
+          isMultiline: false },  // some room around the text
+        new go.Binding("text","text")//permettre de lire le texte
+      ),
+      //used for the line at the centre
       $(go.Shape,
         { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
         // Shape.fill is bound to Node.data.color
@@ -52,11 +59,6 @@ function initDiagram() {
         new go.Binding('fill', 'color'),
         new go.Binding("figure", 'figure'),
         new go.Binding('width', 'width')
-        ), 
-        //   {selectable:(go.Shape.figure == "LineH" ? true : false)}, // permettre de lire la color et fill
-        $(go.TextBlock,
-          { margin: 8, editable: true },  // some room around the text
-          new go.Binding('text').makeTwoWay() //permettre de lire le texte
         )
       );
 
