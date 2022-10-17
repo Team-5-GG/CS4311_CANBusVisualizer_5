@@ -39,13 +39,16 @@ function initDiagram() {
     diagram.nodeTemplate =      //So the arrows will go around the text block?
       $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
       $(go.Panel, "Auto",
-      $(go.Shape, "Rectangle",
-        { fill: "gray" }),
-      $(go.TextBlock, "\nClick \nto collapse/expand",
-        { margin: 5 }),
+      //$(go.Shape, "Rectangle",
+       // { fill: "gray" }),
+      //$(go.TextBlock, "\nClick \nto collapse/expand",
+       // { margin: 5 })
+      ),
       $("TreeExpanderButton",
       { alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.Top },
-      { visible: true })),
+      { visible: true })
+      ,
+
       new go.Binding("selectable",'selec'),
       new go.Binding("pickable", "pick"),
       new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
