@@ -1,4 +1,4 @@
-import './displayer.css';
+ import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
 import test from './nodeJSON.json'
@@ -17,6 +17,8 @@ import test from './nodeJSON.json'
 //       { key: "Gamma" }
 //     ]);
 // }
+ // an HTMLInfo object is needed to invoke the code to set up the HTML cxElement
+
 
 function initDiagram() {
      const $ = go.GraphObject.make;
@@ -73,7 +75,22 @@ function initDiagram() {
         new go.Binding('fill', 'color'),
         new go.Binding("figure", 'figure'),
         new go.Binding('width', 'width')  // allows baseline to remain connected
-        )
+        ),
+        //context menu 
+      $(go.TextBlock, { margin: 5 }),
+      {
+        contextMenu:     // define a context menu for each node
+          $("ContextMenu",  // that has one button
+            $("ContextMenuButton",
+              {
+                "ButtonBorder.fill": "white",
+                "_buttonFillOver": "skyblue"
+              },
+              $(go.TextBlock, "Change Color"),
+              { click: changeColor })
+            // more ContextMenuButtons would go here
+          )  // end Adornment
+      }
       );
 
     diagram.linkTemplate = 
@@ -83,10 +100,55 @@ function initDiagram() {
             );
     diagram.layout = $(go.TreeLayout, { angle: 270 });
 
+    // this is a normal Node template that also has a contextMenu defined for it
+  // diagram.nodeTemplate =
+  // $(go.Node, "Auto",
+  //   $(go.Shape, "RoundedRectangle",
+  //     { fill: "white" },
+  //     new go.Binding("fill", "color")),
+  //   $(go.TextBlock, { margin: 5 },
+  //     new go.Binding("text", "key")),
+  //   {
+  //     contextMenu:     // define a context menu for each node
+  //       $("ContextMenu",  // that has one button
+  //         $("ContextMenuButton",
+  //           {
+  //             "ButtonBorder.fill": "white",
+  //             "_buttonFillOver": "skyblue"
+  //           },
+  //           $(go.TextBlock, "Change Color"),
+  //           { click: changeColor })
+  //         // more ContextMenuButtons would go here
+  //       )  // end Adornment
+  //   }
+  // );
 
-    return diagram;
+  function changeColor(e, obj) {
+    diagram.commit(function(d) {
+      // get the context menu that holds the button that was clicked
+      var contextmenu = obj.part;
+      // get the node data to which the Node is data bound
+      var nodedata = contextmenu.data;
+      // compute the next color for the node
+      var newcolor = "lightblue";
+      switch (nodedata.color) {
+        case "lightblue": newcolor = "lightgreen"; break;
+        case "lightgreen": newcolor = "lightyellow"; break;
+        case "lightyellow": newcolor = "orange"; break;
+        case "orange": newcolor = "lightblue"; break;
+      }
+      // modify the node data
+      // this evaluates data Bindings and records changes in the UndoManager
+      d.model.set(nodedata, "color", newcolor);
+    }, "changed color");
   }
 
+    return diagram;
+
+  }
+  
+  
+  
   
 
   function handleModelChange(changes) {
@@ -97,7 +159,6 @@ function initDiagram() {
 
 export function CANBusDisplayer (){
    
-  
     return(
         <div>
     <ReactDiagram
