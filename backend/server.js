@@ -3,8 +3,10 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
-import Reader from './Reader.js'
+import Channel from './channel.js'
 import protocol from './Protocols.js'
+import CANChannel from './channel.js'
+import runApp from './App.js'
 
 
 dotenv.config()
@@ -15,16 +17,7 @@ const PORT = process.env.PORT
 
 connectDB()
 
-// var dbc = new Dbc()
-
-// dbc.load('./canDBC.dbc')
-// .then(data => {
-//     console.log(data);
-// })
-
 app.use(express.json())
-app.use(cors())
-
 
 app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
@@ -37,8 +30,4 @@ app.get('/', (req, res)=>{
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
 
-var reader = new Reader(protocol('J1939'), 'can0');
-
-reader.start();
-
-reader.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));
+runApp();
