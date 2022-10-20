@@ -12,11 +12,10 @@ export default class Channel{
         
         //console.log(dbc.data.messages)
 
-        var signalCount = 0;
         this.channel.addListener('onMessage', (msg) => {
             try{
    
-                // console.log(msg)
+                //console.log(msg)
                 let dbcid = 4 << 29;
                 dbcid = dbcid | msg.id;
                 dbcid = dbcid >>> 0;
@@ -26,26 +25,15 @@ export default class Channel{
                 let boundSignals = boundMsg?.signals;
 
                 //console.log(boundMsg)
-
                 // console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
-
-                //console.log(packet)
 
                 traffic.addPacket(packet)
                 
                 let trafficLength = traffic.traffic.length
                 console.log(traffic.traffic[trafficLength - 1])
-                // console.log(traffic.traffic.length)
-
-                // signalCount+=boundSignals.size
-
-                // console.log(signalCount)
-
-                // if(signalCount>baudRate){
-                //     //send the packets to front end
-                // }
+                //console.log(traffic.traffic.length)
             } catch (error) {
                 // console.log(error)
             }
