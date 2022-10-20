@@ -51,8 +51,6 @@ export function MainPage() {
                 <NavDropdown.Item>Edit Initials</NavDropdown.Item>
                 <NavDropdown.Item>Import Blacklist</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>Assign Icon</NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item>Label Link</NavDropdown.Item>
                 <NavDropdown.Item>Add Relationship</NavDropdown.Item>
               </NavDropdown>
