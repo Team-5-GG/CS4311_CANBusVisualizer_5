@@ -62,16 +62,17 @@ function initDiagram() {
       //context menu 
     $(go.TextBlock, { margin: 5 }),
     {
-      contextMenu:     // define a context menu for each node
-        $("ContextMenu",  // that has one button
+      contextMenu:     
+        $("ContextMenu",
           $("ContextMenuButton",
-            {
-              "ButtonBorder.fill": "white", //this is just the color of the right click menu
-              "_buttonFillOver": "skyblue"
-            },
-            $(go.TextBlock, "Change Image"), //Name of the function
+            $(go.TextBlock, "Change Image"), 
+            { click: changeImage }),
+          $("ContextMenuButton",
+            $(go.TextBlock, "Annotate Node"), 
+            { click: changeImage }),
+          $("ContextMenuButton",
+            $(go.TextBlock, "Label Node"), 
             { click: changeImage })
-          // more ContextMenuButtons would go here
         )  // end Adornment
     }
     );
