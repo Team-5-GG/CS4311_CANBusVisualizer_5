@@ -1,10 +1,10 @@
 { "class": "go.GraphLinksModel",
   "linkLabelKeysProperty": "labelKeys",
   "nodeDataArray": [
-    {"key":"Alpha", "text":"test", "loc":"180 50", "figure": "LineH","width":0, "height":0, "img": "https://cdn-icons-png.flaticon.com/512/224/224113.png"},
-    {"key":"Beta", "text":"test", "loc":"300 50", "figure": "LineH","width":0, "height":0, "img": "https://cdn-icons-png.flaticon.com/512/224/224113.png"},
-    {"key":"Gamma", "text":"test", "loc":"180 130", "figure": "LineH","width":0, "height":0, "img": "https://cdn-icons-png.flaticon.com/512/224/224113.png"},
-    {"key":"Delta", "text":"test", "loc":"300 130", "figure": "LineH","width":0, "height":0, "img": "https://cdn-icons-png.flaticon.com/512/224/224113.png"},
+    {"key":"Alpha", "text":"test", "loc":"180 50", "figure": "LineH","width":0, "height":0, "img": ""},
+    {"key":"Beta", "text":"test", "loc":"300 50", "figure": "LineH","width":0, "height":0, "img": ""},
+    {"key":"Gamma", "text":"test", "loc":"180 130", "figure": "LineH","width":0, "height":0, "img": ""},
+    {"key":"Delta", "text":"test", "loc":"300 130", "figure": "LineH","width":0, "height":0, "img": ""},
     {"key":"baseLine", "color":"red", "loc":"0 0", "figure": "LineH", "selec": false, "pick": true, "width":650, "height":3, "to":false}],
 
 "linkDataArray": [
