@@ -10,7 +10,7 @@ export default class Channel{
         dbc.load(process.env.DBC).then(data => {
         var canDBC = new Can(data);
         
-        console.log(dbc.data.messages)
+        //console.log(dbc.data.messages)
 
         var signalCount = 0;
         this.channel.addListener('onMessage', (msg) => {
@@ -21,20 +21,22 @@ export default class Channel{
                 dbcid = dbcid | msg.id;
                 dbcid = dbcid >>> 0;
     
-                const canFrame = canDBC.createFrame(2297441534, [...msg.data])
+                const canFrame = canDBC.createFrame(dbcid, [...msg.data])
                 let boundMsg = canDBC.decode(canFrame)
                 let boundSignals = boundMsg?.signals;
 
-                 console.log(boundMsg)
+                //console.log(boundMsg)
 
                 // console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
 
-                // console.log(packet)
+                //console.log(packet)
 
                 traffic.addPacket(packet)
-
+                
+                let trafficLength = traffic.traffic.length
+                console.log(traffic.traffic[trafficLength - 1])
                 // console.log(traffic.traffic.length)
 
                 // signalCount+=boundSignals.size
