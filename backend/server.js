@@ -3,7 +3,15 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
+<<<<<<< HEAD
 import read from './listener.js'
+=======
+import Channel from './channel.js'
+import protocol from './Protocols.js'
+import CANChannel from './channel.js'
+import runApp from './App.js'
+
+>>>>>>> origin/javiertest
 
 dotenv.config()
 
@@ -25,3 +33,5 @@ app.get('/', (req, res)=>{
 
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+
+runApp(app);

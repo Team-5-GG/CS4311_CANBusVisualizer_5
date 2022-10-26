@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:5000",
   "name": "backend",
   "version": "1.0.0",
   "description": "backend to can bus visualizer",
@@ -11,6 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "cors": "^2.8.5",
+>>>>>>> origin/javiertest
     "dbc-can": "^1.1.0",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",

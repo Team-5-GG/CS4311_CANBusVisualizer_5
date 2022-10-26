@@ -1,0 +1,63 @@
+
+.displayer{
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+}
+.CANBusMapContainer{
+    background-image: url("./images/canbusmap.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+    /* resize: vertical; */
+}
+
+.dtHorizontalVerticalExampleWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #dtHorizontalVerticalExample th, td {
+    white-space: nowrap;
+  }
+  
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #f8affd;
+  }
+
+  #context-menu {
+    position: absolute;
+    z-index: 10000;
+    width: 150px;
+    background-color: #1b1a1a;
+    border-radius: 5px;
+    transition: opacity 0.5s linear;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #context-menu .item {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    background-color: #1b1a1a;
+    box-shadow: none;
+    background: none;
+    color: #eee;
+    cursor: pointer;
+    border-radius: none;
+    border: 0;
+    display: inherit;
+    justify-content: center;
+  }
+  
+  #context-menu .item:hover {
+    background: #343434;
+  }
+  
+  #context-menu.visible {
+    display: flex;
+    flex-direction: column;
+  }
