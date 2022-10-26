@@ -3,15 +3,8 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
-<<<<<<< HEAD
-import read from './listener.js'
-=======
-import Channel from './channel.js'
-import protocol from './Protocols.js'
-import CANChannel from './channel.js'
 import runApp from './App.js'
 
->>>>>>> origin/javiertest
 
 dotenv.config()
 
