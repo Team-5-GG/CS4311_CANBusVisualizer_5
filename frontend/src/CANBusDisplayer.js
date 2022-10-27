@@ -41,7 +41,7 @@ function initDiagram() {
     $(go.TextBlock,
       { margin: new go.Margin(3, 0, 0, 0),
         maxSize: new go.Size(100, 30),
-        isMultiline: false },  // some room around the text
+        editable: true, isMultiline: false },  // some room around the text
         new go.Binding("text","text")//permettre de lire le texte
     ),
     
