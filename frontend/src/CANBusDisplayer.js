@@ -74,7 +74,22 @@ function initDiagram() {
             $(go.TextBlock, "Label Node"), 
             { click: changeImage })
         )  // end Adornment
-    }
+    },
+    $(go.Panel, "Horizontal",
+    { column: 6, row: 0 },
+    $(go.Shape,  // the "B" port
+      { width: 6, height: 6, portId: "B", toSpot: go.Spot.Left,
+        toLinkable: true, toMaxLinks: 1 }),  // allow user-drawn links to here
+    $(go.TextBlock, "B")  // "B" port label
+  ),
+
+  $(go.Panel, "Horizontal",
+    { column: 45, row: 10 },
+    $(go.Shape,  // the "B" port
+      { width: 6, height: 6, portId: "A", toSpot: go.Spot.Right,
+        toLinkable: true, fromLinkable:true, toMaxLinks: 1 }),  // allow user-drawn links to here
+    $(go.TextBlock, "A")  // "B" port label
+  ),
     );
   
   diagram.linkTemplate = 
