@@ -2,6 +2,8 @@
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
 import test from './nodeJSON.json'
+//additional js that contains the change-node dropdown
+import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 
 function initDiagram() {
   const $ = go.GraphObject.make;
@@ -110,8 +112,9 @@ function initDiagram() {
       // get the node data to which the Node is data bound
       var nodedata = contextmenu.data;
       // compute the next color for the node
-      var newImage =   "data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTE5MiAwbC0xOTIgMjU2aDE5MmwtMTI4IDI1NiA0NDgtMzIwaC0yNTZsMTkyLTE5MnoiPjwvcGF0aD4KPC9zdmc+Cg=="
-      ;
+      // var newImage = "data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTE5MiAwbC0xOTIgMjU2aDE5MmwtMTI4IDI1NiA0NDgtMzIwaC0yNTZsMTkyLTE5MnoiPjwvcGF0aD4KPC9zdmc+Cg==";
+      var newImage = global.firstName;
+      // console.log(global.firstName);
       // modify the node data
       // this evaluates data Bindings and records changes in the UndoManager
       d.model.set(nodedata, "img", newImage);
@@ -128,19 +131,18 @@ function initDiagram() {
   }
 
 export function CANBusDisplayer (){
-   
+  console.log('qpd');
     return(
         <div>
-    <ReactDiagram
-        initDiagram={initDiagram}
-        divClassName='diagram-component'
-        nodeDataArray= {test.nodeDataArray}
-        linkDataArray={test.linkDataArray}
-        onModelChange={handleModelChange}
-      />
+          <ModifyIconDropdown/>
+          <ReactDiagram
+            initDiagram={initDiagram}
+            divClassName='diagram-component'
+            nodeDataArray= {test.nodeDataArray}
+            linkDataArray={test.linkDataArray}
+            onModelChange={handleModelChange}
+          />
         </div>
-      
-        
     );
 }
 
