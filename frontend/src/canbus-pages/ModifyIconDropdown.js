@@ -1,37 +1,44 @@
 import { useState } from "react";
 import icons from '../components/icons.json'
 const ModifyIconDropdown = () => {
-    // end
-    global.firstName = '';
-    const [linkVal, setFirstName] = useState('');
-    global.firstName = linkVal;
-    // console.log(icons.Engine.Icon);
+    // Setting the variables that will hold the value based on the selection from the dropdown menu
+    global.iconImage = '';
+    const [linkVal, setIconImage] = useState('');
+    global.iconImage = linkVal;
+
+    //Create new variables for each icon to be displayed
+    const engine = icons.Engine.Icon;
+    const tireCondition = icons.TireCondition.Icon;
+    const brakes = icons.Brakes.Icon;
+    const lighting = icons.Lighting.Icon;
+    const transmission = icons.Transmission.Icon;
+    //Actual function that shows to user the changes
     return (
         <>
         <div className="container">
           <nav className="selec">
             <select
               id="drpdwn"
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => setIconImage(e.target.value)}
               className="dropdown"
             >
             {/* the actual images are in components/icons.js */}
                 <option value="link1" href="#">
                     New Selection
                 </option>                
-                <option value="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTE5MiAwbC0xOTIgMjU2aDE5MmwtMTI4IDI1NiA0NDgtMzIwaC0yNTZsMTkyLTE5MnoiPjwvcGF0aD4KPC9zdmc+Cg==" href="#">
+                <option id="Engine" value={engine}>
                   Engine
                 </option>
-                <option value="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTI1NiAwYy0xNDEuMzg1IDAtMjU2IDExNC42MTUtMjU2IDI1NnMxMTQuNjE1IDI1NiAyNTYgMjU2IDI1Ni0xMTQuNjE1IDI1Ni0yNTYtMTE0LjYxNS0yNTYtMjU2LTI1NnpNMTUxLjQxOCA0MTcuMDc2YzUuNTUzLTE1LjMxNiA4LjU4Mi0zMS44NDQgOC41ODItNDkuMDc2IDAtNjIuMTc1LTM5LjQwNS0xMTUuMTQ2LTk0LjYwNC0xMzUuMzAzIDUuMTA1LTQyLjQ2MiAyNC4xMjctODEuNzQ5IDU0LjgzOS0xMTIuNDYyIDM2LjI2NS0zNi4yNjMgODQuNDgtNTYuMjM1IDEzNS43NjUtNTYuMjM1czk5LjUgMTkuOTcyIDEzNS43NjUgNTYuMjM1YzMwLjcxNCAzMC43MTMgNDkuNzM0IDcwIDU0Ljg0MSAxMTIuNDYyLTU1LjIwMSAyMC4xNTctOTQuNjA2IDczLjEyOC05NC42MDYgMTM1LjMwMyAwIDE3LjIzNCAzLjAzMCAzMy43NiA4LjU4MyA0OS4wNzUtMzAuODUzIDIwLjEyMS02Ni44ODUgMzAuOTI1LTEwNC41ODMgMzAuOTI1LTM3LjY5NyAwLTczLjcyOS0xMC44MDQtMTA0LjU4Mi0zMC45MjR6TTI3NS44NzcgMzIwLjQ5OGM2LjkzOSAxLjc0NyAxMi4xMjMgOC4wNDAgMTIuMTIzIDE1LjUwMnYzMmMwIDguOC03LjIgMTYtMTYgMTZoLTMyYy04LjggMC0xNi03LjItMTYtMTZ2LTMyYzAtNy40NjIgNS4xODQtMTMuNzU1IDEyLjEyMy0xNS41MDJsMTEuODc3LTIyNC40OThoMTZsMTEuODc3IDIyNC40OTh6Ij48L3BhdGg+Cjwvc3ZnPgo=" href="#">
+                <option id="TireCondition" value={tireCondition}>
                   Tire Condition
                 </option>
-                <option value="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTQ4MCAwbC0yMjQgNjQtMjI0LTY0YzAgMC0yLjI1IDI1Ljg0OSAwIDY0bDIyNCA3MC4wNDUgMjI0LTcwLjA0NWMyLjI0OS0zOC4xNTEgMC02NCAwLTY0ek0zNi4wOTUgOTcuNTUzYzExLjk5MyAxMjUuMzQ4IDU2Ljc0NSAzMzYuMTE3IDIxOS45MDUgNDE0LjQ0NyAxNjMuMTYtNzguMzMgMjA3LjkxMi0yODkuMDk5IDIxOS45MDUtNDE0LjQ0N2wtMjE5LjkwNSA4Mi42NzktMjE5LjkwNS04Mi42Nzl6Ij48L3BhdGg+Cjwvc3ZnPgo=" href="#">
+                <option id="Brakes" value={brakes}>
                   Brakes
                 </option>
-                <option value="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTI1NiA0MTZjMTcuNjczIDAgMzIgMTQuMzI3IDMyIDMydjMyYzAgMTcuNjczLTE0LjMyNyAzMi0zMiAzMnMtMzItMTQuMzI3LTMyLTMydi0zMmMwLTE3LjY3MyAxNC4zMjctMzIgMzItMzJ6TTI1NiA5NmMtMTcuNjczIDAtMzItMTQuMzI3LTMyLTMydi0zMmMwLTE3LjY3MyAxNC4zMjctMzIgMzItMzJzMzIgMTQuMzI3IDMyIDMydjMyYzAgMTcuNjczLTE0LjMyNyAzMi0zMiAzMnpNNDgwIDIyNGMxNy42NzMgMCAzMiAxNC4zMjcgMzIgMzJzLTE0LjMyNyAzMi0zMiAzMmgtMzJjLTE3LjY3NCAwLTMyLTE0LjMyNy0zMi0zMnMxNC4zMjYtMzIgMzItMzJoMzJ6TTk2IDI1NmMwIDE3LjY3My0xNC4zMjcgMzItMzIgMzJoLTMyYy0xNy42NzMgMC0zMi0xNC4zMjctMzItMzJzMTQuMzI3LTMyIDMyLTMyaDMyYzE3LjY3MyAwIDMyIDE0LjMyNyAzMiAzMnpNNDE0LjM5MiAzNjkuMTM3bDIyLjYyOCAyMi42MjljMTIuNDk2IDEyLjQ5NSAxMi40OTYgMzIuNzU4IDAgNDUuMjU0LTEyLjQ5NyAxMi40OTYtMzIuNzU5IDEyLjQ5Ni00NS4yNTUgMGwtMjIuNjI4LTIyLjYyOGMtMTIuNDk2LTEyLjQ5NS0xMi40OTYtMzIuNzU4IDAtNDUuMjU1IDEyLjQ5Ny0xMi40OTYgMzIuNzU5LTEyLjQ5NiA0NS4yNTUgMHpNOTcuNjA4IDE0Mi44NjNsLTIyLjYyOC0yMi42MjhjLTEyLjQ5Ny0xMi40OTctMTIuNDk3LTMyLjc1OCAwLTQ1LjI1NXMzMi43NTgtMTIuNDk3IDQ1LjI1NSAwbDIyLjYyOCAyMi42MjhjMTIuNDk3IDEyLjQ5NyAxMi40OTcgMzIuNzU4IDAgNDUuMjU1cy0zMi43NTggMTIuNDk3LTQ1LjI1NSAwek00MTQuMzkyIDE0Mi44NjNjLTEyLjQ5NiAxMi40OTYtMzIuNzU4IDEyLjQ5Ni00NS4yNTUgMC0xMi40OTYtMTIuNDk3LTEyLjQ5Ni0zMi43NTggMC00NS4yNTVsMjIuNjI4LTIyLjYyN2MxMi40OTYtMTIuNDk3IDMyLjc1OC0xMi40OTcgNDUuMjU1IDAgMTIuNDk2IDEyLjQ5NyAxMi40OTYgMzIuNzU4IDAgNDUuMjU1bC0yMi42MjggMjIuNjI3ek05Ny42MDggMzY5LjEzN2MxMi40OTYtMTIuNDk2IDMyLjc1OS0xMi40OTYgNDUuMjU0IDAgMTIuNDk3IDEyLjQ5NyAxMi40OTcgMzIuNzYgMCA0NS4yNTVsLTIyLjYyNyAyMi42MjhjLTEyLjQ5NyAxMi40OTYtMzIuNzU4IDEyLjQ5Ni00NS4yNTUgMHMtMTIuNDk3LTMyLjc1OSAwLTQ1LjI1NGwyMi42MjgtMjIuNjI5eiI+PC9wYXRoPgo8cGF0aCBkPSJNMjU2IDEyOGMtNzAuNjkyIDAtMTI4IDU3LjMwOC0xMjggMTI4czU3LjMwOCAxMjggMTI4IDEyOGM3MC42OTEgMCAxMjgtNTcuMzA5IDEyOC0xMjhzLTU3LjMwOC0xMjgtMTI4LTEyOHpNMjU2IDMzNmMtNDQuMTgzIDAtODAtMzUuODE3LTgwLTgwczM1LjgxNy04MCA4MC04MCA4MCAzNS44MTcgODAgODAtMzUuODE3IDgwLTgwIDgweiI+PC9wYXRoPgo8L3N2Zz4K" href="#">
+                <option id="Lighting" value={lighting}>
                   Lighting
                 </option>
-                <option value="data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTE5MiAwbC0xOTIgMjU2aDE5MmwtMTI4IDI1NiA0NDgtMzIwaC0yNTZsMTkyLTE5MnoiPjwvcGF0aD4KPC9zdmc+Cg==" href="#">
+                <option id="Transmission" value={transmission}>
                   Transmission
                 </option>
             </select>

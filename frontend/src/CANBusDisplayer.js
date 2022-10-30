@@ -103,22 +103,20 @@ function initDiagram() {
 
 
   // This method is called as a context menu button's click handler.
-  // Rotate the selected node's color through a predefined sequence of colors.
+  // Rotate the selected node's icon through a predefined sequence of images.
   function changeImage(e, obj) {
-    console.log('sending the new color data!');
+    console.log('sending the new icon image!');
     diagram.commit(function(d) {
       // get the context menu that holds the button that was clicked
       var contextmenu = obj.part;
       // get the node data to which the Node is data bound
       var nodedata = contextmenu.data;
-      // compute the next color for the node
-      // var newImage = "data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHRpdGxlPjwvdGl0bGU+CjxnIGlkPSJpY29tb29uLWlnbm9yZSI+CjwvZz4KPHBhdGggZD0iTTE5MiAwbC0xOTIgMjU2aDE5MmwtMTI4IDI1NiA0NDgtMzIwaC0yNTZsMTkyLTE5MnoiPjwvcGF0aD4KPC9zdmc+Cg==";
-      var newImage = global.firstName;
-      // console.log(global.firstName);
+      // get the new image from the ModifyIconDropdown script (global variable)
+      var newImage = global.iconImage;
       // modify the node data
       // this evaluates data Bindings and records changes in the UndoManager
       d.model.set(nodedata, "img", newImage);
-    }, "changed color");
+    }, "changed image");
   }
 
   return diagram;
@@ -131,10 +129,10 @@ function initDiagram() {
   }
 
 export function CANBusDisplayer (){
-  console.log('qpd');
     return(
         <div>
-          <ModifyIconDropdown/>
+          {/* here we add the modify icon dropdown script in order to use it on the screen */}
+          <ModifyIconDropdown/> 
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
