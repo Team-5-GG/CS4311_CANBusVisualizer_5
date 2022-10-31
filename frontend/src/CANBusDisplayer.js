@@ -16,27 +16,35 @@ function initDiagram() {
         'undoManager.isEnabled': true,  // must be set to allow for model change listening
         // 'undoManager.maxHistoryLength': 0,  // uncomment disable undo/redo functionality
         'clickCreatingTool.archetypeNodeData': { text: 'new node', color: 'lightblue' },
-        model: $(go.GraphLinksModel,
+        model: $(go.GraphLinksModel, //allows us to have any # of links btwn nodes
           {
             linkKeyProperty: 'key'  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
           })
       });
 
   // define a simple Node template
-  diagram.nodeTemplate =      //So the arrows will go around the text block?
-    $(go.Node, 'Horizontal',  // the Shape will go around the TextBlock
+  diagram.nodeTemplate =      // 
+    
+    $(go.Node, 'Horizontal',  // This means everything inside this template will be laid out horizontally. the Shape will go around the TextBlock
     
     $(go.Panel, "Auto",
+    //used for the line at the centre
+    $(go.Shape,
+      { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
+      // Shape.fill is bound to Node.data.color
+      new go.Binding("toLinkable", "to"),
+      new go.Binding('fill', 'color'),
+      new go.Binding("figure", 'figure'),
+      new go.Binding('width', 'width')  // allows baseline to remain connected
+      ),
+      $("TreeExpanderButton",
+      { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
+      { visible: true }),
     //$(go.Shape, "Rectangle",
       // { fill: "gray" }),
     //$(go.TextBlock, "\nClick \nto collapse/expand",
       // { margin: 5 })
     ),
-    $("TreeExpanderButton",
-    { alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.Top },
-    { visible: true })
-    ,
-
     new go.Binding("selectable",'selec'),
     new go.Binding("pickable", "pick"),
     new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -52,15 +60,18 @@ function initDiagram() {
       new go.Binding("source", "img")
     ),
     
-    //used for the line at the centre
-    $(go.Shape,
-      { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
-      // Shape.fill is bound to Node.data.color
-      new go.Binding("toLinkable", "to"),
-      new go.Binding('fill', 'color'),
-      new go.Binding("figure", 'figure'),
-      new go.Binding('width', 'width')  // allows baseline to remain connected
-      ),
+    // //used for the line at the centre
+    // $(go.Shape,
+    //   { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
+    //   // Shape.fill is bound to Node.data.color
+    //   new go.Binding("toLinkable", "to"),
+    //   new go.Binding('fill', 'color'),
+    //   new go.Binding("figure", 'figure'),
+    //   new go.Binding('width', 'width')  // allows baseline to remain connected
+    //   ),
+    //   $("TreeExpanderButton",
+    //   { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
+    //   { visible: true }),
       //context menu 
     $(go.TextBlock, { margin: 5 }),
     {
@@ -76,7 +87,7 @@ function initDiagram() {
             $(go.TextBlock, "Label Node"), 
             { click: changeImage })
         )  // end Adornment
-    },
+    }         /**,
     $(go.Panel, "Horizontal",
     { column: 6, row: 0 },
     $(go.Shape,  // the "B" port
@@ -91,13 +102,13 @@ function initDiagram() {
       { width: 6, height: 6, portId: "A", toSpot: go.Spot.Right,
         toLinkable: true, fromLinkable:true, toMaxLinks: 1 }),  // allow user-drawn links to here
     $(go.TextBlock, "A")  // "B" port label
-  ),
+  ),**/
     );
   
   diagram.linkTemplate = 
           $(go.Link, {relinkableFrom:true, relinkableTo:true}, 
               $(go.Shape),
-              $(go.Shape, {toArrow: "Standard"})
+            $(go.Shape, {toArrow: "Standard"})
           );
   diagram.layout = $(go.TreeLayout, { angle: 270 });
 
