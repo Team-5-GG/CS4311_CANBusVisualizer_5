@@ -47,36 +47,34 @@ import { useState } from "react";
 import React, { Component, lazy, Suspense } from "react";
 //import MyComp from './components/myComp';
 
-const MyComp = lazy(() => import('./components/trafficComp'));
+const TrafficComp = lazy(() => import('./components/trafficComp'));
 
 export function PacketDisplayer(){
-
+//class PacketDisplayer extends Component(){
     //window.addEventListener('popstate', rightClick())
     // document.getElementsByTagName("div").onpageshow = rightClick();
     //const [packets, setPackets] = useState(data);
-
-    //render() {
-    //Can it this still be a function? ill try to make it work
-    return(
+    //render() {  // Still need to run this as an entire class in order to use as "Component"
+    return ( 
         <div>
         <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
-        <thead>
-            <tr>
-            <th>ID #</th>
-            <th>Source</th>
-            <th>Destination</th>
-            <th>Raw Data</th>
-            <th>Description</th>
-            </tr>
+            <thead>
+                <tr>
+                <th>ID #</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Raw Data</th>
+                <th>Description</th>
+                </tr>
         </thead>
-        <Suspense fallback={<div>Delay...</div>}>
-        <MyComp>Dynamic</MyComp>
+        <Suspense fallback={<div>Delay...</div>} >
+        <TrafficComp />
         </Suspense>
-</table>
-<ContextMenu></ContextMenu>
-</div>
-    );
-    //};
+        </table>
+        <ContextMenu></ContextMenu>
+        </div>
+        );
+    //}
 }
 
 export default PacketDisplayer;
