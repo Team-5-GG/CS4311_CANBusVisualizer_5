@@ -13,8 +13,23 @@ export default class TrafficHolder{
     }
 
     // filter by time, node, and packet size
-    filter(){
+    filterPackets(time, node, size){
+        filterList = []
 
+        if(time){
+            filterList.push(...this.#traffic.filter(packet => packet.timestamp.getTime() == packet.timestamp.getTime()))
+        }
+
+        if(node){
+            filterList.push(...this.#traffic.filter(packet => packet.name == node))
+        }
+
+        if(size){
+            filterList.push(...this.#traffic.filter(packet => packet.rawPacket.data.length == size))
+        }
+
+        // THROW ERROR HERE IF NO CONDITIONS ARE MET FOR FILTER I.E. FILTERLIST IS EMPTY
+        return filterList
     }
 
     // most recent to oldest

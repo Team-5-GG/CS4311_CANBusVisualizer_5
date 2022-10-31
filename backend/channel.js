@@ -12,7 +12,6 @@ export default class Channel{
         
         console.log(dbc.data.messages)
 
-        var signalCount = 0;
         this.channel.addListener('onMessage', (msg) => {
             try{
    
@@ -21,29 +20,14 @@ export default class Channel{
                 dbcid = dbcid | msg.id;
                 dbcid = dbcid >>> 0;
     
-                const canFrame = canDBC.createFrame(2297441534, [...msg.data])
+                const canFrame = canDBC.createFrame(dbcid, [...msg.data])
                 let boundMsg = canDBC.decode(canFrame)
-                let boundSignals = boundMsg?.signals;
-
-                 console.log(boundMsg)
-
-                // console.log(boundSignals)
+                let boundSignals = bound
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
 
-                // console.log(packet)
-
                 traffic.addPacket(packet)
 
-                // console.log(traffic.traffic.length)
-
-                // signalCount+=boundSignals.size
-
-                // console.log(signalCount)
-
-                // if(signalCount>baudRate){
-                //     //send the packets to front end
-                // }
             } catch (error) {
                 // console.log(error)
             }
