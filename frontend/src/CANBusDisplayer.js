@@ -22,11 +22,15 @@ function initDiagram() {
           })
       });
 
+
+  const portSize = new go.Size(8, 8);
+  
   // define a simple Node template
   diagram.nodeTemplate =      // 
     
     $(go.Node, 'Horizontal',  // This means everything inside this template will be laid out horizontally. the Shape will go around the TextBlock
     
+    $(go.Panel, "Spot",
     $(go.Panel, "Auto",
     //used for the line at the centre
     $(go.Shape,
@@ -44,7 +48,7 @@ function initDiagram() {
       // { fill: "gray" }),
     //$(go.TextBlock, "\nClick \nto collapse/expand",
       // { margin: 5 })
-    ),
+    )),
     new go.Binding("selectable",'selec'),
     new go.Binding("pickable", "pick"),
     new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -87,7 +91,7 @@ function initDiagram() {
             $(go.TextBlock, "Label Node"), 
             { click: changeImage })
         )  // end Adornment
-    }         /**,
+    },
     $(go.Panel, "Horizontal",
     { column: 6, row: 0 },
     $(go.Shape,  // the "B" port
@@ -102,7 +106,7 @@ function initDiagram() {
       { width: 6, height: 6, portId: "A", toSpot: go.Spot.Right,
         toLinkable: true, fromLinkable:true, toMaxLinks: 1 }),  // allow user-drawn links to here
     $(go.TextBlock, "A")  // "B" port label
-  ),**/
+  ),
     );
   
   diagram.linkTemplate = 
