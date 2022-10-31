@@ -97,15 +97,21 @@ function initDiagram() {
     $(go.Shape,  // the "B" port
       { width: 6, height: 6, portId: "B", toSpot: go.Spot.Left,
         toLinkable: true, toMaxLinks: 1 }),  // allow user-drawn links to here
-    $(go.TextBlock, "B")  // "B" port label
+    $(go.TextBlock, "B"),  // "B" port label
+       $("TreeExpanderButton",
+       { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
+       { visible: true })
   ),
 
   $(go.Panel, "Horizontal",
     { column: 45, row: 10 },
-    $(go.Shape,  // the "B" port
+    $(go.Shape,  // the "A" port
       { width: 6, height: 6, portId: "A", toSpot: go.Spot.Right,
         toLinkable: true, fromLinkable:true, toMaxLinks: 1 }),  // allow user-drawn links to here
-    $(go.TextBlock, "A")  // "B" port label
+    $(go.TextBlock, "A"),  // "A" port label
+       $("TreeExpanderButton",
+       { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
+       { visible: true })
   ),
     );
   
