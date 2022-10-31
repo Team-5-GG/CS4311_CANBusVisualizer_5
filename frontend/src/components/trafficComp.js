@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from "react";
 import data from "../fakeTraffic-data.json";
-//import SyncPopup from './components/syncProjectPopup';
-
 
 
 export default () => {
@@ -19,5 +17,4 @@ export default () => {
          ))}
     </tbody>)
 }
-
 
