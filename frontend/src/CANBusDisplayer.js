@@ -145,7 +145,7 @@ function initDiagram() {
 
 export function CANBusDisplayer (){
     return(
-        <div>
+        <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
           <ModifyIconDropdown/> 
           <ReactDiagram
