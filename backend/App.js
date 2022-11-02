@@ -1,10 +1,12 @@
 import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
+import NodeHolder from "./nodelist.js";
 
 export default function runApp(app){
     var traffic = new TrafficHolder();
+    var nodeHolder = new NodeHolder();
 
-    var channel = new Channel('can0', 100, traffic);
+    var channel = new Channel('can0', 100, traffic, nodeHolder);
     
     //Basic express implementation
     app.get('/packet-stream',(req, res) => {

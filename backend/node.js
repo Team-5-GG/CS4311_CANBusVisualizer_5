@@ -1,4 +1,4 @@
-export default class nodeManager{
+export default class NodeManager{
     name;
     id;
     dlc; 
@@ -6,10 +6,11 @@ export default class nodeManager{
     signals;
     desc;
     
-    constructor(raw, id, name, signals, desc){
+    constructor(name,id,dlc,sendingNode,signals, desc){
         this.name = name;
         this.id = id;
         this.dlc = dlc;
+        this.sendingNode = sendingNode;
         this.signals = signals;
         this.desc = desc;
     }

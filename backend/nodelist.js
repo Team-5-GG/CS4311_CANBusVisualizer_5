@@ -1,9 +1,9 @@
-export default class nodeHolder{
+export default class NodeHolder{
     #nodelist;
     #numnodes;
     constructor(){
         this.#nodelist = new Map();
-        this.numnodes = 0;
+        this.#numnodes = 0;
     }
 
     //Returns array of nodes, not map
@@ -14,10 +14,15 @@ export default class nodeHolder{
 
     //Adds node to traffic iff its not in the list
     addNode(node){
-        if(!this.#nodelist.has(node.name)){
-            this.#nodelist.set(node.name , node);
-            numnodes++;
+        this.#nodelist.set(node.name, node);
+        this.#numnodes++;   
+    }
+
+    inList(name){
+        if(!this.#nodelist.has(name)){
+            return false
         }
+        return true
     }
 
     //gets num of nodes in the list
