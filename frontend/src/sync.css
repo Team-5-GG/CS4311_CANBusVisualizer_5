@@ -1,0 +1,73 @@
+.syncBody{
+    background-image: url("./images/sync-page/new-background1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    min-height:100vh;
+    min-width: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* FONT COLOR: */
+    color: white;
+}
+/* styling of the actual progress bar: */
+.progressBar{
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    height: 35px;
+    margin-top: 50%;
+    border-radius: 5px;
+    background-color: white;
+}
+#exitBtn{
+    color: aqua;
+    position:relative;
+    left: 60%;
+}
+#computer-1{
+    position: absolute;
+    left: 10%;
+}
+#computer-2{
+    position: absolute;
+    right: 10%;
+}
+.App-header {
+    margin-top: 50px;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 96px;
+    color: white;
+  }
+  .syncInputBoxes{
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    background-position: right;
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(119, 119, 119);
+    border-width: 2px;
+    align-self: center;
+    cursor: pointer;
+  }.syncInputBoxes:hover{
+    background-color: #7b7b7b;
+    color: rgb(0, 0, 0);
+  }.syncInputBoxes:hover::placeholder{
+    color: rgb(0, 0, 0);
+  }
+  .syncInputBoxes input[type=file]{
+    display: none;
+  }

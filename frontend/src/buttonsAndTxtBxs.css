@@ -2,8 +2,11 @@ html,body{
 margin:0;
 }
 
+/* introConfigPage css */
 .App {
-  background-color: white;
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
   min-height:100vh;
   min-width: 100vh;
   align-items: center;
@@ -12,97 +15,95 @@ margin:0;
 }
 
 .Blue-rectangle{
-  background-color: #4682B4;
+  background-color: yellow;
   height: 2vh;
   width: 100%;
-}
-
-.Import-project-content-holder{
-  width: 80%;
-  height: fit-content;
-  padding-top: 1%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  
 }
 .configInputBoxes{
   width: 448px;
   height: 50px;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: gray;
-  text-align: left;
-  background-color: white;
-  background-image: url('./images/fileLogo.svg');
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
   background-position: right;
   background-repeat: no-repeat;
   font-family: 'Inter', sans-serif;
   font-size: 20px;
   border-style: solid;
   border-radius: 10px;
-  border-color: #4682B4;
+  border-color: rgb(119, 119, 119);
   border-width: 2px;
   align-self: center;
   cursor: pointer;
 }.configInputBoxes:hover{
-  background-color: #4682B4;
-  color: white;
+  background-color: #7b7b7b;
+  color: rgb(0, 0, 0);
 }.configInputBoxes:hover::placeholder{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .configInputBoxes input[type=file]{
   display: none;
 }
+#createProjectButton{
+  background-image: url("./images/main-menu/new-file.svg");
+  background-color: #ffffff;
+}
+#createProjectButton:hover{
+  background-color: yellow;
+}
+
+
+#importProjectButton{
+  background-image: url("./images/main-menu/openBox.svg");
+  background-color: #ffffff;
+}
+#importProjectButton:hover{
+  background-color: yellow;
+}
 
 #openProjectButton{
-  background-image: url("./images/Open\ Parcel.svg");
+  background-image: url("./images/main-menu/openBox.svg");
+  background-color: white;
 }
-#userInitialTextBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
+#openProjectButton:hover{
+  background-color: yellow;
 }
-#eventNameTxtBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
+
+#gotoSyncProjectButton{
+  background-image: url("./images/main-menu/sync.svg");
+  background-color: #ffffff;
 }
-#setBaudTxtBox{
-  background-image: none;
-  width: 442px;
-  height: 45px;
-  cursor: text;
+#gotoSyncProjectButton:hover{
+  background-color: yellow;
 }
-.doneButton{
-  width: 170px;
-  height: 50px;
-  margin-top: 1%;
-  align-self: center;
-  background-color: #4682B4;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  border-style: none;
-  border-radius: 10px;
-  cursor: pointer;
-}.doneButton:hover{
-  background-color: #396991;
+
+#archiveProjectButton{
+  background-image: url("./images/main-menu/archive.svg");
+  background-color: #ffffff;
+}
+#archiveProjectButton:hover{
+  background-color: yellow;
+}
+#gotoCANBusButton{
+  background-image: url("./images/main-menu/car-front-fill.svg");
+  background-color: rgb(37, 112, 187);
+}
+#gotoCANBusButton:hover{
+  background-color: yellow;
 }
 
 .Gray-seperator{
   height: 5px;
-  width: 100%;
-  background-color: #E3E3E3;
+  width: 40%;
+  background-color: #ffffff;
   margin-top: 2%;
   margin-bottom: 2%;
+  opacity: 30%;
 }
 
-
 .App-header {
-  margin-top: 3%;
+  margin-top: 50px;
   height: fit-content;
   width: fit-content;
   display: flex;
@@ -111,13 +112,60 @@ margin:0;
   justify-content: center;
   font-family: 'Inter', sans-serif;
   font-size: 96px;
-  color: black;
+  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-container{
+  align-items: center;
+  display: flex;
+  flex-direction:column;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+  /* z-index: 2; */
+}
+.modal-background{
+  width: 600px;
+  height: 300px;
+  position: absolute; 
+  left: 50vh; 
+  top: 50%; 
+  background-color: white;
+}
+.modal-container{
+  transform: scale(0.8);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  border-radius: 10px;
 }
 
+#closeCreateWindow{
+  background-image: url("./images/main-menu/close-icon-black.svg");
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+#createProjectTextBox{
+  display: flex;
+  flex-direction:column;
+  font-size: 20px;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 50px;
+}
+.createProject-footer{
+  font-size: 20px;
+  background-color: red;
+  color: white;
+}
+.createProject-title{
+  font-size: 25px;
+}
+/* END of introConfigPage css */
 .map {
   background-image: url('./images/canbusmap.png');
 }
