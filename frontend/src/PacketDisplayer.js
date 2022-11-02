@@ -42,20 +42,23 @@
 import "./displayer.css"
 import ContextMenu from "./ContextMenu";
 import { useState } from "react";
-//import data from "./fakeTraffic-data.json";
+import data from "./fakeTraffic-data.json";
 //for lazy loading
-import React, { Component, lazy, Suspense } from "react";
+//import React, { Component, lazy, Suspense } from "react";
 //import MyComp from './components/myComp';
 
-const TrafficComp = lazy(() => import('./components/trafficComp'));
+//const TrafficComp = lazy(() => import('./components/trafficComp'));
+
+
+
 
 export function PacketDisplayer(){
 //class PacketDisplayer extends Component(){
     //window.addEventListener('popstate', rightClick())
     // document.getElementsByTagName("div").onpageshow = rightClick();
-    //const [packets, setPackets] = useState(data);
+    const [packets, setPackets] = useState(data);
     //render() {  // Still need to run this as an entire class in order to use as "Component"
-    return ( 
+    return (
         <div>
         <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
             <thead>
@@ -67,9 +70,22 @@ export function PacketDisplayer(){
                 <th>Description</th>
                 </tr>
         </thead>
-        <Suspense fallback={<div>Delay...</div>} >
-        <TrafficComp />
-        </Suspense>
+        <tbody> 
+            {packets.map((packet) => ( 
+                <tr className="packetRow">
+                    <td className="packetId">{packet.id}</td>
+                    <td>{packet.source}</td>
+                    <td>{packet.destination}</td>
+                    <td>{packet.rawData}</td>
+                    <td>{packet.Description}</td>
+                </tr>
+             ))}
+        </tbody>
+
+        {//<Suspense fallback={<div>Delay...</div>} >
+        //<TrafficComp />
+        //</Suspense>
+        }
         </table>
         <ContextMenu></ContextMenu>
         </div>

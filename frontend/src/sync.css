@@ -1,0 +1,35 @@
+.syncBody{
+    background-image: url("./images/sync-page/new-background1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    min-height:100vh;
+    min-width: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* FONT COLOR: */
+    color: white;
+}
+/* styling of the actual progress bar: */
+.progressBar{
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    height: 35px;
+    margin-top: 50%;
+    border-radius: 5px;
+    background-color: white;
+}
+#exitBtn{
+    color: aqua;
+    position:relative;
+    left: 60%;
+}
+#computer-1{
+    position: absolute;
+    left: 10%;
+}
+#computer-2{
+    position: absolute;
+    right: 10%;
+}

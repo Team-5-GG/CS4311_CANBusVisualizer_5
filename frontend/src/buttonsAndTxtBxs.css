@@ -70,11 +70,11 @@ margin:0;
   background-color: yellow;
 }
 
-#syncProjectButton{
+#gotoSyncProjectButton{
   background-image: url("./images/main-menu/sync.svg");
   background-color: #ffffff;
 }
-#syncProjectButton:hover{
+#gotoSyncProjectButton:hover{
   background-color: yellow;
 }
 

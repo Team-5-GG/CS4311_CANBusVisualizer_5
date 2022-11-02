@@ -1,5 +1,6 @@
 import React , { Component}  from 'react';
 import './buttonsAndTxtBxs.css';
+import './sync.css';
 import Modal from './components/createPopup';
 import {useState } from "react";
 import {Link} from 'react-router-dom';
@@ -64,7 +65,11 @@ function IntroConfigPage() {
         
         <button type="button" className="configInputBoxes" id="openProjectButton"> Open Project</button>
         <div className='Gray-seperator'></div>
-        <button type="button" className="configInputBoxes" id="syncProjectButton"> Sync Project</button>
+
+        {/*Goto Sync project button - will redirect to the sync project page*/}
+        <Link to="/syncProject">
+        <button type="button" className="configInputBoxes" id="gotoSyncProjectButton"> Sync Project</button>
+        </Link>
         <button type="button" className="configInputBoxes" id="archiveProjectButton"> Archive Project</button>
         
         {/*Goto CAN bus button - will redirect to the main page*/}
