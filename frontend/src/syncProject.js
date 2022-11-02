@@ -7,9 +7,9 @@ const syncProject = () => {
             <Link to="/">
                 <button type="button" className="close-button"></button>
             </Link>
-            <div className="windowTitle">
-                <h2>Sync</h2>
-            </div>
+            <header className="App-header">
+                Sync
+            </header>
             {/* Calling the progress bar function */}
             <ProgressBar/>
             {/* Computer 1 */}
@@ -42,8 +42,8 @@ const syncProject = () => {
                     }}></div>
                     <span>{filled}%</span>
                 </div>
-                <button id='runBtn' onClick={() => setIsRunning(true)}>Run Sync</button>
-                <button id='exitBtn'>Exit Sync</button>
+                <button class='syncInputBoxes' id='runBtn' onClick={() => setIsRunning(true)}>Run Sync</button>
+                <button class='syncInputBoxes'>Exit Sync</button>
             </div>
         )
     }

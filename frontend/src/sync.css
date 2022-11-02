@@ -33,3 +33,41 @@
     position: absolute;
     right: 10%;
 }
+.App-header {
+    margin-top: 50px;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 96px;
+    color: white;
+  }
+  .syncInputBoxes{
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    background-position: right;
+    background-repeat: no-repeat;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(119, 119, 119);
+    border-width: 2px;
+    align-self: center;
+    cursor: pointer;
+  }.syncInputBoxes:hover{
+    background-color: #7b7b7b;
+    color: rgb(0, 0, 0);
+  }.syncInputBoxes:hover::placeholder{
+    color: rgb(0, 0, 0);
+  }
+  .syncInputBoxes input[type=file]{
+    display: none;
+  }
