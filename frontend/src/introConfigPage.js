@@ -1,5 +1,6 @@
 import React , { Component}  from 'react';
 import './buttonsAndTxtBxs.css';
+import './sync.css';
 import Modal from './components/createPopup';
 import {useState } from "react";
 import {Link} from 'react-router-dom';
