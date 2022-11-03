@@ -43,6 +43,7 @@ import "./displayer.css"
 import ContextMenu from "./ContextMenu";
 import { useState } from "react";
 import data from "./fakeTraffic-data.json";
+import FilterPopUp from './components/FilterPopUp';
 //for lazy loading
 //import React, { Component, lazy, Suspense } from "react";
 //import MyComp from './components/myComp';
@@ -67,7 +68,7 @@ export function PacketDisplayer(){
                 <th>Source</th>
                 <th>Destination</th>
                 <th>Raw Data</th>
-                <th>Description</th>
+                <th id ="desc_field">Description <button id="sortBttn"><FilterPopUp></FilterPopUp></button></th>
                 </tr>
         </thead>
         <tbody> 

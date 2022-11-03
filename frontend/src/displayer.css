@@ -102,3 +102,13 @@
   resize: vertical;
   overflow: scroll;
 }
+
+#desc_field{
+  display: flex;
+  flex-direction: row;
+}
+#sortBttn{
+  margin-left:50%;
+  background-color: #ec960b61;
+  height: 100%;
+}
