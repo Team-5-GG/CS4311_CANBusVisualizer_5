@@ -1,6 +1,7 @@
 import can from 'socketcan'
 import Dbc, { Can } from 'dbc-can'
 import PacketManager from './packet.js';
+import TrafficHolder from './traffic.js';
 
 export default class Channel{
     constructor(iFace, baudRate, traffic){
@@ -10,7 +11,8 @@ export default class Channel{
         dbc.load(process.env.DBC).then(data => {
         var canDBC = new Can(data);
         
-        //console.log(dbc.data.messages)
+        //console.log(data.messages.get('EEC18'))
+        let i = 0;
 
         this.channel.addListener('onMessage', (msg) => {
             try{
@@ -24,15 +26,22 @@ export default class Channel{
                 let boundMsg = canDBC.decode(canFrame)
                 let boundSignals = boundMsg?.signals;
 
-                //console.log(boundMsg)
-                // console.log(boundSignals)
+                //console.log(msg)
+                //console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
 
                 traffic.addPacket(packet)
                 
+                if(i == 20){
+                    let testList = traffic.sortHighestID();
+                    traffic.printNewList(testList);
+                    //console.log(packet.rawPacket)
+                }
+                i++;
+                
                 let trafficLength = traffic.traffic.length
-                console.log(traffic.traffic[trafficLength - 1])
+                //console.log(traffic.traffic[trafficLength - 1])
                 //console.log(traffic.traffic.length)
             } catch (error) {
                 // console.log(error)
