@@ -47,7 +47,6 @@ export function MainPage() {
                 <NavDropdown.Item><SyncPopup/></NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Edit" id="basic-nav-dropdown">
-                <NavDropdown.Item>Rename Project</NavDropdown.Item>
                 <NavDropdown.Item>Edit Initials</NavDropdown.Item>
                 <NavDropdown.Item>Import Blacklist</NavDropdown.Item>
                 <NavDropdown.Divider />
