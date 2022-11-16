@@ -14,10 +14,30 @@ import DeletePopup from './components/deleteProjectPopup';
 import ArchivePopup from './components/archiveProjectPopup';
 import ExportPopup from './components/exportProjectPopup';
 import SyncPopup from './components/syncProjectPopup';
+import {useState} from 'react';
 
 
 
 export function MainPage() {
+  /**const [packets, setPackets] = useState(data);
+    
+  const url = 'http://localhost:5000/packet-stream';
+  const [data, setData] = useState([]);
+  const [message, setMessage] = useState('');
+    
+  function playTraffic() {
+  const eventSource = new EventSource(url);
+  eventSource.onmessage = (e) => {
+    console.log('something FRONT END');
+    console.log(e);
+    console.log(e.decoded);
+    console.log('FRONT DONE');
+    }
+    return () => {
+        eventSource.close();
+      };
+  }
+  playTraffic();**/
   return (
     <div className="displayer">
       {/* Close button */}
@@ -67,6 +87,7 @@ export function MainPage() {
       </Navbar>
         <CANBusDisplayer></CANBusDisplayer>
         <PacketDisplayer></PacketDisplayer>
+        <script>e</script>
 
       </div>
     </div>
