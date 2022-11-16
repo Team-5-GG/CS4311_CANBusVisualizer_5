@@ -10,7 +10,7 @@ export default function runApp(app){
     
     //Basic express implementation
     app.get('/packet-stream',(req, res) => {
-        console.log('Got /packet-stream');
+        console.log('Got /packet-stream!!'); //to terminal
         res.setHeader('Cache-Control', 'no-cache');
         res.setHeader('Content-Type', 'text/event-stream');
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -41,4 +41,5 @@ export default function runApp(app){
     // while (true){
     //     channel.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));
     // }
+    //return JSON.stringify({packet: traffic.traffic[traffic.traffic.length-1]});
 }

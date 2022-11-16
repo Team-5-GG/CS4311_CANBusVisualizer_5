@@ -31,7 +31,7 @@ export default class Channel{
                 if(!nodeHolder.inList(packet.name)){
                     var tempnode = dbc.data.messages.get(packet.name);
                     var node = new NodeManager(tempnode.name,tempnode.id,tempnode.dlc,tempnode.sendingNode,tempnode.signals,tempnode.description);
-                    nodeHolder.addNode(node);
+// Nodes show here-> nodeHolder.addNode(node);
                 }
 
                 traffic.addPacket(packet)

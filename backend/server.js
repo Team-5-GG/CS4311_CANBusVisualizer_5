@@ -24,7 +24,15 @@ app.get('/', (req, res)=>{
     res.json({mssg: 'hiya'})
 })
 
+app.get('/bye', (req, res)=>{
+    res.json({mssg: 'Biya'})
+})
+
+app.get('/pack', (req, res)=>{
+    res.json({mssg: 'packet'})
+})
+
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
-
+//this should be left running here now we just need access from front
 runApp(app);
