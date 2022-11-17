@@ -82,14 +82,14 @@ export function PacketDisplayer(){
         <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
             <thead>
                 <tr>
-                <th>ID #</th>
-                <th>Source</th>
+                <th>ID# & Name</th>
+                <th>TimeStamp</th>
                 <th>Destination</th>
                 <th>Raw Data</th>
                 <th>Description</th>
                 </tr>
         </thead>
-        <tbody>
+        {/*<tbody>*/}
             <Traffic />
             {/**packets.map((packet) => ( 
                 <tr className="packetRow">
@@ -99,8 +99,8 @@ export function PacketDisplayer(){
                     <td>{packet.rawData}</td>
                     <td>{packet.Description}</td>
                 </tr>
-            ))*/}
-        </tbody>
+            ))
+        </tbody>*/}
         </table>
         <ContextMenu></ContextMenu>
         </div>
