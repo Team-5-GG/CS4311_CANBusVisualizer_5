@@ -181,7 +181,6 @@ function initDiagram() {
 
   }
 
-
 export function CANBusDisplayer (){
     return(
         <div id='CANDisplayer'>
