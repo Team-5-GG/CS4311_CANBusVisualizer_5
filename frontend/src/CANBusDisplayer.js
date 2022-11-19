@@ -6,27 +6,30 @@ import test from './nodeJSON.json'
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 
 function initDiagram() {
+  console.log("diagram started");
   const $ = go.GraphObject.make;
   // set your license key here before creating the diagram: go.Diagram.licenseKey = "...";
   const diagram =
     $(go.Diagram,
       {
-          // "LinkDrawn": maybeChangeLinkCategory,     // these two DiagramEvents call a
-          // "LinkRelinked": maybeChangeLinkCategory,
         'undoManager.isEnabled': true,  // must be set to allow for model change listening
         // 'undoManager.maxHistoryLength': 0,  // uncomment disable undo/redo functionality
         'clickCreatingTool.archetypeNodeData': { text: 'new node', color: 'lightblue' },
         model: $(go.GraphLinksModel, //allows us to have any # of links btwn nodes
           {
-            linkKeyProperty: 'key'  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
-          })
+            linkKeyProperty: "key",
+            linkFromPortIdProperty: "fromPort",  // required information:
+            linkToPortIdProperty: "toPort",  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
+            nodeDataArray: test.nodeDataArray,
+            linkDataArray: test.linkDataArray
+        })
       });
 
 
   const portSize = new go.Size(8, 8);
   
   // define a simple Node template
-  diagram.nodeTemplate =      // 
+  diagram.nodeTemplate = 
     
     $(go.Node, 'Horizontal',  // This means everything inside this template will be laid out horizontally. the Shape will go around the TextBlock
     
@@ -34,20 +37,44 @@ function initDiagram() {
     $(go.Panel, "Auto",
     //used for the line at the centre
     $(go.Shape,
-      { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
+      { name: 'SHAPE', strokeWidth: 3, fromLinkable:true, toLinkable:true},
       // Shape.fill is bound to Node.data.color
       new go.Binding("toLinkable", "to"),
       new go.Binding('fill', 'color'),
       new go.Binding("figure", 'figure'),
-      new go.Binding('width', 'width')  // allows baseline to remain connected
+      new go.Binding('width', 'width'),  // allows baseline to remain connected
+      new go.Binding('portId', "portID"),
       ),
-      $("TreeExpanderButton",
-      { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-      { visible: true }),
-    //$(go.Shape, "Rectangle",
-      // { fill: "gray" }),
-    //$(go.TextBlock, "\nClick \nto collapse/expand",
-      // { margin: 5 })
+      $(go.Panel, "Horizontal",
+      new go.Binding("itemArray", "topArray"),
+      {
+        row: 0, column: 1,
+        itemTemplate:
+          $(go.Panel,
+            {
+              _side: "top",
+              fromSpot: go.Spot.Top, toSpot: go.Spot.Top,
+              fromLinkable: true, toLinkable: true, cursor: "pointer",
+              
+            },
+            new go.Binding("portId", "portId"),
+            $(go.Shape, "Circle",
+              {
+                stroke: null, strokeWidth: 0,
+                desiredSize: portSize,
+                margin: new go.Margin(0, 1)
+              },
+              new go.Binding("fill", "portColor"))
+          )  // end itemTemplate
+      }
+    ),
+    //   $("TreeExpanderButton",
+    //   { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
+    //   { visible: true }),
+    // //$(go.Shape, "Rectangle",
+    //   // { fill: "gray" }),
+    // //$(go.TextBlock, "\nClick \nto collapse/expand",
+    //   // { margin: 5 })
     )),
     new go.Binding("selectable",'selec'),
     new go.Binding("pickable", "pick"),
@@ -63,20 +90,6 @@ function initDiagram() {
       {maxSize: new go.Size(50,50)},
       new go.Binding("source", "img")
     ),
-    
-    // //used for the line at the centre
-    // $(go.Shape,
-    //   { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
-    //   // Shape.fill is bound to Node.data.color
-    //   new go.Binding("toLinkable", "to"),
-    //   new go.Binding('fill', 'color'),
-    //   new go.Binding("figure", 'figure'),
-    //   new go.Binding('width', 'width')  // allows baseline to remain connected
-    //   ),
-    //   $("TreeExpanderButton",
-    //   { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-    //   { visible: true }),
-      //context menu 
     $(go.TextBlock, { margin: 5 }),
     {
       contextMenu:     
@@ -89,39 +102,33 @@ function initDiagram() {
             { click: changeImage }),
           $("ContextMenuButton",
             $(go.TextBlock, "Label Node"), 
-            { click: changeImage })
-        )  // end Adornment
-    },
-    $(go.Panel, "Horizontal",
-    { column: 6, row: 0 },
-    $(go.Shape,  // the "B" port
-      { width: 6, height: 6, portId: "B", toSpot: go.Spot.Left,
-        toLinkable: true, toMaxLinks: 1 }),  // allow user-drawn links to here
-    $(go.TextBlock, "B"),  // "B" port label
-       $("TreeExpanderButton",
-       { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-       { visible: true })
-  ),
+            { click: changeImage }),
 
-  $(go.Panel, "Horizontal",
-    { column: 45, row: 10 },
-    $(go.Shape,  // the "A" port
-      { width: 6, height: 6, portId: "A", toSpot: go.Spot.Right,
-        toLinkable: true, fromLinkable:true, toMaxLinks: 1 }),  // allow user-drawn links to here
-    $(go.TextBlock, "A"),  // "A" port label
-       $("TreeExpanderButton",
-       { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-       { visible: true })
-  ),
+            makeButton("Add top port",
+            (e, obj) => addPort("top")),
+            // makeButton("Add top port",
+            // (e, obj) => addPort("top")),
+        )  // end Adornment
+    }
     );
   
-  diagram.linkTemplate = 
-          $(go.Link, {relinkableFrom:true, relinkableTo:true}, 
-              $(go.Shape),
-            $(go.Shape, {toArrow: "Standard"})
-          );
+  diagram.linkTemplate =
+  $(go.Link,
+    { relinkableFrom: true, relinkableTo: true, curve: go.Link.Bezie, routing: go.Link.Orthogonal },  // Bezier curve
+    $(go.Shape),
+    $(go.Shape, { toArrow: "Standard" })
+  );
+
   diagram.layout = $(go.TreeLayout, { angle: 270 });
 
+
+  function makeButton(text, action, visiblePredicate) {
+    return $("ContextMenuButton",
+      $(go.TextBlock, text),
+      { click: action },
+      // don't bother with binding GraphObject.visible if there's no predicate
+      visiblePredicate ? new go.Binding("visible", "", (o, e) => o.diagram ? visiblePredicate(o, e) : false).ofObject() : {});
+  }
 
   // This method is called as a context menu button's click handler.
   // Rotate the selected node's icon through a predefined sequence of images.
@@ -140,14 +147,40 @@ function initDiagram() {
     }, "changed image");
   }
 
-  return diagram;
-
+  // Add a port to the specified side of the selected nodes.
+  function addPort(side) {
+    diagram.startTransaction("addPort");
+    diagram.selection.each(node => {
+      // skip any selected Links
+      if (!(node instanceof go.Node)) return;
+      // compute the next available index number for the side
+      let i = 0;
+      while (node.findPort(side + i.toString()) !== node) i++;
+      // now this new port name is unique within the whole Node because of the side prefix
+      const name = side + i.toString();
+      console.log("got here");
+      // get the Array of port data to be modified
+      const arr = node.data[side + "Array"];
+      if (arr) {
+        // create a new port data object
+        const newportdata = {
+          portId: name,
+          portColor: "#FF0000"
+        };
+        // and add it to the Array of port data
+        diagram.model.insertArrayItem(arr, -1, newportdata);
+      }
+    });
+    diagram.commitTransaction("addPort");
   }
+  return diagram;
+}
 
   function handleModelChange(changes) {
     console.log('changes', changes)
 
   }
+
 
 export function CANBusDisplayer (){
     return(
