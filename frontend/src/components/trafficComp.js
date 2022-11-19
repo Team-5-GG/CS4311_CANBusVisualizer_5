@@ -49,16 +49,4 @@ export default function Traffic() {
         }
 
 
-/*        return (<tbody>
-            {packets.map((packet) => (
-                    <tr className="packetRow">
-                        <td className="packetId">{packet.id}</td>
-                        <td>{packet.source}</td>
-                        <td>{packet.destination}</td>
-                        <td>{packet.rawData}</td>
-                        <td>{packet.Description}</td>
-                    </tr>
-                 ))}
-                 </tbody>
-                 )} */
 
