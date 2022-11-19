@@ -83,7 +83,7 @@ function initDiagram() {
         $("ContextMenu",
           $("ContextMenuButton",
             $(go.TextBlock, "Change Image"), 
-            { click: changeImage }),
+            { click: iconPopUp }),
           $("ContextMenuButton",
             $(go.TextBlock, "Annotate Node"), 
             { click: changeImage }),
@@ -121,6 +121,18 @@ function initDiagram() {
             $(go.Shape, {toArrow: "Standard"})
           );
   diagram.layout = $(go.TreeLayout, { angle: 270 });
+
+  function iconPopUp(e, obj) {
+    console.log('open html!');
+    diagram.commit(function(d) {
+      // var infobox = document.createElement("div");
+      var box = document.getElementById("drpdwn");
+      // box.style.left = parseInt(box.style.left) + "px";
+      // box.style.top = parseInt(box.style.top) + 30 + "px";
+      // var dropdown = document.getElementById("drpdwn");
+      // return $("#selec").attr("size","3");
+    }, "changed image");
+  }
 
 
   // This method is called as a context menu button's click handler.
