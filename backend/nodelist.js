@@ -16,7 +16,7 @@ export default class NodeHolder{
 
     //Adds node to traffic iff its not in the list
     addNode(node){
-        console.log(node.name)
+        //console.log(node.name)
         this.#nodelist.set(node.name, node);
         this.#numnodes++; 
     }
