@@ -4,7 +4,8 @@ import {ReactDiagram} from 'gojs-react';
 import test from './nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
-
+import MyHTMLLightBox from './canbus-pages/MyHTMLLightBox';
+import Popup from 'reactjs-popup';
 function initDiagram() {
   const $ = go.GraphObject.make;
   // set your license key here before creating the diagram: go.Diagram.licenseKey = "...";
@@ -29,7 +30,7 @@ function initDiagram() {
   diagram.nodeTemplate =      // 
     
     $(go.Node, 'Horizontal',  // This means everything inside this template will be laid out horizontally. the Shape will go around the TextBlock
-    
+    { contextMenu: window.MyHTMLLightBox },
     $(go.Panel, "Spot",
     $(go.Panel, "Auto",
     //used for the line at the centre
@@ -44,11 +45,8 @@ function initDiagram() {
       $("TreeExpanderButton",
       { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
       { visible: true }),
-    //$(go.Shape, "Rectangle",
-      // { fill: "gray" }),
-    //$(go.TextBlock, "\nClick \nto collapse/expand",
-      // { margin: 5 })
     )),
+
     new go.Binding("selectable",'selec'),
     new go.Binding("pickable", "pick"),
     new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -64,34 +62,28 @@ function initDiagram() {
       new go.Binding("source", "img")
     ),
     
-    // //used for the line at the centre
-    // $(go.Shape,
-    //   { name: 'SHAPE', strokeWidth: 3, portId:"", fromLinkable:true, toLinkable:true},
-    //   // Shape.fill is bound to Node.data.color
-    //   new go.Binding("toLinkable", "to"),
-    //   new go.Binding('fill', 'color'),
-    //   new go.Binding("figure", 'figure'),
-    //   new go.Binding('width', 'width')  // allows baseline to remain connected
-    //   ),
-    //   $("TreeExpanderButton",
-    //   { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-    //   { visible: true }),
-      //context menu 
-    $(go.TextBlock, { margin: 5 }),
-    {
-      contextMenu:     
-        $("ContextMenu",
-          $("ContextMenuButton",
-            $(go.TextBlock, "Change Image"), 
-            { click: iconPopUp }),
-          $("ContextMenuButton",
-            $(go.TextBlock, "Annotate Node"), 
-            { click: changeImage }),
-          $("ContextMenuButton",
-            $(go.TextBlock, "Label Node"), 
-            { click: changeImage })
-        )  // end Adornment
-    },
+    // $(go.TextBlock, { margin: 5 }),
+    // {
+      // contextMenu:     
+      //   $("ContextMenu",
+      //     $("ContextMenuButton",
+      //       $(go.TextBlock, "Change Image"), 
+      //       { click: iconPopUp }),
+      //     $("ContextMenuButton",
+      //       $(go.TextBlock, "Annotate Node"), 
+      //       { click: changeImage }),
+      //     $("ContextMenuButton",
+      //       $(go.TextBlock, "Label Node"), 
+      //       { click: changeImage }),
+      //     $("ContextMenuButton",
+      //       $(go.TextBlock, "New Node"),
+      //       { click: function(e, obj) {
+      //         <Popup trigger={<button> Trigger</button>} position="right center">
+      //         <div>Popup content here !!</div>
+      //         </Popup>
+      //       } })
+      //   )  // end Adornment
+    // },
     $(go.Panel, "Horizontal",
     { column: 6, row: 0 },
     $(go.Shape,  // the "B" port
@@ -121,36 +113,7 @@ function initDiagram() {
             $(go.Shape, {toArrow: "Standard"})
           );
   diagram.layout = $(go.TreeLayout, { angle: 270 });
-
-  function iconPopUp(e, obj) {
-    console.log('open html!');
-    diagram.commit(function(d) {
-      // var infobox = document.createElement("div");
-      var box = document.getElementById("drpdwn");
-      // box.style.left = parseInt(box.style.left) + "px";
-      // box.style.top = parseInt(box.style.top) + 30 + "px";
-      // var dropdown = document.getElementById("drpdwn");
-      // return $("#selec").attr("size","3");
-    }, "changed image");
-  }
-
-
-  // This method is called as a context menu button's click handler.
-  // Rotate the selected node's icon through a predefined sequence of images.
-  function changeImage(e, obj) {
-    console.log('sending the new icon image!');
-    diagram.commit(function(d) {
-      // get the context menu that holds the button that was clicked
-      var contextmenu = obj.part;
-      // get the node data to which the Node is data bound
-      var nodedata = contextmenu.data;
-      // get the new image from the ModifyIconDropdown script (global variable)
-      var newImage = global.iconImage;
-      // modify the node data
-      // this evaluates data Bindings and records changes in the UndoManager
-      d.model.set(nodedata, "img", newImage);
-    }, "changed image");
-  }
+  diagram.contextMenu = window.MyHTMLLightBox;
 
   return diagram;
 
@@ -166,6 +129,8 @@ export function CANBusDisplayer (){
         <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
           <ModifyIconDropdown/> 
+          <MyHTMLLightBox/>
+          <Popup/>
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
