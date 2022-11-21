@@ -1,4 +1,4 @@
- import './displayer.css';
+import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
 import test from './nodeJSON.json'
@@ -12,8 +12,6 @@ function initDiagram() {
   const diagram =
     $(go.Diagram,
       {
-          // "LinkDrawn": maybeChangeLinkCategory,     // these two DiagramEvents call a
-          // "LinkRelinked": maybeChangeLinkCategory,
         'undoManager.isEnabled': true,  // must be set to allow for model change listening
         // 'undoManager.maxHistoryLength': 0,  // uncomment disable undo/redo functionality
         'clickCreatingTool.archetypeNodeData': { text: 'new node', color: 'lightblue' },
@@ -62,28 +60,8 @@ function initDiagram() {
       new go.Binding("source", "img")
     ),
     
-    // $(go.TextBlock, { margin: 5 }),
-    // {
-      // contextMenu:     
-      //   $("ContextMenu",
-      //     $("ContextMenuButton",
-      //       $(go.TextBlock, "Change Image"), 
-      //       { click: iconPopUp }),
-      //     $("ContextMenuButton",
-      //       $(go.TextBlock, "Annotate Node"), 
-      //       { click: changeImage }),
-      //     $("ContextMenuButton",
-      //       $(go.TextBlock, "Label Node"), 
-      //       { click: changeImage }),
-      //     $("ContextMenuButton",
-      //       $(go.TextBlock, "New Node"),
-      //       { click: function(e, obj) {
-      //         <Popup trigger={<button> Trigger</button>} position="right center">
-      //         <div>Popup content here !!</div>
-      //         </Popup>
-      //       } })
-      //   )  // end Adornment
-    // },
+
+
     $(go.Panel, "Horizontal",
     { column: 6, row: 0 },
     $(go.Shape,  // the "B" port
@@ -114,7 +92,6 @@ function initDiagram() {
           );
   diagram.layout = $(go.TreeLayout, { angle: 270 });
   diagram.contextMenu = window.MyHTMLLightBox;
-
   return diagram;
 
   }
