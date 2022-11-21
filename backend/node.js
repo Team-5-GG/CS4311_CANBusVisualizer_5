@@ -11,7 +11,7 @@ export default class NodeManager{
         this.id = id;
         this.dlc = dlc;
         this.sendingNode = sendingNode;
-        this.signals = signals;
+        this.signals = [...signals.values()];
         this.desc = desc;
     }
 }

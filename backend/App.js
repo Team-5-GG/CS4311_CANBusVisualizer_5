@@ -19,15 +19,8 @@ export default function runApp(app){
 
         let counter = 0;
         let interValID = setInterval(() => {
-            counter++;
-            if (counter >= 100) {
-                clearInterval(interValID);
-                res.end(); // terminates SSE session
-                return;
-            }
-
             res.write(`data: ${JSON.stringify({packet: traffic.traffic[traffic.traffic.length-1]})}\n\n`); // res.write() instead of res.send()
-        }, 1000);
+        }, 500);
 
         res.on('close', () => {
             console.log('client dropped me');
@@ -36,6 +29,32 @@ export default function runApp(app){
         });
     })
 
+    app.get('/node-stream',(req, res) => {
+        console.log('Got /node-stream!!'); //to terminal
+        res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Content-Type', 'text/event-stream');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Connection', 'keep-alive');
+        res.flushHeaders();
+        var nodes = 0;
+
+        let interValID = setInterval(() => {
+            if(nodes != nodeHolder.numNodes){
+                nodes = nodeHolder.numNodes;
+                var data = nodeHolder.getnodelist();
+                res.write(`data: ${JSON.stringify(data)}\n\n`); // res.write() instead of res.send()
+            }
+        }, 2000);
+
+
+        res.on('close', () => {
+            console.log('client dropped me');
+            clearInterval(interValID);
+            res.end();
+        });
+    })
+
+    console.log('channel starting')
     channel.start();
 
     // while (true){
