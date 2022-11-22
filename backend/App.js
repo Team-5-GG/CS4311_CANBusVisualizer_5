@@ -44,7 +44,7 @@ export default function runApp(app){
                 var data = nodeHolder.getnodelist();
                 res.write(`data: ${JSON.stringify(data)}\n\n`); // res.write() instead of res.send()
             }
-        }, 2000);
+        }, 500);//2000);
 
 
         res.on('close', () => {
