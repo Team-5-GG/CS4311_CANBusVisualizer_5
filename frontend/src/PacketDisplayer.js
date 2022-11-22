@@ -1,44 +1,3 @@
-//import './customContextMenu.js';
-
-// if (window.location.pathname === '/main'){
-//     if (window.localStorage){
-//         if(!localStorage.getItem('firstload')){
-//             localStorage['firstload'] = true;
-//             window.location.reload();
-//         }
-//         else localStorage.removeItem('firstload');
-//     }
-    
-
-// }
-
-// function rightClick(){
-//     console.log("pathname true");
-//     const contextMenu = document.getElementById("context-menu");
-//     const scope = document.querySelector("body table");
-
-
-//     if(contextMenu && scope){
-//         console.log("loaded")
-//         scope.addEventListener("contextmenu", (event) => {
-//             event.preventDefault();
-        
-//             const { clientX: mouseX, clientY: mouseY } = event;
-        
-//             contextMenu.style.top = `${mouseY}px`;
-//             contextMenu.style.left = `${mouseX}px`;
-        
-//             contextMenu.classList.add("visible");
-//         });
-        
-//         scope.addEventListener("click", (e) => {
-//             if (e.target.offsetParent !== contextMenu) {
-//                 contextMenu.classList.remove("visible");
-//             }
-//             });
-//     }
-
-// }
 import "./displayer.css"
 import ContextMenu from "./ContextMenu";
 import Traffic from './components/trafficComp.js'
@@ -111,3 +70,4 @@ export function PacketDisplayer(){
 
 
 export default PacketDisplayer;
+
