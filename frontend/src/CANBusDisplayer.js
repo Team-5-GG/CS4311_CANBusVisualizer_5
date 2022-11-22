@@ -45,6 +45,7 @@ function initDiagram() {
       new go.Binding('width', 'width'),  // allows baseline to remain connected
       new go.Binding('portId', "portID"),
       ),
+      // ports code
       $(go.Panel, "Horizontal",
       new go.Binding("itemArray", "topArray"),
       {
@@ -90,6 +91,7 @@ function initDiagram() {
       {maxSize: new go.Size(50,50)},
       new go.Binding("source", "img")
     ),
+    // Context menu
     $(go.TextBlock, { margin: 5 }),
     {
       contextMenu:     
@@ -111,7 +113,7 @@ function initDiagram() {
         )  // end Adornment
     }
     );
-  
+  // links code
   diagram.linkTemplate =
   $(go.Link,
     { relinkableFrom: true, relinkableTo: true, curve: go.Link.Bezie, routing: go.Link.Orthogonal },  // Bezier curve
