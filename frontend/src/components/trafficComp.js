@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 export default function Traffic() {
     //const [packets, setPackets] = useState(data);
     const traffPackets = []
-    let nodes = []
+    //let nodes = []
 
     const [packets, setPackets] = useState([])
 //a means of telling React to do something after render
@@ -36,50 +36,42 @@ export default function Traffic() {
     }
     , []);
 
-    useEffect(() => {
+    /**useEffect(() => { Now in the CANBusDisplayer function
         
         const eventSource = new EventSource('http://localhost:5000/node-stream');
-        
         eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
-        
         //const data = JSON.parse(e.data)
         var map = new Map();
-
         const data = JSON.parse(e.data)
-
         var union = [...new Set([...nodes, ...data])];
-
         var numGroupings = 0;
 
         for(var i = 0; i < union.length; i++){
-
             var name = union[i].name;
-
             var firsttwo= name.slice(0,2);
 
             if(!map.has(firsttwo)){
 
                 map.set(firsttwo, firsttwo)
-
                 numGroupings++
 
             }
-
         }
 
         console.log("numGroupings: "+numGroupings);
 
-        console.log("map.values"+[...map.values()])
+        console.log("map.values "+[...map.values()])
         //////////////////////////////
         //var union = [...new Set([...nodes, ...data])];
         //nodes.push(data)
         nodes = union
-        console.log('dataName: '+data[data.length-1].name)
+        //                      console.log('dataName: '+data[data.length-1].name)
         //console.log('dlc: '+data[data.length-1].dlc)
         //console.log('sendingNode: '+data[data.length-1].sendingNode)
         //console.log('signals: '+data[data.length-1].signals)
-        console.log('desc: '+data[data.length-1].desc)
-
+        
+        //                      console.log('desc: '+data[data.length-1].desc)
+       
         // Ignore --> console.log('UNION '+ union.length)
         // Ignore --> console.log('Nodes '+ nodes.length)
         //  Problematic --> setPackets(data)
@@ -88,10 +80,8 @@ export default function Traffic() {
         }};
 
     }
-    , []);
+    , []);*/
 
     return (
     <tbody id='packet'> </tbody>
     )}
-
-
