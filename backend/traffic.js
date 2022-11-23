@@ -14,21 +14,27 @@ export default class TrafficHolder{
 
     // filter by time, node, and packet size
     filterPackets(time, node, size){
-        filterList = []
+        let copyList = this.#traffic.slice()
 
         if(time){
-            filterList.push(...this.#traffic.filter(packet => packet.timestamp.getTime() == packet.timestamp.getTime()))
+            filterList.push(...copyList.filter(packet => packet.timestamp.getTime() >= time[0].getTime() && packet.timestamp.getTime() <= time[1].getTime()))
+
+            // take the copied list and filter all other packets that did not match condition
+            // so as to possibly get them in the later filters (and prevent duplicates)
+            copyList = copyList.filter(packet => !(packet.timestamp.getTime() >= time[0].getTime() && packet.timestamp.getTime() <= time[1].getTime()))
         }
 
         if(node){
-            filterList.push(...this.#traffic.filter(packet => packet.name == node))
+            filterList.push(...copyList.filter(packet => packet.name == node))
+            copyList = copyList.filter(packet => !(packet.name == node))
         }
 
         if(size){
-            filterList.push(...this.#traffic.filter(packet => packet.rawPacket.data.length == size))
+            filterList.push(...copyList.filter(packet => packet.rawPacket.data.length == size))
+            copyList = copyList.filter(packet => !(packet.rawPacket.data.length == size))
         }
 
-        // THROW ERROR HERE IF NO CONDITIONS ARE MET FOR FILTER I.E. FILTERLIST IS EMPTY
+        // THROW ERROR IF NO CONDITIONS ARE MET FOR FILTER I.E. FILTERLIST IS EMPTY
         return filterList
     }
 

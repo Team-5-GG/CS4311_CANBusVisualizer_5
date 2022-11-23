@@ -3,7 +3,7 @@ import Dbc, { Can } from 'dbc-can'
 import PacketManager from './packet.js';
 
 export default class Channel{
-    constructor(iFace, baudRate, traffic){
+    constructor(iFace, traffic){
         var dbc = new Dbc();
         this.channel = can.createRawChannel(iFace, true);
 
