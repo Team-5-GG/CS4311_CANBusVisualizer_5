@@ -6,6 +6,13 @@ import {ReactDiagram} from 'gojs-react';
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
 
+let nodeHolder = {
+  "class": "go.GraphLinksModel",
+  "linkLabelKeysProperty": "labelKeys",
+  "nodeDataArray": [],
+  "linkDataArray": []
+};
+
 var union = [];
 
 function initDiagram() {
@@ -223,7 +230,7 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
-            nodeDataArray={localStorage.getItem('GOnodes')}
+            nodeDataArray={JSON.parse(localStorage.getItem('GOnodes'))}
             linkDataArray = 
             {[
               { key: -1, from: 0, to: 1 },
