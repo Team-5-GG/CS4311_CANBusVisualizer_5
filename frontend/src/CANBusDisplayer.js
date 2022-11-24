@@ -166,40 +166,28 @@ function initDiagram() {
     });
     diagram.commitTransaction("addPort");
   }
-
-  function pupulateNodeArray(){
-    console.log('LInside populate method!!!');
-    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
-    var nodeArray = [];
-    //this is the canbus:
-    nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
-    //add the union:
-    nodeArray.push(createNewNode());
-    return nodeArray;
-  
-  }
-  
-  function createNewNode(){
-    var nodeItem = {};
-    nodeItem.key = 0;
-    nodeItem.portID = 'testPort';
-    nodeItem.text = 'test';
-    nodeItem.loc = '180 50';
-    nodeItem.figure = 'LineH';
-    nodeItem.width = 0;
-    nodeItem.height = 0;
-    return nodeItem;
-  }
-  diagram.model.nodeDataArray = pupulateNodeArray();
   return diagram;
 }
 
-  function handleModelChange(changes) {
-    console.log('changes', changes)
+function handleModelChange(changes) {
+  console.log('changes', changes)
 
-  }
+}
+
+function pupulateNodeArray(nodeName){
+  console.log('LInside populate method!!!');
+  // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
+  var nodeArray = localStorage.getItem("GOnodes");
+  //this is the canbus:
+  nodeArray.push();
+  //add the union:
+  nodeArray.push(createNewNode());
+  return nodeArray;
+
+}
 
 export function CANBusDisplayer (){
+  localStorage.setItem("GOnodes", [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }]);
   let nodes = []
   useEffect(() => {      
     
@@ -208,6 +196,7 @@ export function CANBusDisplayer (){
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
+    //pupulateNodeArray(data[data.length-1].name);
     console.log("Most recent data: " + data[data.length-1].name)
     union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
@@ -246,7 +235,7 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
-            //nodeDataArray={localStorage.getItem('GOnodes')}
+            nodeDataArray={localStorage.getItem('GOnodes')}
             linkDataArray = 
             {[
               { key: -1, from: 0, to: 1 },
