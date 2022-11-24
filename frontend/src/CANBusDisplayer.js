@@ -174,18 +174,6 @@ function handleModelChange(changes) {
 
 }
 
-function pupulateNodeArray(nodeName){
-  console.log('LInside populate method!!!');
-  // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
-  var nodeArray = localStorage.getItem("GOnodes");
-  //this is the canbus:
-  nodeArray.push();
-  //add the union:
-  nodeArray.push(createNewNode());
-  return nodeArray;
-
-}
-
 export function CANBusDisplayer (){
   localStorage.setItem("GOnodes", [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }]);
   let nodes = []
