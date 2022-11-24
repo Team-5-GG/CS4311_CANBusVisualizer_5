@@ -208,6 +208,7 @@ export function CANBusDisplayer (){
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
+    console.log(data[data.length-1].name)
     union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
@@ -245,6 +246,7 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
+            //nodeDataArray={localStorage.getItem('GOnodes')}
             linkDataArray = 
             {[
               { key: -1, from: 0, to: 1 },
