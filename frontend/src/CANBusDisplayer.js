@@ -230,7 +230,7 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
-            nodeDataArray= {[JSON.parse(localStorage.getItem('GOnodes'))]}
+            nodeDataArray= {JSON.parse(localStorage.getItem('GOnodes'))}
             linkDataArray = 
             {[
               { key: -1, from: 0, to: 1 },
