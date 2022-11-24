@@ -28,7 +28,6 @@ function initDiagram() {
         'undoManager.isEnabled': true,  // must be set to allow for model change listening
         // 'undoManager.maxHistoryLength': 0,  // uncomment disable undo/redo functionality
         'clickCreatingTool.archetypeNodeData': { text: 'new node', color: 'lightblue' },
-        'ModelChanged':function(e) { if (e.isTransactionFinished) saveModel(e.model); },
         model: $(go.GraphLinksModel, //allows us to have any # of links btwn nodes
           {
             linkKeyProperty: "key",
@@ -177,6 +176,10 @@ function initDiagram() {
     });
     diagram.commitTransaction("addPort");
   }
+  diagram.startTransaction();
+  diagram.updateAllRelationshipsFromData();
+  diagram.updateAllTargetBindings();
+  diagram.commitTransaction("update");
   return diagram;
 }
 
@@ -187,10 +190,6 @@ function handleModelChange(changes) {
 function pupulateNodeArray(nodeName){
   nodeHolder.nodeDataArray.push({"key":nodeName, "portID":"testPort","text":"test", "loc":"180 50", "figure": "LineH","width":0, "height":0});
   console.log(nodeHolder.nodeDataArray);
-  diagram.startTransaction();
-  diagram.updateAllRelationshipsFromData();
-  diagram.updateAllTargetBindings();
-  diagram.commitTransaction("update");
 }
 export function CANBusDisplayer (){
   let nodes = []
