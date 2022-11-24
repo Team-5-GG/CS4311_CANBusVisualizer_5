@@ -208,7 +208,7 @@ export function CANBusDisplayer (){
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    console.log(data[data.length-1].name)
+    console.log("Most recent data: " + data[data.length-1].name)
     union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
