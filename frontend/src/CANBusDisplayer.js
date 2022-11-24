@@ -1,7 +1,7 @@
 import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
-import test from '.Desktop/nodeJSON.json'
+//import test from '.Desktop/nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
