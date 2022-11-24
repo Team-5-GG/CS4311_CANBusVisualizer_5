@@ -1,12 +1,12 @@
 import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
-import test from './nodeJSON.json'
+// import test from './nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
 
-
+var union = [];
 
 function initDiagram() {
   console.log("diagram started");
@@ -22,9 +22,7 @@ function initDiagram() {
           {
             linkKeyProperty: "key",
             linkFromPortIdProperty: "fromPort",  // required information:
-            linkToPortIdProperty: "toPort",  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
-            nodeDataArray: test.nodeDataArray,
-            linkDataArray: test.linkDataArray
+            linkToPortIdProperty: "toPort"  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
         })
       });
 
@@ -70,15 +68,9 @@ function initDiagram() {
               new go.Binding("fill", "portColor"))
           )  // end itemTemplate
       }
-    ),
-    //   $("TreeExpanderButton",
-    //   { alignment: go.Spot.Top, alignmentFocus: go.Spot.Top },
-    //   { visible: true }),
-    // //$(go.Shape, "Rectangle",
-    //   // { fill: "gray" }),
-    // //$(go.TextBlock, "\nClick \nto collapse/expand",
-    //   // { margin: 5 })
+    ),//end of panel
     )),
+
     new go.Binding("selectable",'selec'),
     new go.Binding("pickable", "pick"),
     new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -109,8 +101,6 @@ function initDiagram() {
 
             makeButton("Add top port",
             (e, obj) => addPort("top")),
-            // makeButton("Add top port",
-            // (e, obj) => addPort("top")),
         )  // end Adornment
     }
     );
@@ -176,6 +166,31 @@ function initDiagram() {
     });
     diagram.commitTransaction("addPort");
   }
+
+  function pupulateNodeArray(){
+    console.log('LInside populate method!!!');
+    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
+    var nodeArray = [];
+    //this is the canbus:
+    nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
+    //add the union:
+    nodeArray.push(createNewNode());
+    return nodeArray;
+  
+  }
+  
+  function createNewNode(){
+    var nodeItem = {};
+    nodeItem.key = 0;
+    nodeItem.portID = 'testPort';
+    nodeItem.text = 'test';
+    nodeItem.loc = '180 50';
+    nodeItem.figure = 'LineH';
+    nodeItem.width = 0;
+    nodeItem.height = 0;
+    return nodeItem;
+  }
+  diagram.model.nodeDataArray = pupulateNodeArray();
   return diagram;
 }
 
@@ -193,7 +208,7 @@ export function CANBusDisplayer (){
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    var union = [...new Set([...nodes, ...data])];
+    union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
     for(var i = 0; i < union.length; i++){
@@ -210,7 +225,9 @@ export function CANBusDisplayer (){
 
     console.log("FROM MAP! numGroupings: "+numGroupings);
 
-    console.log("FROM MAP! map.values "+[...map.values()])
+    console.log("FROM MAP! map.values: "+[...map.values()])
+    console.log("Print keys:" + union[4].name.slice(0,2));
+
     nodes = union
     console.log('dataName: '+data[data.length-1].name)
     //console.log('dlc: '+data[data.length-1].dlc)
@@ -228,8 +245,14 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
-            nodeDataArray= {test.nodeDataArray}
-            linkDataArray={test.linkDataArray}
+            linkDataArray = 
+            {[
+              { key: -1, from: 0, to: 1 },
+              { key: -2, from: 0, to: 2 },
+              { key: -3, from: 1, to: 1 },
+              { key: -4, from: 2, to: 3 },
+              { key: -5, from: 3, to: 0 }
+            ]}
             onModelChange={handleModelChange}
           />
         </div>
