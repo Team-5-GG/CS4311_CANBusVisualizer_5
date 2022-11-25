@@ -6,9 +6,9 @@ import {ReactDiagram} from 'gojs-react';
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
 
-var union = [];
+// var  = [];
 
-function initDiagram() {
+function initDiagram(union) {
   console.log("diagram started");
   const $ = go.GraphObject.make;
   // set your license key here before creating the diagram: go.Diagram.licenseKey = "...";
@@ -169,7 +169,7 @@ function initDiagram() {
 
   function pupulateNodeArray(){
     console.log('LInside populate method!!!');
-    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
+    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union.length);
     var nodeArray = [];
     //this is the canbus:
     nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
@@ -202,13 +202,12 @@ function initDiagram() {
 export function CANBusDisplayer (){
   let nodes = []
   useEffect(() => {      
-    
     const eventSource = new EventSource('http://localhost:5000/node-stream');
     eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    union = [...new Set([...nodes, ...data])];
+    var union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
     for(var i = 0; i < union.length; i++){
@@ -238,6 +237,8 @@ export function CANBusDisplayer (){
     }};
 }
 , []);
+// initDiagram(union);
+// console.log("this is the current size of the array" + union.len);
     return(
         <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
