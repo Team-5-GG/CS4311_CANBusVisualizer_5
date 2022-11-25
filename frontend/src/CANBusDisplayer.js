@@ -86,7 +86,7 @@ function initDiagram() {
       { margin: new go.Margin(3, 0, 0, 0),
         maxSize: new go.Size(100, 30),
         editable: true, isMultiline: false },  // some room around the text
-        new go.Binding("text","text")//permettre de lire le texte
+        new go.Binding("text","text")
     ),
     
     $(go.Picture,
