@@ -1,22 +1,12 @@
 import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
-//import test from '.Desktop/nodeJSON.json'
+// import test from './nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
 
-let nodeHolder = {
-  "class": "go.GraphLinksModel",
-  "linkLabelKeysProperty": "labelKeys",
-  "nodeDataArray": [
-    { key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}]},
-  ],
-  "linkDataArray": []
-};
-
 var union = [];
-
 
 function initDiagram() {
   console.log("diagram started");
@@ -176,21 +166,39 @@ function initDiagram() {
     });
     diagram.commitTransaction("addPort");
   }
-  diagram.startTransaction();
-  diagram.updateAllRelationshipsFromData();
-  diagram.updateAllTargetBindings();
-  diagram.commitTransaction("update");
+
+  function pupulateNodeArray(){
+    console.log('LInside populate method!!!');
+    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + CANBusDisplayer().union());
+    var nodeArray = [];
+    //this is the canbus:
+    nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
+    //add the union:
+    nodeArray.push(createNewNode());
+    return nodeArray;
+  
+  }
+  
+  function createNewNode(){
+    var nodeItem = {};
+    nodeItem.key = 0;
+    nodeItem.portID = 'testPort';
+    nodeItem.text = 'test';
+    nodeItem.loc = '180 50';
+    nodeItem.figure = 'LineH';
+    nodeItem.width = 0;
+    nodeItem.height = 0;
+    return nodeItem;
+  }
+  diagram.model.nodeDataArray = pupulateNodeArray();
   return diagram;
 }
 
-function handleModelChange(changes) {
-  console.log('changes', changes)
+  function handleModelChange(changes) {
+    console.log('changes', changes)
 
-}
-function pupulateNodeArray(nodeName){
-  nodeHolder.nodeDataArray.push({"key":nodeName, "portID":"testPort","text":"test", "loc":"180 50", "figure": "LineH","width":0, "height":0});
-  console.log(nodeHolder.nodeDataArray);
-}
+  }
+
 export function CANBusDisplayer (){
   let nodes = []
   useEffect(() => {      
@@ -200,8 +208,6 @@ export function CANBusDisplayer (){
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    pupulateNodeArray(data[data.length-1].name);
-    console.log("Most recent data: " + data[data.length-1].name)
     union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
@@ -232,7 +238,6 @@ export function CANBusDisplayer (){
     }};
 }
 , []);
-
     return(
         <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
@@ -240,7 +245,6 @@ export function CANBusDisplayer (){
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
-            nodeDataArray= {nodeHolder.nodeDataArray}
             linkDataArray = 
             {[
               { key: -1, from: 0, to: 1 },
