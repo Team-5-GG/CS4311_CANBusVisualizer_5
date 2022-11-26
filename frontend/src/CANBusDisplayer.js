@@ -201,13 +201,14 @@ function initDiagram(union) {
 
 export function CANBusDisplayer (){
   let nodes = []
+  let union;
   useEffect(() => {      
     const eventSource = new EventSource('http://localhost:5000/node-stream');
     eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    var union = [...new Set([...nodes, ...data])];
+    union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
     for(var i = 0; i < union.length; i++){
@@ -244,7 +245,7 @@ export function CANBusDisplayer (){
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
           <ModifyIconDropdown/>
           <ReactDiagram
-            initDiagram={initDiagram}
+            initDiagram={initDiagram(union)}
             divClassName='diagram-component'
             linkDataArray = 
             {[
