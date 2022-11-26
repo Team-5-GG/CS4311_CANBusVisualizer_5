@@ -32,6 +32,11 @@
 #dtHorizontalVerticalExample th, td {
   white-space: nowrap;
 }
+.packetDisplayerContainer {
+  height: 30vh;
+  overflow: scroll;
+  resize: vertical;
+}
   
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #f8affd;

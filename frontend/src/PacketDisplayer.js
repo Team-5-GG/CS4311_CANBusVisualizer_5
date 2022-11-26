@@ -9,7 +9,7 @@ import { useState } from "react";
 export function PacketDisplayer(){
 
     return (
-        <div>
+        <div className="packetDisplayerContainer">
         <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
             <thead>
                 <tr>
