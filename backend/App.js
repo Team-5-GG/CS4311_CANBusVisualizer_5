@@ -12,7 +12,19 @@ export default function runApp(){
         channel.stop(); 
         clearInterval(timer);
 
-        // traffic.filterPackets(null, )
+        let timeRange = [new Date('2022-11-26T21:25:00.000Z'),new Date('2022-11-26T21:26:00.000Z')]
+
+        console.log(traffic.traffic)
+
+        console.log(traffic.traffic[0].timestamp)
+
+        console.log(new Date('2022-11-26T21:03:00.000Z'))
+
+        console.log('BEGINNING FILTERING...')
+
+        let filteredPackets = traffic.filterPackets(null, 'AT2', 0)
+
+        console.log(filteredPackets)
     }, 3000)
 
     // while (true){

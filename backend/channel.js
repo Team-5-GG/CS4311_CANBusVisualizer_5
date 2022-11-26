@@ -22,7 +22,9 @@ export default class Channel{
     
                 const canFrame = canDBC.createFrame(dbcid, [...msg.data])
                 let boundMsg = canDBC.decode(canFrame)
-                let boundSignals = bound
+                let boundSignals = boundMsg?.signals;
+
+                console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
 

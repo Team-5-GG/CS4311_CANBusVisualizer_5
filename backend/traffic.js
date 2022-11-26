@@ -14,6 +14,7 @@ export default class TrafficHolder{
 
     // filter by time, node, and packet size
     filterPackets(time, node, size){
+        let filterList = []
         let copyList = this.#traffic.slice()
 
         if(time){
