@@ -19,7 +19,7 @@ const UseContextMenu = () => {
 
   useEffect(() => {
     // scope is an array of tr.packetRow elements.
-    const scope = document.querySelectorAll("tr.packetRow"); 
+    const scope = document.querySelectorAll("tbody.packetRow"); //"tr.packetRow"); 
     
     document.addEventListener("click", handleClick);
 

@@ -1,9 +1,12 @@
- import './displayer.css';
+import './displayer.css';
 import * as go from 'gojs';
 import {ReactDiagram} from 'gojs-react';
 import test from './nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
+import { useState, useEffect } from 'react'
+
+
 
 function initDiagram() {
   console.log("diagram started");
@@ -84,7 +87,7 @@ function initDiagram() {
       { margin: new go.Margin(3, 0, 0, 0),
         maxSize: new go.Size(100, 30),
         editable: true, isMultiline: false },  // some room around the text
-        new go.Binding("text","text")//permettre de lire le texte
+        new go.Binding("text","text")
     ),
     
     $(go.Picture,
@@ -184,10 +187,46 @@ function initDiagram() {
   }
 
 export function CANBusDisplayer (){
+  let nodes = []
+  useEffect(() => {      
+    
+    const eventSource = new EventSource('http://localhost:5000/node-stream');
+    eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
+    //const data = JSON.parse(e.data)
+    var map = new Map();
+    const data = JSON.parse(e.data)
+    var union = [...new Set([...nodes, ...data])];
+    var numGroupings = 0;
+
+    for(var i = 0; i < union.length; i++){
+        var name = union[i].name;
+        var firsttwo= name.slice(0,2);
+
+        if(!map.has(firsttwo)){
+
+            map.set(firsttwo, firsttwo)
+            numGroupings++
+
+        }
+    }
+
+    console.log("FROM MAP! numGroupings: "+numGroupings);
+
+    console.log("FROM MAP! map.values "+[...map.values()])
+    nodes = union
+    console.log('dataName: '+data[data.length-1].name)
+    //console.log('dlc: '+data[data.length-1].dlc)
+    //console.log('signals: '+data[data.length-1].signals)
+    console.log('desc: '+data[data.length-1].desc)
+    return () => {
+        eventSource.close();
+    }};
+}
+, []);
     return(
         <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
-          <ModifyIconDropdown/> 
+          <ModifyIconDropdown/>
           <ReactDiagram
             initDiagram={initDiagram}
             divClassName='diagram-component'
