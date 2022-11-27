@@ -4,11 +4,14 @@ import {ReactDiagram} from 'gojs-react';
 // import test from './nodeJSON.json'
 //additional js that contains the change-node dropdown
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 
 // var  = [];
 
 function initDiagram(union) {
+  if(!union){
+    union = [];
+  }
   console.log("diagram started");
   const $ = go.GraphObject.make;
   // set your license key here before creating the diagram: go.Diagram.licenseKey = "...";
@@ -169,7 +172,7 @@ function initDiagram(union) {
 
   function pupulateNodeArray(){
     console.log('LInside populate method!!!');
-    // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union.length);
+    console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
     var nodeArray = [];
     //this is the canbus:
     nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
@@ -201,14 +204,18 @@ function initDiagram(union) {
 
 export function CANBusDisplayer (){
   let nodes = []
-  let union;
-  useEffect(() => {      
+  let uniqueNodes = []
+  useEffect(() => {
+    if(uniqueNodes.length != 0){ //keep the useEffect from rendering too many times
+      return;
+    }
+    // count.current.value = 8;
     const eventSource = new EventSource('http://localhost:5000/node-stream');
     eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
     //const data = JSON.parse(e.data)
     var map = new Map();
     const data = JSON.parse(e.data)
-    union = [...new Set([...nodes, ...data])];
+    var union = [...new Set([...nodes, ...data])];
     var numGroupings = 0;
 
     for(var i = 0; i < union.length; i++){
@@ -224,9 +231,14 @@ export function CANBusDisplayer (){
     }
 
     console.log("FROM MAP! numGroupings: "+numGroupings);
-
-    console.log("FROM MAP! map.values: "+[...map.values()])
+    uniqueNodes = [...map.values()];
+    console.log("FROM MAP! map.values: " + uniqueNodes);
     console.log("Print keys:" + union[4].name.slice(0,2));
+    
+    if(uniqueNodes.length != 0){ //only use init diagram affter data fetch
+      initDiagram(uniqueNodes);
+      return;
+    }
 
     nodes = union
     console.log('dataName: '+data[data.length-1].name)
@@ -236,16 +248,14 @@ export function CANBusDisplayer (){
     return () => {
         eventSource.close();
     }};
-}
+  }
 , []);
-// initDiagram(union);
-// console.log("this is the current size of the array" + union.len);
     return(
         <div id='CANDisplayer'>
           {/* here we add the modify icon dropdown script in order to use it on the screen */}
           <ModifyIconDropdown/>
           <ReactDiagram
-            initDiagram={initDiagram(union)}
+            initDiagram={initDiagram}
             divClassName='diagram-component'
             linkDataArray = 
             {[
@@ -260,6 +270,4 @@ export function CANBusDisplayer (){
         </div>
     );
 }
-
-
 export default CANBusDisplayer;
