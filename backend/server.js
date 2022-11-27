@@ -15,7 +15,7 @@ const app = express()
 
 const PORT = process.env.PORT
 
-// connectDB()
+connectDB()
 
 app.use(express.json())
 
