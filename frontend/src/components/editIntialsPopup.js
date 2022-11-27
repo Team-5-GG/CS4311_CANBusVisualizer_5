@@ -2,9 +2,8 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import ImageUpload from "./FileExplorer"; 
 
-function ArchiveModal(props) {
+function EditInitialsModal(props) {
     return (
         <Modal
             {...props}
@@ -15,36 +14,36 @@ function ArchiveModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Archive Project
+                    Edit Initials
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <div className="form-group">
-                    Project will be terminated, do you wish to archive current project?
+            <div className="form-group">
+                    <label htmlFor="name">User Initials</label>
+                    <input className="form-control" id="name" />
                 </div>
                 
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="primary">Yes</Button>
-                <Button variant="secondary">No</Button>
+                <Button variant="primary">Done</Button>
 
             </Modal.Footer>
         </Modal>
     );
 }
 
-function ArchivePopup() {
+function EditInitialsPopup() {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
             <div onClick={() => setModalShow(true)}>
-                Archive
+                Edit Initials
             </div>
 
-            <ArchiveModal show={modalShow}
+            <EditInitialsModal show={modalShow}
                 onHide={() => setModalShow(false)}
             />
         </>
@@ -52,4 +51,4 @@ function ArchivePopup() {
     );
 }
 
-export default ArchivePopup; 
+export default EditInitialsPopup; 

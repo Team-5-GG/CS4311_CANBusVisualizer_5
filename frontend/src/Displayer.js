@@ -15,9 +15,10 @@ import ArchivePopup from './components/archiveProjectPopup';
 import ExportPopup from './components/exportProjectPopup';
 import SyncPopup from './components/syncProjectPopup';
 import {useState} from 'react';
-
-
-
+import ImageUpload from "./components/FileExplorer"; 
+import ArchiveModal from './components/archiveProjectPopup';
+import EditInitialsPopup from './components/editIntialsPopup';
+import {SearchMapPopup, SearchTrafficPopup} from './components/searchPopups';
 export function MainPage() {
   /**const [packets, setPackets] = useState(data);
     
@@ -62,21 +63,21 @@ export function MainPage() {
                   <SavePopUp></SavePopUp>
                 </NavDropdown.Item>
                 <NavDropdown.Item><DeletePopup/></NavDropdown.Item>
-                <NavDropdown.Item ><ArchivePopup/></NavDropdown.Item>
+                <NavDropdown.Item ><ArchiveModal/></NavDropdown.Item>
                 <NavDropdown.Item><ExportPopup/></NavDropdown.Item>
                 <NavDropdown.Item><SyncPopup/></NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Edit" id="basic-nav-dropdown">
                 <NavDropdown.Item>Rename Project</NavDropdown.Item>
-                <NavDropdown.Item>Edit Initials</NavDropdown.Item>
+                <NavDropdown.Item><EditInitialsPopup/></NavDropdown.Item>
                 <NavDropdown.Item>Import Blacklist</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>Label Link</NavDropdown.Item>
                 <NavDropdown.Item>Add Relationship</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Search" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="./">Map</NavDropdown.Item>
-                  <NavDropdown.Item href="./">Traffic</NavDropdown.Item>
+                  <NavDropdown.Item><SearchMapPopup/> </NavDropdown.Item>
+                  <NavDropdown.Item><SearchTrafficPopup/></NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Archive" id="basic-nav-dropdown">
               <NavDropdown.Item href="./">Label Link</NavDropdown.Item>
@@ -85,6 +86,7 @@ export function MainPage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <ImageUpload />
         <CANBusDisplayer></CANBusDisplayer>
         <PacketDisplayer></PacketDisplayer>
         <script>e</script>
