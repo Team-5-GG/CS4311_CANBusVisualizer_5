@@ -8,28 +8,31 @@ import 'datatables.net';
 
 
 
-export function PacketDisplayer(){
+export function PacketDisplayer() {
     $(document).ready(function() {
         $("#dtHorizontalVerticalExample").DataTable();
       });
 
     return (
+        
         <div className="packetDisplayerContainer">
-        <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
-            <thead>
-                <tr>
-                <th>ID# & Name</th>
-                <th>TimeStamp</th>
-                <th>Destination</th>
-                <th>Raw Data</th>
-                <th>Description</th>
-                </tr>
-        </thead>
-            <Traffic />
-        </table>
-        <ContextMenu></ContextMenu>
+            <button class="filter">Filter</button>
+
+            <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID# & Name</th>
+                        <th>TimeStamp</th>
+                        <th>Destination</th>
+                        <th>Raw Data</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <Traffic />
+            </table>
+            <ContextMenu></ContextMenu>
         </div>
-        );
+    );
 }
 //runApp(app);
 

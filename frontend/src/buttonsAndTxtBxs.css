@@ -169,3 +169,10 @@ margin:0;
 .map {
   background-image: url('./images/canbusmap.png');
 }
+
+.filter {
+  background-color: #e7e7e7; 
+  color: black;
+  float: right;
+  border-radius: 4px;
+}
