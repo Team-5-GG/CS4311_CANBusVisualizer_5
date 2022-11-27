@@ -2,11 +2,16 @@ import "./displayer.css"
 import ContextMenu from "./ContextMenu";
 import Traffic from './components/trafficComp.js'
 import { useState } from "react";
+import $ from 'jquery'; 
 //import data from "./fakeTraffic-data.json";
+import 'datatables.net';
 
 
 
 export function PacketDisplayer(){
+    $(document).ready(function() {
+        $("#dtHorizontalVerticalExample").DataTable();
+      });
 
     return (
         <div className="packetDisplayerContainer">
