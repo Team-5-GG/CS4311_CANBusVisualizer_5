@@ -25,7 +25,7 @@ export default function runApp(){
         let filteredPackets = traffic.filterPackets(null, 'AT2', 0)
 
         console.log(filteredPackets)
-    }, 3000)
+    }, 1000)
 
     // while (true){
     //     channel.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));
