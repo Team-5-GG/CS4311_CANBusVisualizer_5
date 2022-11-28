@@ -56,7 +56,7 @@ export const createProjectConfig = asyncHandler(async(req, res)=> {
     const {userInitials, eventName, baudRate} = req.body
 
     try{
-        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate})
+        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate, channel})
         res.status(200).json(projectConfig)
     } catch(error){
         res.status(400).json({error: error.message})

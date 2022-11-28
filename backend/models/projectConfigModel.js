@@ -13,6 +13,10 @@ const projectConfigSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    channel: {
+        type: String,
+        required: true,
+    },
 }, {
     timestamps: true
 })

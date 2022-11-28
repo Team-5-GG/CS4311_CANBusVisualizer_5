@@ -15,7 +15,7 @@ export default class Channel{
         this.channel.addListener('onMessage', (msg) => {
             try{
    
-                // console.log(msg)
+                console.log(msg)
                 let dbcid = 4 << 29;
                 dbcid = dbcid | msg.id;
                 dbcid = dbcid >>> 0;

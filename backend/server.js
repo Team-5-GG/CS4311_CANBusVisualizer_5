@@ -3,6 +3,7 @@ import dotenv  from 'dotenv'
 import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
+import dbcFileRoutes from './routes/dbcFileRoute.js'
 import Channel from './channel.js'
 import protocol from './Protocols.js'
 import CANChannel from './channel.js'
@@ -21,6 +22,7 @@ app.use(express.json())
 
 app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
+app.use('/api/dbcFile', dbcFileRoutes)
 
 //Creating API for user
 app.get('/', (req, res)=>{
