@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 export var gfsDBC
+export var gfsData
 
 const connectDB = async () => {
     try {
@@ -13,6 +14,12 @@ const connectDB = async () => {
           conn.once('open', () => {
             gfsDBC = new mongoose.mongo.GridFSBucket(conn.db, {
               bucketName: 'DBC',
+            });
+          });
+
+          conn.once('open', () => {
+            gfsData = new mongoose.mongo.GridFSBucket(conn.db, {
+              bucketName: 'projectdata',
             });
           });
     } catch (error) {

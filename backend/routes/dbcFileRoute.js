@@ -1,5 +1,4 @@
 import express from 'express'
-import mongoose from "mongoose"
 import { readDBCFile, uploadDBCFile } from '../controllers/dbcFileController.js'
 
 const router = express.Router()
