@@ -18,6 +18,7 @@ import {useState} from 'react';
 import ImageUpload from "./components/FileExplorer"; 
 import ArchiveModal from './components/archiveProjectPopup';
 import EditInitialsPopup from './components/editIntialsPopup';
+import EditInterfacePopup from './components/editInterfacePopup';
 import {SearchMapPopup, SearchTrafficPopup} from './components/searchPopups';
 export function MainPage() {
   /**const [packets, setPackets] = useState(data);
@@ -71,6 +72,7 @@ export function MainPage() {
                 <NavDropdown.Item>Rename Project</NavDropdown.Item>
                 <NavDropdown.Item><EditInitialsPopup/></NavDropdown.Item>
                 <NavDropdown.Item>Import Blacklist</NavDropdown.Item>
+                <NavDropdown.Item><EditInterfacePopup/></NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>Label Link</NavDropdown.Item>
                 <NavDropdown.Item>Add Relationship</NavDropdown.Item>

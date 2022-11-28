@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
-function EditInitialsModal(props) {
+function EditInterfaceModal(props) {
     return (
         <Modal
             {...props}
@@ -13,13 +13,13 @@ function EditInitialsModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Initials
+                    Edit Interface Name
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
             <div className="form-group">
-                    <label htmlFor="name">User Initials</label>
+                    <label htmlFor="name">Interface Name</label>
                     <input className="form-control" id="name" />
                 </div>
                 
@@ -33,16 +33,16 @@ function EditInitialsModal(props) {
     );
 }
 
-function EditInitialsPopup() {
+function EditInterfacePopup() {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
             <div onClick={() => setModalShow(true)}>
-                Edit Initials
+                Edit Interface Name
             </div>
 
-            <EditInitialsModal show={modalShow}
+            <EditInterfaceModal show={modalShow}
                 onHide={() => setModalShow(false)}
             />
         </>
@@ -50,4 +50,4 @@ function EditInitialsPopup() {
     );
 }
 
-export default EditInitialsPopup; 
+export default EditInterfacePopup; 

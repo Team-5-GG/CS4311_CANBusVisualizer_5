@@ -30,6 +30,7 @@ function Modal({closeModal}){
                         <button type="button" onClick={dbcUploader} className="configInputBoxes" id="createProjectTextBox"> Import DBC File</button>
                         <input className="configInputBoxes" id="createProjectTextBox" type="text" placeholder='Event Name'/>
                         <input className="configInputBoxes" id="createProjectTextBox"type="text" placeholder="Set Baud Rate" />
+                        <input className="configInputBoxes" id="createProjectTextBox"type="text" placeholder="Interface Name" />
                     </form>
                 </div>
                 <div className="createProject-footer">
