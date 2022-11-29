@@ -5,7 +5,7 @@ export var traffic
 
 export default function runApp(){
     traffic = new TrafficHolder();
-
+    
     var channel = new Channel('can0', traffic);
 
     channel.start();
@@ -15,6 +15,10 @@ export default function runApp(){
         clearInterval(timer);
 
         let timeRange = [new Date('2022-11-26T21:25:00.000Z'),new Date('2022-11-26T21:26:00.000Z')]
+        
+        // timeRange = JSON.stringify(timeRange)
+
+        // console.log(JSON.parse(timeRange))
 
         console.log(traffic.traffic)
 
@@ -24,7 +28,7 @@ export default function runApp(){
 
         console.log('BEGINNING FILTERING...')
 
-        let filteredPackets = traffic.filterPackets(null, 'AT2', 0)
+        let filteredPackets = traffic.filterPackets(["2022-11-29T03:22:50.000Z", "2022-11-29T03:23:51.000Z"], null, null)
 
         console.log(filteredPackets)
     }, 3000)

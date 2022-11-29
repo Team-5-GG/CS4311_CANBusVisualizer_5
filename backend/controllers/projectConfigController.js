@@ -53,7 +53,7 @@ export const updateProjectConfigById = asyncHandler(async(req, res)=>{
 
 export const createProjectConfig = asyncHandler(async(req, res)=> {
     console.log(req.body)
-    const {userInitials, eventName, baudRate} = req.body
+    const {userInitials, eventName, baudRate, channel, dbcName, blacklistName} = req.body
 
     try{
         const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate, channel})

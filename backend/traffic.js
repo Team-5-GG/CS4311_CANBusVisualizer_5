@@ -18,11 +18,14 @@ export default class TrafficHolder{
         let copyList = this.#traffic.slice()
 
         if(time){
-            filterList.push(...copyList.filter(packet => packet.timestamp.getTime() >= time[0].getTime() && packet.timestamp.getTime() <= time[1].getTime()))
+            let beg = new Date(time[0])
+            let end = new Date(time[1])
+
+            filterList.push(...copyList.filter(packet => packet.timestamp.getTime() >= beg.getTime() && packet.timestamp.getTime() <= end.getTime()))
 
             // take the copied list and filter all other packets that did not match condition
             // so as to possibly get them in the later filters (and prevent duplicates)
-            copyList = copyList.filter(packet => !(packet.timestamp.getTime() >= time[0].getTime() && packet.timestamp.getTime() <= time[1].getTime()))
+            copyList = copyList.filter(packet => !(packet.timestamp.getTime() >= beg.getTime() && packet.timestamp.getTime() <= end.getTime()))
         }
 
         if(node){

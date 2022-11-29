@@ -1,4 +1,4 @@
-import { traffic } from "../App"
+import { traffic } from "../App.js"
 
 export const getFilteredPackets = (req, res) => {
     try {
@@ -6,11 +6,8 @@ export const getFilteredPackets = (req, res) => {
 
         let filteredPackets = traffic.filterPackets(time, name, size)
 
-        res.status(200).json({filteredPackets})
+        res.status(200).json(filteredPackets)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
-    
-
-    
 }
