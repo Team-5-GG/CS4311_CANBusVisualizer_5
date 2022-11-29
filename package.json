@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "datatables.net-bs5": "^1.13.1",
+    "datatables.net-buttons-bs5": "^2.3.3",
+    "jquery": "^3.6.1",
     "start": "^5.1.0"
   }
 }
