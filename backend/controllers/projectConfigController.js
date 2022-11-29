@@ -29,6 +29,10 @@ export const getProjectConfigById  = asyncHandler(async(req, res) => {
     res.status(200).json(projectConfig)
 })
 
+export const recieveProject = asyncHandler(async(req, res) => {
+    
+})
+
 export const updateProjectConfigById = asyncHandler(async(req, res)=>{
     const { id } = req.params
 
@@ -56,7 +60,7 @@ export const createProjectConfig = asyncHandler(async(req, res)=> {
     const {userInitials, eventName, baudRate, channel, dbcName, blacklistName} = req.body
 
     try{
-        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate, channel})
+        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate, channel, dbcName, blacklistName})
         res.status(200).json(projectConfig)
     } catch(error){
         res.status(400).json({error: error.message})

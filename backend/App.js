@@ -2,16 +2,17 @@ import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
 
 export var traffic
+export var channel
 
 export default function runApp(){
     traffic = new TrafficHolder();
     
-    var channel = new Channel('can0', traffic);
+    channel = new Channel('can0', traffic);
 
     channel.start();
 
     var timer = setInterval(function(){
-        channel.stop(); 
+        channel.stop();
         clearInterval(timer);
 
         let timeRange = [new Date('2022-11-26T21:25:00.000Z'),new Date('2022-11-26T21:26:00.000Z')]
@@ -28,7 +29,9 @@ export default function runApp(){
 
         console.log('BEGINNING FILTERING...')
 
-        let filteredPackets = traffic.filterPackets(["2022-11-29T03:22:50.000Z", "2022-11-29T03:23:51.000Z"], null, null)
+        timeRange = ["2022-11-29T03:22:50.000Z", "2022-11-29T03:23:51.000Z"]
+
+        let filteredPackets = traffic.filterPackets(null, 'UPBAC', null)
 
         console.log(filteredPackets)
     }, 3000)

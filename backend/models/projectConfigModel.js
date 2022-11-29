@@ -17,6 +17,14 @@ const projectConfigSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    dbcName: {
+        type: String, 
+        required: true, 
+    }, 
+    blacklistName: {
+        type: String, 
+        required: true,
+    }
 }, {
     timestamps: true
 })
