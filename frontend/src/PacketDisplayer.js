@@ -10,8 +10,13 @@ import 'datatables.net';
 
 export function PacketDisplayer() {
     $(document).ready(function() {
-        $("#dtHorizontalVerticalExample").DataTable();
-      });
+        $("#dtHorizontalVerticalExample").DataTable({
+            retrieve: true,
+            select:true
+        });
+        });
+
+    
 
     return (
         
@@ -34,7 +39,6 @@ export function PacketDisplayer() {
         </div>
     );
 }
-//runApp(app);
 
 export default PacketDisplayer;
 
