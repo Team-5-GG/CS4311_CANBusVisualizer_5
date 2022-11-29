@@ -1,8 +1,10 @@
 import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
 
+export var traffic
+
 export default function runApp(){
-    var traffic = new TrafficHolder();
+    traffic = new TrafficHolder();
 
     var channel = new Channel('can0', traffic);
 
@@ -25,7 +27,7 @@ export default function runApp(){
         let filteredPackets = traffic.filterPackets(null, 'AT2', 0)
 
         console.log(filteredPackets)
-    }, 1000)
+    }, 3000)
 
     // while (true){
     //     channel.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));
