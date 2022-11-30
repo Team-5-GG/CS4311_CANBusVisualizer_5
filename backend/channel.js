@@ -1,13 +1,14 @@
 import can from 'socketcan'
 import Dbc, { Can } from 'dbc-can'
 import PacketManager from './packet.js';
+import { projectDetails } from './controllers/projectConfigController.js';
 
 export default class Channel{
-    constructor(iFace, traffic){
+    constructor(traffic){
         var dbc = new Dbc();
-        this.channel = can.createRawChannel(iFace, true);
+        this.channel = can.createRawChannel(projectDetails.channel, true);
 
-        dbc.load(process.env.DBC).then(data => {
+        dbc.load('./dbc_files/' + projectDetails.dbcName).then(data => {
         var canDBC = new Can(data);
         
         console.log(dbc.data.messages)
@@ -31,7 +32,7 @@ export default class Channel{
                 traffic.addPacket(packet)
 
             } catch (error) {
-                // console.log(error)
+                console.log(error)
             }
         });
         })

@@ -1,5 +1,6 @@
 import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
+import { projectDetails } from "./controllers/projectConfigController.js";
 
 export var traffic
 export var channel
@@ -7,34 +8,34 @@ export var channel
 export default function runApp(){
     traffic = new TrafficHolder();
     
-    channel = new Channel('can0', traffic);
+    channel = new Channel(traffic);
 
     channel.start();
 
-    var timer = setInterval(function(){
-        channel.stop();
-        clearInterval(timer);
+    // var timer = setInterval(function(){
+    //     channel.stop();
+    //     clearInterval(timer);
 
-        let timeRange = [new Date('2022-11-26T21:25:00.000Z'),new Date('2022-11-26T21:26:00.000Z')]
+    //     let timeRange = [new Date('2022-11-26T21:25:00.000Z'),new Date('2022-11-26T21:26:00.000Z')]
         
-        // timeRange = JSON.stringify(timeRange)
+    //     // timeRange = JSON.stringify(timeRange)
 
-        // console.log(JSON.parse(timeRange))
+    //     // console.log(JSON.parse(timeRange))
 
-        console.log(traffic.traffic)
+    //     console.log(traffic.traffic)
 
-        console.log(traffic.traffic[0].timestamp)
+    //     console.log(traffic.traffic[0].timestamp)
 
-        console.log(new Date('2022-11-26T21:03:00.000Z'))
+    //     console.log(new Date('2022-11-26T21:03:00.000Z'))
 
-        console.log('BEGINNING FILTERING...')
+    //     console.log('BEGINNING FILTERING...')
 
-        timeRange = ["2022-11-29T03:22:50.000Z", "2022-11-29T03:23:51.000Z"]
+    //     timeRange = ["2022-11-29T03:22:50.000Z", "2022-11-29T03:23:51.000Z"]
 
-        let filteredPackets = traffic.filterPackets(null, 'UPBAC', null)
+    //     let filteredPackets = traffic.filterPackets(null, 'UPBAC', null)
 
-        console.log(filteredPackets)
-    }, 3000)
+    //     console.log(filteredPackets)
+    // }, 3000)
 
     // while (true){
     //     channel.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));

@@ -5,23 +5,14 @@ export var gfsData
 
 const connectDB = async () => {
     try {
-        const conn = mongoose.createConnection('mongodb+srv://mjones:' + encodeURIComponent('1234') + '@canbusproject.wfexvro.mongodb.net/?retryWrites=true&w=majority', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            // useCreateIndex: true,
-          });
-          
-          conn.once('open', () => {
-            gfsDBC = new mongoose.mongo.GridFSBucket(conn.db, {
-              bucketName: 'DBC',
-            });
-          });
-
-          conn.once('open', () => {
-            gfsData = new mongoose.mongo.GridFSBucket(conn.db, {
-              bucketName: 'projectdata',
-            });
-          });
+        //database Name
+        const databaseName='CAN_Bus_Visualizer';
+        const con = await mongoose.connect('mongodb+srv://mjones:' + encodeURIComponent('1234') + '@canbusproject.wfexvro.mongodb.net/?retryWrites=true&w=majority', { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        // useCreateIndex: true
+    });
+        console.log(`Database connected : ${con.connection.host}`)
     } catch (error) {
         console.error(`Error: ${error.message}`)
         process.exit(1)

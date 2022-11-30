@@ -1,6 +1,9 @@
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
 import ProjectConfig from '../models/projectConfigModel.js'
+import runApp from '../App.js'
+
+export var projectDetails
 
 //getprojectConfigs function to get all projectConfigs
 export const getProjectConfig = asyncHandler(async(req, res) => {
@@ -29,8 +32,13 @@ export const getProjectConfigById  = asyncHandler(async(req, res) => {
     res.status(200).json(projectConfig)
 })
 
-export const recieveProject = asyncHandler(async(req, res) => {
-    
+export const openProject = asyncHandler(async(req, res) => {
+    console.log(req.body)
+    projectDetails = {...req.body}
+
+    res.status(200).json({message: 'Opening project...'})
+
+    runApp()
 })
 
 export const updateProjectConfigById = asyncHandler(async(req, res)=>{
@@ -57,11 +65,13 @@ export const updateProjectConfigById = asyncHandler(async(req, res)=>{
 
 export const createProjectConfig = asyncHandler(async(req, res)=> {
     console.log(req.body)
-    const {userInitials, eventName, baudRate, channel, dbcName, blacklistName} = req.body
+    projectDetails = {...req.body}
 
     try{
-        const projectConfig = await ProjectConfig.create({userInitials, eventName, baudRate, channel, dbcName, blacklistName})
+        const projectConfig = await ProjectConfig.create(projectDetails)
         res.status(200).json(projectConfig)
+
+        runApp()
     } catch(error){
         res.status(400).json({error: error.message})
     }
