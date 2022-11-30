@@ -1,14 +1,14 @@
 import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
-import { projectDetails } from "./controllers/projectConfigController.js";
+// import NodeHolder from "./nodelist.js";
 
+export var nodeHolder
 export var traffic
-export var channel
 
 export default function runApp(){
     traffic = new TrafficHolder();
     
-    channel = new Channel(traffic);
+    let channel = new Channel(traffic);
 
     channel.start();
 
