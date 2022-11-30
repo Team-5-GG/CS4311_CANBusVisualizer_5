@@ -32,6 +32,7 @@ export const getProjectConfigById  = asyncHandler(async(req, res) => {
     res.status(200).json(projectConfig)
 })
 
+//Opens project
 export const openProject = asyncHandler(async(req, res) => {
     console.log(req.body)
     projectDetails = {...req.body}
@@ -63,6 +64,7 @@ export const updateProjectConfigById = asyncHandler(async(req, res)=>{
     res.status(200).json(projectConfig)
 })
 
+//Creates project
 export const createProjectConfig = asyncHandler(async(req, res)=> {
     console.log(req.body)
     projectDetails = {...req.body}
