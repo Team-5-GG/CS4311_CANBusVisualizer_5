@@ -30,7 +30,7 @@ export default function Traffic() {
             console.log(packetID);
         }
 
-        document.getElementById('packet').innerHTML += `<tr className="packetRow" onclick=\'handleClick('${packetID}, ${packetDataArr}')\'>
+        document.getElementById('packet').innerHTML += `<tr className="packetRow" onclick='handleClick(${packetID}, ${packetDataArr})'>
                 <td>${packetID+"-"+packetName}</td>
                 <td>${packetTime}</td>
                 <td>${packetDest}</td>
