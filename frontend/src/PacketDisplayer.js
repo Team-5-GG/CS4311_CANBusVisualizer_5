@@ -4,22 +4,21 @@ import Traffic from './components/trafficComp.js'
 import { useState } from "react";
 import $ from 'jquery'; 
 //import data from "./fakeTraffic-data.json";
-import 'datatables.net';
+import 'datatables.net-bs5';
 import 'datatables.net-buttons-bs5';
 
 
 
+
 export function PacketDisplayer() {
-    let table = $(document).ready(function() {
+    $(document).ready(function() {
         $("#dtHorizontalVerticalExample").DataTable({
             retrieve: true,
-            select:true,
-            buttons:[
-                'Edit', 'Replay', 'Delete'
-            ]
+            "bLengthChange": false,
+            "bPaginate": false,
+            
         });
-        });
-    table.buttons().container().appendTo($('.col-sm-6:eq(0)', table.table().container()));
+    });
 
     
 
@@ -40,6 +39,8 @@ export function PacketDisplayer() {
                 </thead>
                 <Traffic />
             </table>
+            <link rel="stylesheet" href="https://cdn.datatables.net/select/1.5.0/css/select.bootstrap5.min.css"></link>
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"></link>
         </div>
     );
 }
