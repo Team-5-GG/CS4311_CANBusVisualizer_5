@@ -176,7 +176,6 @@ function CanMap(){
     //create graph from JSON file
     // load();
 
-
     var union;
     let nodes = [];
 
@@ -186,31 +185,19 @@ function CanMap(){
       }
       // const union = loadContentFromLog();
       console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
-      // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
-      diagram.model = go.Model.fromJson(
-        `{ "class": "GraphLinksModel",
-        "linkFromPortIdProperty": "fromPort",
-        "linkToPortIdProperty": "toPort",
-        "nodeDataArray": [ 
-      {"category":"input", "key":-1, "loc":"-260 -420"},
-      {"category":"input", "key":-2, "loc":"-190 -420"},
-      {"category":"input", "key":-3, "loc":"-120 -420"},
-      {"category":"input", "key":-4, "loc":"-50 -420"},
-      {"category":"output", "key":-10, "loc":"250 -280"},
-      {"category":"output", "key":-11, "loc":"250 -220"},
-      {"category":"or", "key":-7, "loc":"40 -320"},
-      {"category":"or", "key":-8, "loc":"40 -260"}
-       ],
-        "linkDataArray": [ 
-      {"from":-2, "to":-7, "fromPort":"", "toPort":"in1"},
-      {"from":-3, "to":-8, "fromPort":"", "toPort":"in1"},
-      {"from":-4, "to":-7, "fromPort":"", "toPort":"in2"},
-      {"from":-4, "to":-8, "fromPort":"", "toPort":"in2"},
-      {"from":-7, "to":-10, "fromPort":"out", "toPort":""},
-      {"from":-8, "to":-11, "fromPort":"out", "toPort":""}
-       ]}`
-      );
-    
+      //definition of the node array
+      var nodeDataArray = 
+      [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }];
+      //definition of the link array
+      var linkDataArray = [
+        { key: -1, from: 0, to: 1 },
+        { key: -2, from: 0, to: 2 },
+        { key: -3, from: 1, to: 1 },
+        { key: -4, from: 2, to: 3 },
+        { key: -5, from: 3, to: 0 }
+      ];
+      //render the updated design of canbus
+      diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     }
 
     function loadContentFromLog(){
