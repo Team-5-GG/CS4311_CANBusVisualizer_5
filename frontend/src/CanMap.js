@@ -1,5 +1,8 @@
 import * as go from "gojs";
+import './displayer.css';
+import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 
+//JS map
 function CanMap(){
     //other variables
     const portSize = new go.Size(8, 8);
@@ -19,7 +22,7 @@ function CanMap(){
           })
         });
     //node template definition
-    diagram.nodeTemplateMap.add("HBar",
+    diagram.nodeTemplateMap.add("",
         $(go.Node, 'Horizontal',  // This means everything inside this template will be laid out horizontally. the Shape will go around the TextBlock
         
         $(go.Panel, "Spot",
@@ -93,13 +96,35 @@ function CanMap(){
         }
         )//end of node definition
         );//end of HBar
+        //link template definition
     diagram.linkTemplate =
     $(go.Link,
-        {routing: go.Link.Orthogonal},
-        $(go.Shape,
-            {stroke: "black", strokeWidth: 2})
+      { relinkableFrom: true, relinkableTo: true, curve: go.Link.Bezie, routing: go.Link.Orthogonal },  // Bezier curve
+      $(go.Shape),
+      $(go.Shape, { toArrow: "Standard" })
     );//end of link
     
+
+//data definition
+
+
+var nodeDataArray = [
+  { key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }
+];
+
+//Should also use JSON
+var linkDataArray = [
+  { key: -1, from: 0, to: 1 },
+  { key: -2, from: 0, to: 2 },
+  { key: -3, from: 1, to: 1 },
+  { key: -4, from: 2, to: 3 },
+  { key: -5, from: 3, to: 0 },
+];
+
+
+
+diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
 
 
 
