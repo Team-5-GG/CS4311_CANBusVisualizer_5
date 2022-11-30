@@ -16,6 +16,7 @@ export function PacketDisplayer() {
             retrieve: true,
             "bLengthChange": false,
             "bPaginate": false,
+            select: true
             
         });
     });
