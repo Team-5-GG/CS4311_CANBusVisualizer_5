@@ -4,11 +4,12 @@ import Channel from "./channel.js";
 
 export var nodeHolder
 export var traffic
+var channel
 
-export default function runApp(){
+export function runApp(){
     traffic = new TrafficHolder();
     
-    let channel = new Channel(traffic);
+    channel = new Channel(traffic);
 
     channel.start();
 
@@ -40,4 +41,12 @@ export default function runApp(){
     // while (true){
     //     channel.send('392', Buffer.from([0x01, 0x00, 0x00, 0x00]));
     // }
+}
+
+export function stopApp(){
+    console.log('Releasing variables...')
+    traffic = undefined
+
+    console.log('Closing channel...')
+    channel.stop()
 }

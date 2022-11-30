@@ -10,7 +10,7 @@ import protocol from './Protocols.js'
 import CANChannel from './channel.js'
 import packetStreamRoutes from './routes/packetStream.js'
 import nodeStreamRoutes from './routes/nodeStream.js'
-import runApp from './App.js'
+import {runApp} from './App.js'
 
 
 dotenv.config()

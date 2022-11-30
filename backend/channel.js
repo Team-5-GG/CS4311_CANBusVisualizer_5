@@ -16,7 +16,7 @@ export default class Channel{
         this.channel.addListener('onMessage', (msg) => {
             try{
    
-                console.log(msg)
+                // console.log(msg)
                 let dbcid = 4 << 29;
                 dbcid = dbcid | msg.id;
                 dbcid = dbcid >>> 0;
@@ -25,14 +25,14 @@ export default class Channel{
                 let boundMsg = canDBC.decode(canFrame)
                 let boundSignals = boundMsg?.signals;
 
-                console.log(boundSignals)
+                // console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
 
                 traffic.addPacket(packet)
 
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
         });
         })
