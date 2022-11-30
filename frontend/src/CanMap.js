@@ -173,11 +173,12 @@ function CanMap(){
       });
       diagram.commitTransaction("addPort");
     }
-    //create graph from JSON file
-    // load();
 
+    //create graph from new information from the map
+    //global variables
     var union;
     let nodes = [];
+
 
     function load(){
       if(!union){
@@ -186,8 +187,8 @@ function CanMap(){
       // const union = loadContentFromLog();
       console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
       //definition of the node array
-      var nodeDataArray = 
-      [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }];
+      var nodeDataArray = pupulateNodeArray();
+      // [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }];
       //definition of the link array
       var linkDataArray = [
         { key: -1, from: 0, to: 1 },
@@ -242,6 +243,41 @@ function CanMap(){
         }
       }
     }
+
+
+    function pupulateNodeArray(){
+      console.log('LInside populate method!!!');
+      var len = union.length;
+      // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
+      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + len);
+      var nodeArray = [];
+      //this is the canbus:
+      nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
+      //add the union:
+      
+      var i = 0;
+      while(i <= len-1){//for each element in the rendered node array
+        var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
+        nodeArray.push(createNewNode(twoLetterName)); //place it in the map
+        i++;
+      }
+      
+      return nodeArray;
+    
+    }//END of pupulateNodeArray()
+    
+    function createNewNode(twoLetterName){
+      var nodeItem = {};
+      nodeItem.key = 0;
+      nodeItem.portID = 'testPort';
+      nodeItem.text = JSON.parse(twoLetterName);
+      nodeItem.loc = '50 50';
+      nodeItem.figure = 'LineH';
+      nodeItem.width = 0;
+      nodeItem.height = 0;
+      return nodeItem;
+    }//END of createNewNode
+
     //renders map using the data defined above that's a basic canbus line
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
