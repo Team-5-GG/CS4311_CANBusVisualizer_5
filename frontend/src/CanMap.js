@@ -181,13 +181,11 @@ function CanMap(){
     let nodes = [];
 
     function load(){
-      // loadContentFromLog();
       if(!union){
         loadContentFromLog();
-        // union = [1,2,3];
       }
       // const union = loadContentFromLog();
-      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0].name);
+      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
       // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
       diagram.model = go.Model.fromJson(
         `{ "class": "GraphLinksModel",
@@ -245,7 +243,8 @@ function CanMap(){
         console.log("FROM MAP! numGroupings: "+numGroupings);
     
         console.log("FROM MAP! map.values "+[...map.values()])
-        nodes = union
+        union = [...map.values()];
+        // nodes = union;
         
         console.log('dataName: '+data[data.length-1].name)
         //console.log('dlc: '+data[data.length-1].dlc)
