@@ -14,8 +14,6 @@ export function PacketDisplayer() {
     $(document).ready(function() {
         $("#dtHorizontalVerticalExample").DataTable({
             retrieve: true,
-            processing: true,
-            serverSide: true,
             "bLengthChange": false,
             "bPaginate": false,
             select: true

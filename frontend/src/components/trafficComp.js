@@ -32,6 +32,13 @@ export default function Traffic() {
                 <td>${packetDest}</td>
                 <td>${packetDataArr}</td>
                 <td>${"Some Description"}</td> </tr>`
+
+        
+        const rowsToAddClickListener = document.querySelectorAll(".packetRow")
+        if (rowsToAddClickListener){
+            rowsToAddClickListener.forEach((item) => {item.addEventListener("click", function(){console.log(item)})});
+        }
+        
         //console.log("traffic-->"+packetID+"-"+packetName)
         //<Packet iD={packetID} name={packetName} ts={packetTime} data={packetDest} dest={packetDataArr} ></Packet> */}
         return () => {
