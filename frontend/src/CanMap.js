@@ -2,10 +2,7 @@ import * as go from "gojs";
 import './displayer.css';
 import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
 import { useState, useEffect } from 'react'
-//JS map
-// if(!union){
-//   union = [];
-// }
+
 function CanMap(){
     //other variables
     const portSize = new go.Size(8, 8);
@@ -180,7 +177,18 @@ function CanMap(){
     // load();
 
 
+    var union;
+    let nodes = [];
+
     function load(){
+      // loadContentFromLog();
+      if(!union){
+        loadContentFromLog();
+        // union = [1,2,3];
+      }
+      // const union = loadContentFromLog();
+      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0].name);
+      // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
       diagram.model = go.Model.fromJson(
         `{ "class": "GraphLinksModel",
         "linkFromPortIdProperty": "fromPort",
@@ -207,6 +215,47 @@ function CanMap(){
     
     }
 
+    function loadContentFromLog(){
+      console.log("test run");
+      // LoadCanData
+      // diagram.model = go.Model.fromJson(
+      //     document.getElementById("mySavedModel").value
+      // );
+      const eventSource = new EventSource('http://localhost:5000/node-stream');
+      eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
+        //const data = JSON.parse(e.data)
+        var map = new Map();
+        const data = JSON.parse(e.data)
+        union = [...new Set([...nodes, ...data])];
+        var numGroupings = 0;
+    
+        for(var i = 0; i < union.length; i++){
+            var name = union[i].name;
+            var firsttwo= name.slice(0,2);
+    
+            if(!map.has(firsttwo)){
+    
+                map.set(firsttwo, firsttwo)
+                numGroupings++
+    
+            }
+    
+        }
+    
+        console.log("FROM MAP! numGroupings: "+numGroupings);
+    
+        console.log("FROM MAP! map.values "+[...map.values()])
+        nodes = union
+        
+        console.log('dataName: '+data[data.length-1].name)
+        //console.log('dlc: '+data[data.length-1].dlc)
+        //console.log('signals: '+data[data.length-1].signals)
+        console.log('desc: '+data[data.length-1].desc)
+        return () => {
+            eventSource.close();
+        }
+      }
+    }
     //renders map using the data defined above that's a basic canbus line
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
@@ -216,52 +265,6 @@ function CanMap(){
   //end of extra functions definitions
   return diagram;
   // window.addEventListener('DOMContentLoaded', init);
+
 }//end of CanMap class
 export default CanMap;
-
-
-
-
-
-
-function loadContentFromLog(){
-  let nodes = []
-  console.log("test run");
-  // LoadCanData
-  // diagram.model = go.Model.fromJson(
-  //     document.getElementById("mySavedModel").value
-  // );
-  const eventSource = new EventSource('http://localhost:5000/node-stream');
-  eventSource.onmessage = (e) => {//console.log('e.data ' + e.data.length)
-    //const data = JSON.parse(e.data)
-    var map = new Map();
-    const data = JSON.parse(e.data)
-    var union = [...new Set([...nodes, ...data])];
-    var numGroupings = 0;
-
-    for(var i = 0; i < union.length; i++){
-        var name = union[i].name;
-        var firsttwo= name.slice(0,2);
-
-        if(!map.has(firsttwo)){
-
-            map.set(firsttwo, firsttwo)
-            numGroupings++
-
-        }
-
-    }
-
-    console.log("FROM MAP! numGroupings: "+numGroupings);
-
-    console.log("FROM MAP! map.values "+[...map.values()])
-    nodes = union
-    console.log('dataName: '+data[data.length-1].name)
-    //console.log('dlc: '+data[data.length-1].dlc)
-    //console.log('signals: '+data[data.length-1].signals)
-    console.log('desc: '+data[data.length-1].desc)
-    return () => {
-        eventSource.close();
-    }
-  }
-}
