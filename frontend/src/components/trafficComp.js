@@ -26,16 +26,18 @@ export default function Traffic() {
         packetDest = data.packet.rawPacket.id
         traffPackets.push([packetID, packetName, packetTime, packetDataArr, packetDest])
 
-        document.getElementById('packet').innerHTML += `<tr className="packetRow" onClick='handleClick(${packetID}, ${packetDataArr})'>
+        function handleClick(packetID, packetDataArr){
+            console.log(packetID);
+        }
+
+        document.getElementById('packet').innerHTML += `<tr className="packetRow" onclick=\'handleClick('${packetID}, ${packetDataArr}')\'>
                 <td>${packetID+"-"+packetName}</td>
                 <td>${packetTime}</td>
                 <td>${packetDest}</td>
                 <td>${packetDataArr}</td>
                 <td>${"Some Description"}</td> </tr>`
 
-        function handleClick(packetID, packetDataArr){
-            console.log(packetID);
-        }
+        
 
         
         // const rowsToAddClickListener = document.querySelectorAll(".packetRow")
