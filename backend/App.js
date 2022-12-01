@@ -11,8 +11,7 @@ export function runApp(){
     nodeHolder = new NodeHolder();
 
     channel = new Channel(5, traffic, nodeHolder);
-
-    channel.start();
+    channel.start()
 }
 
 export function stopApp(){

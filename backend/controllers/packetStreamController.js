@@ -9,13 +9,13 @@ export const getPacketStream = (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     res.flushHeaders();
 
-    channel.start()
+    // channel.start()
     let interValID = setInterval(() => {
         res.write(`data: ${JSON.stringify({packet: traffic.traffic[traffic.traffic.length-1]})}\n\n`); // res.write() instead of res.send()
     }, 500);
 
     res.on('close', () => {
-        channel.stop()
+        // channel.stop()
         console.log('client dropped me');
         clearInterval(interValID);
         res.end();

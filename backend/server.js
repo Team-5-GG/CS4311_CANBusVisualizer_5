@@ -1,7 +1,6 @@
 import connectDB from './config/db.js'
 import dotenv  from 'dotenv'
 import express from 'express'
-import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
 import packetStreamRoutes from './routes/packetStreamRoute.js'
 import filterRoutes from './routes/filterRoute.js'
@@ -22,7 +21,6 @@ connectDB()
 app.use(express.json())
 //app.use(fileUpload())
 
-app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
 app.use('/api/filterPackets', filterRoutes)
 app.use('/packet-stream', packetStreamRoutes)

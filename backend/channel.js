@@ -49,7 +49,6 @@ export default class Channel{
 
     start(){
         console.log('running start');
-        //this.isStarted = true;
         this.channel.start()
     }
 
