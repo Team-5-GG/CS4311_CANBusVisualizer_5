@@ -4,6 +4,9 @@ import express from 'express'
 import analystRoutes from './routes/analystRoute.js'
 import projectConfigRoutes from './routes/projectConfigRoute.js'
 import runApp from './App.js'
+import packetStreamRoutes from './routes/packetStreamRoute.js'
+import exportRoutes from './routes/exportRoutes.js'
+import fileUpload from "express-fileupload";
 
 
 dotenv.config()
@@ -15,9 +18,13 @@ const PORT = process.env.PORT
 //connectDB()
 
 app.use(express.json())
+app.use(fileUpload())
 
 app.use('/api/analysts', analystRoutes)
 app.use('/api/projectConfig', projectConfigRoutes)
+app.use('/packet-stream', packetStreamRoutes)
+app.use('/node-stream', packetStreamRoutes)
+app.use('/api/export', exportRoutes)
 
 //Creating API for user
 app.get('/', (req, res)=>{

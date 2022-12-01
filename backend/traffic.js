@@ -1,3 +1,4 @@
+
 export default class TrafficHolder{
     #traffic;
     constructor(){
@@ -6,6 +7,10 @@ export default class TrafficHolder{
 
     get traffic(){
         return this.#traffic
+    }
+
+    toFile(){
+        return JSON.stringify();
     }
 
     addPacket(packet){

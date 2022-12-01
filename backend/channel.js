@@ -6,6 +6,7 @@ import NodeHolder from './nodelist.js';
 
 export default class Channel{
     constructor(iFace, baudRate, traffic, nodeHolder){
+        //var isStarted = false;
         var dbc = new Dbc();
         this.channel = can.createRawChannel(iFace, true);
 
@@ -48,12 +49,20 @@ export default class Channel{
     }
 
     start(){
+        console.log('running start');
+        //this.isStarted = true;
         this.channel.start()
     }
 
     stop(){
+        console.log('running stop');
+        //this.isStarted = false;
         this.channel.stop()
     }
+
+    //isStarted(){
+    //    return this.isStarted;
+    //}
 
     send(id, buffer){
         try{
