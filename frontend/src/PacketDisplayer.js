@@ -3,7 +3,7 @@ import ContextMenu from "./ContextMenu";
 import Traffic from './components/trafficComp.js'
 import { useState } from "react";
 //import data from "./fakeTraffic-data.json";
-
+import FilterPopUp from "./components/FilterPopUp";
 
 
 export function PacketDisplayer() {
@@ -11,7 +11,7 @@ export function PacketDisplayer() {
     return (
         
         <div className="packetDisplayerContainer">
-            <button class="filter">Filter</button>
+            <button class="filter"><FilterPopUp/></button>
 
             <table id="dtHorizontalVerticalExample" className="table table-striped table-bordered table-sm table-hover" cellSpacing="0" width="100%">
                 <thead>
