@@ -194,13 +194,7 @@ function CanMap(){
       var nodeDataArray = pupulateNodeArray();
       // [{ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] }];
       //definition of the link array
-      var linkDataArray = [
-        { key: -1, from: 0, to: 1 },
-        { key: -2, from: 0, to: 2 },
-        { key: -3, from: 1, to: 1 },
-        { key: -4, from: 2, to: 3 },
-        { key: -5, from: 3, to: 0 }
-      ];
+      var linkDataArray = populateLinkArray();
       //render the updated design of canbus
       diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     }
@@ -322,9 +316,29 @@ function CanMap(){
       return arrayItem;
     }
     // END OF CAN BUS FUNCTIONS
-
+    function populateLinkArray(){
+      var unionLen = union.length;
+      var linkArray = [];
+      //for each node create a new link
+      var i = 0;
+      while(i <= unionLen-1){
+        console.log("heeeeeeeey" + union[i])
+        var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
+        linkArray.push(createNewLink(twoLetterName)); //place it in the map
+        i++;
+      }
+      return linkArray;
+    }
     // Create link between nodes and ports
-
+    function createNewLink(twoLetterName){ 
+      var linkItem = {};
+      linkItem.from = 'baseLine'; //this is the canbus itself 
+      linkItem.to = JSON.parse(twoLetterName);
+      // linkItem.fromPort = JSON.parse(twoLetterName);
+      linkItem.toPort = JSON.parse(twoLetterName);
+      // linkItem.labelKeys = [ "A-B" ];
+      return linkItem;
+    }
 // ----------------------------------------------------------------------------------------------------------------------
     //renders map using the data defined above that's a basic canbus line
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
