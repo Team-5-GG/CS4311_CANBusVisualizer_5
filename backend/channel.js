@@ -28,6 +28,7 @@ export default class Channel{
                 console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, data.messages.get(boundMsg.name).description, boundSignals)
+                console.log(packet)
                 if(!nodeHolder.inList(boundMsg.name)){
                     var tempnode = dbc.data.messages.get(boundMsg.name);
                     var node = new NodeManager(tempnode.name,tempnode.id,tempnode.dlc,tempnode.sendingNode,tempnode.signals,tempnode.description);
