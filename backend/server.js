@@ -7,6 +7,7 @@ import filterRoutes from './routes/filterRoute.js'
 import exportRoutes from './routes/exportRoute.js'
 import importRoutes from './routes/importRoute.js'
 import nodeStreamRoutes from './routes/nodeStreamRoute.js'
+import sendPacketRoutes from './routes/sendPacketRoute.js'
 //import fileUpload from "express-fileupload";
 
 
@@ -27,6 +28,7 @@ app.use('/packet-stream', packetStreamRoutes)
 app.use('/node-stream', nodeStreamRoutes)
 app.use('/api/export', exportRoutes)
 app.use('/api/import', importRoutes)
+app.use('/api/send-packet', sendPacketRoutes)
 
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
