@@ -7,9 +7,9 @@ let Filter = (props) => {
 
     let [state, setState] = useState({
         input: {
-            size: '',
+            time: '',
             name: '',
-            node: ''
+            size: ''
 
         }
     });
@@ -23,7 +23,7 @@ let Filter = (props) => {
             }
         })
     };
-
+    //once user clicks filter button, post to URL
     let submit = (e) => {
         e.preventDefault();
         console.log(state.input);
@@ -32,7 +32,7 @@ let Filter = (props) => {
 
     return (
         <>
-            <pre>Confirming update in RT {JSON.stringify(state)}</pre>
+            {/* <pre>Confirming update in RT {JSON.stringify(state)}</pre> */}
             <Modal
                 {...props}
                 size="lg"
@@ -49,16 +49,16 @@ let Filter = (props) => {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3">
-                            <Form.Label className="mb-0"><b>Size:</b></Form.Label>
-                            <Form.Control className="" name="source" onChange={updateInput} type="text" placeholder="Source"></Form.Control>
+                            <Form.Label className="mb-0"><b>Time:</b></Form.Label>
+                            <Form.Control className="" name="source" onChange={updateInput} type="text" placeholder="Time"></Form.Control>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label className="mb-0"><b>Name:</b></Form.Label>
-                            <Form.Control className="" name="source" type="text" placeholder="Source"></Form.Control>
+                            <Form.Control className="" name="source" type="text" placeholder="Name"></Form.Control>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label className="mb-0"><b>Node:</b></Form.Label>
-                            <Form.Control className="" name="source" type="text" placeholder="Source"></Form.Control>
+                            <Form.Label className="mb-0"><b>Size:</b></Form.Label>
+                            <Form.Control className="" name="source" type="text" placeholder="Size"></Form.Control>
                         </Form.Group>
                         <Form.Group className="mb-1">
                             <Button onClick={submit} variant="dark" type="submit"><b>Filter</b></Button>{' '}
