@@ -3,14 +3,13 @@ import Dbc, { Can } from 'dbc-can'
 import PacketManager from './packet.js';
 import NodeManager from './node.js';
 import NodeHolder from './nodelist.js';
-
+import { projectDetails } from './controllers/projectConfigController.js';
 export default class Channel{
-    constructor(iFace, baudRate, traffic, nodeHolder){
-        //var isStarted = false;
+    constructor(baudRate, traffic, nodeHolder){
         var dbc = new Dbc();
-        this.channel = can.createRawChannel(iFace, true);
+        this.channel = can.createRawChannel(projectDetails.channel, true);
 
-        dbc.load(process.env.DBC).then(data => {
+        dbc.load('./dbc_files/' + projectDetails.dbcName).then(data => {
         var canDBC = new Can(data);
 
         this.channel.addListener('onMessage', (msg) => {
