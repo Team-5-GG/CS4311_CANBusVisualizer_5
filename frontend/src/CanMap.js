@@ -120,6 +120,8 @@ function CanMap(){
     diagram.layout = $(go.TreeLayout, { angle: 270 });
 
 
+// --------------------------------------------------------------------------------------------
+
 
     //additional functions that allow extra functionalities for the map
     function makeButton(text, action, visiblePredicate) {
@@ -149,6 +151,7 @@ function CanMap(){
     
     // Add a port to the specified side of the selected nodes.
     function addPort(side) {
+      console.log("creating a new port!!!");
       diagram.startTransaction("addPort");
       diagram.selection.each(node => {
         // skip any selected Links
@@ -178,6 +181,7 @@ function CanMap(){
     //global variables
     var union;
     let nodes = [];
+    
 
 
     function load(){
@@ -244,19 +248,21 @@ function CanMap(){
       }
     }
 
-
+// -----------------------------------------------------------------------------
+// NODE AND LINK TEMPLATES , used to populate can bus
     function pupulateNodeArray(){
+      var unionLen = union.length;
+      // port test
       console.log('LInside populate method!!!');
-      var len = union.length;
       // console.log("Print keys Inside populate method!!! Inside populate method!!!: " + union[0]);
-      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + len);
+      console.log("Print keys Inside populate method!!! Inside populate method!!!: " + unionLen);
       var nodeArray = [];
       //this is the canbus:
-      nodeArray.push({ key: 'baseLine', color: 'red', loc: '0 0', figure: 'LineH', select: true, pick: true, width: 650, height: 3,to:true,from: true,topArray: [{portColor:'#FF0000',portId:'top0'},{portColor:'#FF0000',portId:'top1'},{portColor:'#FF0000',portId:'top2'},{portColor:'#FF0000',portId:'top3'}] });
+      nodeArray.push(createCanBusNode());
       //add the union:
       
       var i = 0;
-      while(i <= len-1){//for each element in the rendered node array
+      while(i <= unionLen-1){//for each element in the rendered node array
         var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
         nodeArray.push(createNewNode(twoLetterName)); //place it in the map
         i++;
@@ -268,7 +274,7 @@ function CanMap(){
     
     function createNewNode(twoLetterName){
       var nodeItem = {};
-      nodeItem.key = 0;
+      nodeItem.key = JSON.parse(twoLetterName); //two letter name holds the unique two letter representation of each node name
       nodeItem.portID = 'testPort';
       nodeItem.text = JSON.parse(twoLetterName);
       nodeItem.loc = '50 50';
@@ -277,7 +283,49 @@ function CanMap(){
       nodeItem.height = 0;
       return nodeItem;
     }//END of createNewNode
+    
+    // CAN BUS FUNCTIONS
+    function createCanBusNode(){ 
+      var nodeItem = {};
+      nodeItem.key = 'baseLine'; //this is the canbus itself 
+      nodeItem.color = 'red';
+      nodeItem.loc = '0 0';
+      nodeItem.figure = 'LineH';
+      nodeItem.select = true;
+      nodeItem.pick = true;
+      nodeItem.width = 1000;
+      nodeItem.height = 3;
+      nodeItem.to = true;
+      nodeItem.from = true;
+      nodeItem.topArray = populatePortsArray();
+      return nodeItem;
+    }
 
+    function populatePortsArray(){//each node will have a custom id that represent the node is going to be linked to
+      var unionLen = union.length;
+      var topArray = [];
+      var i = 0;
+      while(i <= unionLen-1){//for each element in the rendered node array
+        var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
+        topArray.push(createPort(twoLetterName)); //place it in the map
+        i++;
+      }
+
+      // topArray.push(createPort(JSON.stringify("top0")));
+      return topArray;
+    }
+
+    function createPort(customID){
+      var arrayItem = {};
+      arrayItem.portColor ='#FF0000';
+      arrayItem.portId = customID;
+      return arrayItem;
+    }
+    // END OF CAN BUS FUNCTIONS
+
+    // Create link between nodes and ports
+
+// ----------------------------------------------------------------------------------------------------------------------
     //renders map using the data defined above that's a basic canbus line
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
