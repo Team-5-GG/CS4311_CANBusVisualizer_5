@@ -70,11 +70,11 @@ margin:0;
   background-color: yellow;
 }
 
-#syncProjectButton{
+#gotoSyncProjectButton{
   background-image: url("./images/main-menu/sync.svg");
   background-color: #ffffff;
 }
-#syncProjectButton:hover{
+#gotoSyncProjectButton:hover{
   background-color: yellow;
 }
 
@@ -163,4 +163,11 @@ margin:0;
 /* END of introConfigPage css */
 .map {
   background-image: url('./images/canbusmap.png');
+}
+
+.filter {
+  background-color: #e7e7e7; 
+  color: black;
+  float: right;
+  border-radius: 4px;
 }

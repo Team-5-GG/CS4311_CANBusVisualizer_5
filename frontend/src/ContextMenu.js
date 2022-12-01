@@ -7,7 +7,7 @@ export function ContextMenu(){
 
     const { anchorPoint, show } = UseContextMenu();
     if (show){
-        console.log("ged")
+        console.log("\nGED\n")//"ged")
         return(
             <>
                 <div id="context-menu" style={{ top: anchorPoint.y, left: anchorPoint.x }}>

@@ -8,9 +8,36 @@ import PacketDisplayer from './PacketDisplayer'
 import { Link } from 'react-router-dom';
 import CreatePopup from './components/createProjectPopup';
 import SavePopUp from './components/savePopUp';
+import ImportPopup from './components/importProjectPopup';
+import OpenPopup from './components/openProjectPopup';
+import DeletePopup from './components/deleteProjectPopup';
+import ArchivePopup from './components/archiveProjectPopup';
+import ExportPopup from './components/exportProjectPopup';
+import SyncPopup from './components/syncProjectPopup';
+import {useState} from 'react';
+
 
 
 export function MainPage() {
+  /**const [packets, setPackets] = useState(data);
+    
+  const url = 'http://localhost:5000/packet-stream';
+  const [data, setData] = useState([]);
+  const [message, setMessage] = useState('');
+    
+  function playTraffic() {
+  const eventSource = new EventSource(url);
+  eventSource.onmessage = (e) => {
+    console.log('something FRONT END');
+    console.log(e);
+    console.log(e.decoded);
+    console.log('FRONT DONE');
+    }
+    return () => {
+        eventSource.close();
+      };
+  }
+  playTraffic();**/
   return (
     <div className="displayer">
       {/* Close button */}
@@ -28,29 +55,24 @@ export function MainPage() {
                 <NavDropdown.Item>
                   <CreatePopup/>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="./">Import</NavDropdown.Item>
-                <NavDropdown.Item href="./">Open</NavDropdown.Item>
+                <NavDropdown.Item><ImportPopup/></NavDropdown.Item>
+                <NavDropdown.Item><OpenPopup/></NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <SavePopUp></SavePopUp>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="./">Delete</NavDropdown.Item>
-                <NavDropdown.Item href="./">Archive</NavDropdown.Item>
-                <NavDropdown.Item href="./">Export</NavDropdown.Item>
-                <NavDropdown.Item href="./">Sync</NavDropdown.Item>
+                <NavDropdown.Item><DeletePopup/></NavDropdown.Item>
+                <NavDropdown.Item ><ArchivePopup/></NavDropdown.Item>
+                <NavDropdown.Item><ExportPopup/></NavDropdown.Item>
+                <NavDropdown.Item><SyncPopup/></NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Edit" id="basic-nav-dropdown">
-                <NavDropdown.Item href="./">Rename Project</NavDropdown.Item>
-                <NavDropdown.Item href="./">Edit Initials</NavDropdown.Item>
-                <NavDropdown.Item href="./">Import Blacklist</NavDropdown.Item>
+                <NavDropdown.Item>Rename Project</NavDropdown.Item>
+                <NavDropdown.Item>Edit Initials</NavDropdown.Item>
+                <NavDropdown.Item>Import Blacklist</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="./">Annotate Node</NavDropdown.Item>
-                <NavDropdown.Item href="./">Label Node</NavDropdown.Item>
-                <NavDropdown.Item href="./">Assign Icon</NavDropdown.Item>
-                <NavDropdown.Item href="./">Change Visibility</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="./">Label Link</NavDropdown.Item>
-                <NavDropdown.Item href="./">Add Relationship</NavDropdown.Item>
+                <NavDropdown.Item>Label Link</NavDropdown.Item>
+                <NavDropdown.Item>Add Relationship</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Search" id="basic-nav-dropdown">
                   <NavDropdown.Item href="./">Map</NavDropdown.Item>
@@ -65,6 +87,7 @@ export function MainPage() {
       </Navbar>
         <CANBusDisplayer></CANBusDisplayer>
         <PacketDisplayer></PacketDisplayer>
+        <script>e</script>
 
       </div>
     </div>
