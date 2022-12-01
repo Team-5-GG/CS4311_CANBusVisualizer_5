@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 
 
 
+
 function initDiagram() {
   console.log("diagram started");
   const $ = go.GraphObject.make;

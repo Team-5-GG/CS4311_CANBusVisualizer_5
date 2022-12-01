@@ -2,11 +2,26 @@ import "./displayer.css"
 import ContextMenu from "./ContextMenu";
 import Traffic from './components/trafficComp.js'
 import { useState } from "react";
+import $ from 'jquery'; 
 //import data from "./fakeTraffic-data.json";
-import FilterPopUp from "./components/FilterPopUp";
+import 'datatables.net-bs5';
+import 'datatables.net-buttons-bs5';
+
+
 
 
 export function PacketDisplayer() {
+    $(document).ready(function() {
+        $("#dtHorizontalVerticalExample").DataTable({
+            retrieve: true,
+            "bLengthChange": false,
+            "bPaginate": false,
+            select: true
+            
+        });
+    });
+
+    
 
     return (
         
@@ -25,11 +40,11 @@ export function PacketDisplayer() {
                 </thead>
                 <Traffic />
             </table>
-            <ContextMenu></ContextMenu>
+            <link rel="stylesheet" href="https://cdn.datatables.net/select/1.5.0/css/select.bootstrap5.min.css"></link>
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"></link>
         </div>
     );
 }
-//runApp(app);
 
 export default PacketDisplayer;
 

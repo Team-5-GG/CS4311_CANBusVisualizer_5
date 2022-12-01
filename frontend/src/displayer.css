@@ -107,3 +107,9 @@
   resize: vertical;
   overflow: scroll;
 }
+
+.dataTables_empty
+{
+    display:none;
+}
+
