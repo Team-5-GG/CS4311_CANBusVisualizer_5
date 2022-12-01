@@ -25,7 +25,7 @@ export default class Channel{
                 let boundSignals = boundMsg?.signals;
 
                 //console.log(boundMsg)
-                // console.log(boundSignals)
+                console.log(boundSignals)
 
                 var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
                 if(!nodeHolder.inList(packet.name)){

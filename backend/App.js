@@ -1,6 +1,6 @@
 import TrafficHolder from "./traffic.js";
 import Channel from "./channel.js";
-// import NodeHolder from "./nodelist.js";
+import NodeHolder from "./nodelist.js";
 
 export var nodeHolder
 export var traffic
@@ -8,8 +8,9 @@ var channel
 
 export function runApp(){
     traffic = new TrafficHolder();
+    nodeHolder = new NodeHolder();
     
-    channel = new Channel(traffic);
+    channel = new Channel(5, traffic, nodeHolder);
 
     channel.start();
 
