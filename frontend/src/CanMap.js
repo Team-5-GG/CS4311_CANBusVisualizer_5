@@ -312,7 +312,7 @@ function CanMap(){
     function createPort(customID){
       var arrayItem = {};
       arrayItem.portColor ='#FF0000';
-      arrayItem.portId = customID;
+      arrayItem.portId = "baseline"+customID;
       return arrayItem;
     }
     // END OF CAN BUS FUNCTIONS
@@ -332,7 +332,7 @@ function CanMap(){
     // Create link between nodes and ports
     function createNewLink(twoLetterName){ 
       var linkItem = {};
-      linkItem.from = 'baseLine'; //this is the canbus itself 
+      linkItem.from = JSON.parse("baseline"+twoLetterName); //this is the canbus itself 
       linkItem.to = JSON.parse(twoLetterName);
       // linkItem.fromPort = JSON.parse(twoLetterName);
       linkItem.toPort = JSON.parse(twoLetterName);
