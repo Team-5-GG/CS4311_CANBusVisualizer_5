@@ -1,7 +1,6 @@
 import * as go from "gojs";
 import './displayer.css';
-import ModifyIconDropdown from './canbus-pages/ModifyIconDropdown';
-import { useState, useEffect } from 'react'
+import icons from './components/icons.json';
 
 function CanMap(){
     //other variables
@@ -72,7 +71,7 @@ function CanMap(){
         ),
         
         $(go.Picture,
-        {maxSize: new go.Size(50,50)},
+        {maxSize: new go.Size(20,20)},
         new go.Binding("source", "img")
         ),
         $(go.TextBlock, { margin: 5 }),
@@ -255,10 +254,26 @@ function CanMap(){
       nodeArray.push(createCanBusNode());
       //add the union:
       
+      
+      //Create new variables for each icon to be displayed
+      const engine = icons.Engine.Icon;
+      const tireCondition = icons.TireCondition.Icon;
+      const brakes = icons.Brakes.Icon;
+      const lighting = icons.Lighting.Icon;
+      const transmission = icons.Transmission.Icon;
+
+      //modify assorted assignment
       var i = 0;
       while(i <= unionLen-1){//for each element in the rendered node array
-        var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
-        nodeArray.push(createNewNode(twoLetterName)); //place it in the map
+        let letter = union[i].charAt(0);
+        var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode        
+        if(letter == "V" || letter == "D" || letter == "B"){
+          nodeArray.push(createNewNode(twoLetterName,engine)); //place it in the map
+        }else if(letter == "M" || letter == "E"){
+          nodeArray.push(createNewNode(twoLetterName,brakes)); //place it in the map
+        }else{
+          nodeArray.push(createNewNode(twoLetterName,tireCondition)); //place it in the map
+        }
         i++;
       }
       
@@ -266,7 +281,7 @@ function CanMap(){
     
     }//END of pupulateNodeArray()
     
-    function createNewNode(twoLetterName){
+    function createNewNode(twoLetterName,imageCode){
       var nodeItem = {};
       nodeItem.key = JSON.parse(twoLetterName); //two letter name holds the unique two letter representation of each node name
       nodeItem.portID = 'testPort';
@@ -275,6 +290,7 @@ function CanMap(){
       nodeItem.figure = 'LineH';
       nodeItem.width = 0;
       nodeItem.height = 0;
+      nodeItem.img = imageCode;
       return nodeItem;
     }//END of createNewNode
     
@@ -312,7 +328,7 @@ function CanMap(){
     function createPort(customID){
       var arrayItem = {};
       arrayItem.portColor ='#FF0000';
-      arrayItem.portId = "baseline"+customID;
+      arrayItem.portId = customID;
       return arrayItem;
     }
     // END OF CAN BUS FUNCTIONS
@@ -322,7 +338,6 @@ function CanMap(){
       //for each node create a new link
       var i = 0;
       while(i <= unionLen-1){
-        console.log("heeeeeeeey" + union[i])
         var twoLetterName = JSON.stringify(union[i]); //convert the two letter to a json string to be able to pass it to the createNewNode
         linkArray.push(createNewLink(twoLetterName)); //place it in the map
         i++;
@@ -332,7 +347,7 @@ function CanMap(){
     // Create link between nodes and ports
     function createNewLink(twoLetterName){ 
       var linkItem = {};
-      linkItem.from = JSON.parse("baseline"+twoLetterName); //this is the canbus itself 
+      linkItem.from = 'baseLine'; //this is the canbus itself 
       linkItem.to = JSON.parse(twoLetterName);
       // linkItem.fromPort = JSON.parse(twoLetterName);
       linkItem.toPort = JSON.parse(twoLetterName);
