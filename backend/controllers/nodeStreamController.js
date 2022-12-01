@@ -1,6 +1,6 @@
-import { nodeHolder } from '../App.js';
+import { nodeHolder } from "../App.js";
 
-export const getNodeStream = (req, res) => {
+export const getNodes = (req, res) => {
     console.log('Got /node-stream!!'); //to terminal
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Content-Type', 'text/event-stream');

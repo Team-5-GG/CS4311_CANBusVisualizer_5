@@ -3,14 +3,13 @@ import Dbc, { Can } from 'dbc-can'
 import PacketManager from './packet.js';
 import NodeManager from './node.js';
 import NodeHolder from './nodelist.js';
-
+import { projectDetails } from './controllers/projectConfigController.js';
 export default class Channel{
-    constructor(iFace, baudRate, traffic, nodeHolder){
-        //var isStarted = false;
+    constructor(baudRate, traffic, nodeHolder){
         var dbc = new Dbc();
-        this.channel = can.createRawChannel(iFace, true);
+        this.channel = can.createRawChannel(projectDetails.channel, true);
 
-        dbc.load(process.env.DBC).then(data => {
+        dbc.load('./dbc_files/' + projectDetails.dbcName).then(data => {
         var canDBC = new Can(data);
 
         this.channel.addListener('onMessage', (msg) => {
@@ -26,11 +25,11 @@ export default class Channel{
                 let boundSignals = boundMsg?.signals;
 
                 //console.log(boundMsg)
-                // console.log(boundSignals)
+                console.log(boundSignals)
 
-                var packet = new PacketManager(msg, dbcid, boundMsg.name, boundSignals)
-                if(!nodeHolder.inList(packet.name)){
-                    var tempnode = dbc.data.messages.get(packet.name);
+                var packet = new PacketManager(msg, dbcid, data.messages.get(boundMsg.name).description, boundSignals)
+                if(!nodeHolder.inList(boundMsg.name)){
+                    var tempnode = dbc.data.messages.get(boundMsg.name);
                     var node = new NodeManager(tempnode.name,tempnode.id,tempnode.dlc,tempnode.sendingNode,tempnode.signals,tempnode.description);
 // Nodes show here-> nodeHolder.addNode(node);
                     nodeHolder.addNode(node);
