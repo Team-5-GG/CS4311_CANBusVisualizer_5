@@ -8,6 +8,7 @@ function CANBusDisplayer(){
     return(
         <>
         <Navbar>
+            <li>Select an item and then click change image from the node:</li>
             <ModifyIconDropdown/>
         </Navbar>
         <div>
