@@ -25,5 +25,3 @@ app.use('/node-stream', nodeStreamRoutes)
 
 //Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
-
-// runApp();
