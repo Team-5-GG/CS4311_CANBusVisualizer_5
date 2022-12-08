@@ -11,19 +11,8 @@ export const sendPackets = (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     res.flushHeaders();
 
-    /* if(offLimitsList.includes(offLimitsList.data.id)){
-        res.write();
-    } else{
-        var worker = new Worker('send.js');
-        worker.postMessage(req.body);
-    } */
-    
-    //var worker = new threads.Worker('./send.js');
-    //worker.postMessage(req.body);
-    //const rawPacket = req.body
-
     // console.log(Buffer.from(req.body.rawPacket.data.data))
-    channel.send(req.body.rawPacket.id, Buffer.from(req.body.rawPacket.data.data))
+    channel.send(req.body.rawPacket.id.toString(16), Buffer.from(req.body.rawPacket.data.data))
     
 
     res.on('close', () => {
