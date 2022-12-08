@@ -65,7 +65,7 @@ export default class Channel{
 
     send(id, buffer){
         try{
-            this.channel.send({"id" : id, "data" : buffer})
+            this.channel.send({"id" : id, "ext" : true, "data" : buffer})
         }catch(error){
             console.log(error)
         }

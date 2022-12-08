@@ -11,8 +11,8 @@ export const sendPackets = (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     res.flushHeaders();
 
-    // console.log(Buffer.from(req.body.rawPacket.data.data))
-    channel.send(req.body.rawPacket.id.toString(16), Buffer.from(req.body.rawPacket.data.data))
+    //console.log(req.body.rawPacket.id.toString(16))
+    channel.send(req.body.rawPacket.id, Buffer.from(req.body.rawPacket.data.data))
     
 
     res.on('close', () => {
